@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Screen/home.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: null);
-  runApp(MyApp());
+  runApp(HomeScreen());
 }
 
 class Firebase {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project2b/Screen/register.dart';
 
 void exitPopup(BuildContext context) {
   showDialog(
@@ -28,27 +29,32 @@ void exitPopup(BuildContext context) {
   );
 }
 
-void main() {
-  runApp(MyAppddd());
-}
-
-class MyAppddd extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Popup Example'),
-        ),
-        body: Center(
-          child: ElevatedButton(
+void InvalidPopup(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Error'),
+        content: Text('Invalid Password'),
+        actions: <Widget>[
+          TextButton(
             onPressed: () {
-              exitPopup(context);
+               Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return RegisterApp();
+                        }));
             },
-            child: Text('Show Popup'),
+            child: Text('Sign Up'),
           ),
-        ),
-      ),
-    );
-  }
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('Back'),
+          ),
+        ],
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      );
+    },
+  );
 }

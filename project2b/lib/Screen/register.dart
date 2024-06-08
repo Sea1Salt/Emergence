@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/login.dart';
+import 'package:project2b/Screen/mainmenu.dart';
+import 'package:project2b/Screen/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
@@ -46,9 +48,9 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _pidController = TextEditingController();
+  final TextEditingController _ID_numberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
@@ -66,8 +68,8 @@ class _RegisterFormState extends State<RegisterForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                width: 200, // Set the desired width
-                height: 200, // Set the desired height
+                width: 200,
+                height: 200,
                 child: Image.asset(
                   "assets/images/login.png",
                 ),
@@ -79,10 +81,9 @@ class _RegisterFormState extends State<RegisterForm> {
                     fontSize: 40, color: Color.fromARGB(255, 111, 66, 192)),
               ),
               TextFormField(
-                controller: _pidController,
+                controller: _ID_numberController,
                 decoration: const InputDecoration(
-                  labelText: 'ID Number',
-                  hintText: '13 Digits',
+                  labelText: 'ID Card',
                   icon: Icon(Icons.person),
                 ),
                 validator: (value) {
@@ -125,78 +126,56 @@ class _RegisterFormState extends State<RegisterForm> {
                 },
                 onChanged: (value) {
                   setState(() {
+                    _password = value;
+                  });
+                },
+              ),
+              const SizedBox(height: 20.0),
+              TextFormField(
+                controller: _confirmPasswordController,
+                decoration: const InputDecoration(
+                  labelText: 'Confirm Password',
+                  icon: Icon(Icons.lock),
+                ),
+                obscureText: true,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please confirm your password';
+                  }
+                  if (value != _password) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
                     _confirmPassword = value;
                   });
                 },
               ),
               const SizedBox(height: 20.0),
-              // TextFormField(
-              //     controller: _confirmPasswordController,
-              //     decoration: const InputDecoration(
-              //       labelText: 'Confirm Password',
-              //       icon: Icon(Icons.lock),
-              //     ),
-              //     obscureText: true,
-              //     validator: (value) {
-              //       if (value!.isEmpty) {
-              //         return 'Please enter your password';
-              //       }
-              //       else if (value != _password) {
-              //         return 'Passwords do not match';
-              //       }
-              //       else if (value == _password) {
-              //         Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) {
-              //         return LoginPage();
-              //       }));
-              //       }
-
-              //       return null;
-              //     },
-              //     onChanged: (value) {
-              //       setState(() {
-              //         _confirmPassword = value;
-              //       });
-              //     }),
-              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    print('Username: ${_pidController.text}');
-                    print('Email: ${_emailController.text}');
+                    print('Username: ${_emailController.text}');
                     print('Password: ${_passwordController.text}');
-                    var result = await EmergenceService.Regis(
-                        _pidController.text,
-                        _emailController.text,
-                        _passwordController.text);
-                    print(result);
-                    if (result) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginPage();
-                      }));
-                    } else {}
+                    Text('Login');
+                    try {
+                      var result = await EmergenceService.Regis(
+                          _ID_numberController.text ,_emailController.text, _passwordController.text);
+                      if (result) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return MainScreen();
+                        }));
+                      } else {
+                        print("wrong password");
+                        InvalidPopup(context);
+                      }
+                    } catch (err) {}
                   }
                 },
                 child: const Text('Register'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromARGB(255, 253, 253, 253)),
-                  elevation:
-                      MaterialStateProperty.all<double>(10), // Adjust elevation
-                  textStyle: MaterialStateProperty.all<TextStyle>(
-                    const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 140),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(20), // Adjust border radius
-                    ),
-                  ),
-                ),
               ),
             ],
           ),

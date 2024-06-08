@@ -13,7 +13,7 @@ class EmergenceService {
     print(authData);
     try {
       final http.Response response = await http.post(
-          Uri.parse('http://10.28.129.163/api/logins/authen'),
+          Uri.parse('http://10.0.2.2:5224/api/logins/authen'),
           body: json.encode(authData),
           headers: {
             'Content-Type': 'application/json',
@@ -41,9 +41,9 @@ class EmergenceService {
     return false;
   }
 
-  static Future<bool> Regis(String pid,String email, String password) async {
+  static Future<bool> Regis(String ID_number,String email, String password) async {
     final Map<String, dynamic> authData = {
-      'pid': pid,
+      'ID_number': ID_number,
       'email': email,
       'password': password,
     };
@@ -51,7 +51,7 @@ class EmergenceService {
     print(authData);
     try {
       final http.Response response = await http.post(
-          Uri.parse('http://10.28.129.163/api/UserManagement/Regis'),
+          Uri.parse('http://10.0.2.2:5224/api/UserManagement/Regis'),
           body: json.encode(authData),
           headers: {
             'Content-Type': 'application/json',

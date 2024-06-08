@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:project2b/Screen/mainmenu.dart';
+import 'package:project2b/Screen/popup.dart';
 import 'package:project2b/Screen/register.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
@@ -49,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: 10.0),
               const Text(
-                "Login LOgin",
+                "Login",
                 style: TextStyle(
                     fontSize: 40, color: Color.fromARGB(255, 111, 66, 192)),
               ),
@@ -81,7 +83,6 @@ class _LoginFormState extends State<LoginForm> {
                   return null;
                 },
               ),
-              
               const SizedBox(height: 30.0),
               ElevatedButton(
                 onPressed: () async {
@@ -99,10 +100,7 @@ class _LoginFormState extends State<LoginForm> {
                         }));
                       } else {
                         print("wrong password");
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) {
-                        //   return RegisterApp();
-                        // }));
+                        InvalidPopup(context);
                       }
                     } catch (err) {}
                   }
