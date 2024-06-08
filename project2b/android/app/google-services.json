@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "995369383658",
+    "project_id": "emergence-final",
+    "storage_bucket": "emergence-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995369383658:android:312220fa748ee7600b8993",
+        "android_client_info": {
+          "package_name": "com.example.project2b"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYhfpCFMDnEHGSKiiieppoVy-pW33OP4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
