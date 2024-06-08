@@ -49,7 +49,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: 10.0),
               const Text(
-                "Login",
+                "Login LOgin",
                 style: TextStyle(
                     fontSize: 40, color: Color.fromARGB(255, 111, 66, 192)),
               ),
