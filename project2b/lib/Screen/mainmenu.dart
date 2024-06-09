@@ -98,7 +98,7 @@ class MainMenuScreen extends StatelessWidget {
               return FirstApp(); // Navigate to FourCardBoxes screen
             }));
           },
-          backgroundColor: Color.fromARGB(255, 243, 237, 200),
+          backgroundColor: Color.fromARGB(255, 34, 9, 44),
         ),
       ],
     );
