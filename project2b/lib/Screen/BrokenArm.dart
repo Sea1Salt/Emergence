@@ -16,18 +16,20 @@ class BrokenArmScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
           Card(
             color: Color.fromARGB(255, 135, 35, 65),
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: Center(
                 child: Text(
-                  'Broken Arm and Leg',
+                  'Broken Arm and Leg \n แขนขาหัก',
+                  textAlign: TextAlign.center, // Set text alignment to center
                   style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 255, 255, 255)),
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 255, 255, 255),
+                  ),
                 ),
               ),
             ),
