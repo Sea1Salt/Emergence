@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
 import 'package:project2b/Screen/PI.dart';
+import 'package:project2b/Screen/keanhuk.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
 void main() {
@@ -45,7 +46,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return InformationScreen(); // Navigate to InformationScreen screen
+              return BrokenHeadScreen(); // Navigate to InformationScreen screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 190, 49, 68),
