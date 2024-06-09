@@ -18,7 +18,7 @@ class FirstApp extends StatelessWidget {
               'How to first aid',
               style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
             ),
-            backgroundColor: Color.fromARGB(255, 243, 237, 200),
+            backgroundColor: Color.fromARGB(255, 34, 9, 44),
             actions: [
             IconButton(
               icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
@@ -39,7 +39,7 @@ class FirstApp extends StatelessWidget {
         body: FirstAidScreen(),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
-          color: Color.fromARGB(255, 243, 237, 200),
+          color: Color.fromARGB(255, 34, 9, 44),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -76,7 +76,7 @@ class FirstApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(
               255, 255, 255, 255), // Change background color if needed
           foregroundColor:
-              Color.fromARGB(255, 243, 237, 200), // Change icon color if needed
+              Color.fromARGB(255, 34, 9, 44), // Change icon color if needed
           elevation: 5, // Adjust elevation
           heroTag: null, // Remove hero tag to avoid conflicts
           mini: false, // Set to false to increase size

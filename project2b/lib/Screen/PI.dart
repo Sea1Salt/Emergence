@@ -25,15 +25,15 @@ class MyAppss extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
               onPressed: () {
-               SystemNavigator.pop();
+                SystemNavigator.pop();
               },
             ),
             IconButton(
               icon: Icon(Icons.people, color: Colors.white, size: 35),
               onPressed: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return DevApp();// Navigate to FourCardBoxes screen
-            }));  
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return DevApp(); // Navigate to FourCardBoxes screen
+                }));
               },
             ),
           ],
@@ -61,7 +61,7 @@ class MyAppss extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.menu, color: Colors.white, size: 35),
                 onPressed: () {
-                sidebar(context);
+                  sidebar(context);
                 },
               ),
             ],
@@ -103,10 +103,20 @@ class InformationScreen extends StatelessWidget {
   final TextEditingController _f8Controller = TextEditingController();
   final TextEditingController _f9Controller = TextEditingController();
   final TextEditingController _f10Controller = TextEditingController();
+  final TextEditingController _f11Controller = TextEditingController();
+  final TextEditingController _f12Controller = TextEditingController();
+  final TextEditingController _f13Controller = TextEditingController();
+  final TextEditingController _f14Controller = TextEditingController();
+  final TextEditingController _f15Controller = TextEditingController();
+  final TextEditingController _f16Controller = TextEditingController();
+  final TextEditingController _f17Controller = TextEditingController();
+  final TextEditingController _f18Controller = TextEditingController();
+  final TextEditingController _f19Controller = TextEditingController();
+  final TextEditingController _f20Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
+    return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 20, 16, 50),
@@ -199,10 +209,91 @@ class InformationScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
+              TextField(
+                controller: _f11Controller,
+                decoration: InputDecoration(
+                  labelText: 'Food allergy',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _f12Controller,
+                decoration: InputDecoration(
+                  labelText: 'Congenital disease',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _f13Controller,
+                decoration: InputDecoration(
+                  labelText: 'Home Address',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _f14Controller,
+                decoration: InputDecoration(
+                  labelText: 'Your Phone Number',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 30),
+              TextField(
+                controller: _f15Controller,
+                decoration: InputDecoration(
+                  labelText: 'Emergency phone number 1',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _f16Controller,
+                decoration: InputDecoration(
+                  labelText: 'Name ',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+               const SizedBox(height: 10),
+              TextField(
+                controller: _f17Controller,
+                decoration: InputDecoration(
+                  labelText: 'Relation',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+               const SizedBox(height: 30),
+              TextField(
+                controller: _f18Controller,
+                decoration: InputDecoration(
+                  labelText: 'Emergency phone number 2',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _f19Controller,
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+               const SizedBox(height: 10),
+              TextField(
+                controller: _f20Controller,
+                decoration: InputDecoration(
+                  labelText: 'Relation',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
                       return HomeScreen();
                     }));
                     print('F1: ${_f1Controller.text}');
@@ -213,13 +304,21 @@ class InformationScreen extends StatelessWidget {
                     print('F6: ${_f2Controller.text}');
                     print('F7: ${_f3Controller.text}');
                     print('F8: ${_f3Controller.text}');
+                    print('F9: ${_f1Controller.text}');
+                    print('F10: ${_f2Controller.text}');
+                    print('F11: ${_f3Controller.text}');
+                    print('F12: ${_f3Controller.text}');
+                    print('F13: ${_f1Controller.text}');
+                    print('F14: ${_f2Controller.text}');
+                    print('F15: ${_f3Controller.text}');
+                    print('F16: ${_f3Controller.text}');
                   },
                   child: const Text('Saved'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                         const Color.fromARGB(255, 253, 253, 253)),
-                    elevation:
-                        MaterialStateProperty.all<double>(5), // Adjust elevation
+                    elevation: MaterialStateProperty.all<double>(
+                        5), // Adjust elevation
                     textStyle: MaterialStateProperty.all<TextStyle>(
                       const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                     ),

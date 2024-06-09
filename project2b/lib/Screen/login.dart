@@ -57,9 +57,18 @@ class _LoginFormState extends State<LoginForm> {
               ),
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Email',
                   icon: Icon(Icons.person),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust border radius as needed
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 111, 66, 192), // Adjust border color
+                      width: 10.0, // Adjust border width
+                    ),
+                  ),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -71,9 +80,18 @@ class _LoginFormState extends State<LoginForm> {
               const SizedBox(height: 20.0),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Password',
                   icon: Icon(Icons.lock),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust border radius as needed
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 111, 66, 192), // Adjust border color
+                      width: 10.0, // Adjust border width
+                    ),
+                  ),
                 ),
                 obscureText: true,
                 validator: (value) {
@@ -83,7 +101,7 @@ class _LoginFormState extends State<LoginForm> {
                   return null;
                 },
               ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 15.0),
               ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
@@ -119,7 +137,7 @@ class _LoginFormState extends State<LoginForm> {
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(20), // Adjust border radius
+                          BorderRadius.circular(10), // Adjust border radius
                     ),
                   ),
                 ),

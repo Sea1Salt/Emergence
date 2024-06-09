@@ -82,9 +82,18 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               TextFormField(
                 controller: _ID_numberController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'ID Card',
                   icon: Icon(Icons.person),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust border radius as needed
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 111, 66, 192), // Adjust border color
+                      width: 10.0, // Adjust border width
+                    ),
+                  ),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -96,9 +105,18 @@ class _RegisterFormState extends State<RegisterForm> {
               const SizedBox(height: 20.0),
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Email',
                   icon: Icon(Icons.email),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust border radius as needed
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 111, 66, 192), // Adjust border color
+                      width: 10.0, // Adjust border width
+                    ),
+                  ),
                 ),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
@@ -112,9 +130,18 @@ class _RegisterFormState extends State<RegisterForm> {
               const SizedBox(height: 20.0),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Password',
                   icon: Icon(Icons.lock),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust border radius as needed
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 111, 66, 192), // Adjust border color
+                      width: 10.0, // Adjust border width
+                    ),
+                  ),
                 ),
                 obscureText: true,
                 validator: (value) {
@@ -133,9 +160,18 @@ class _RegisterFormState extends State<RegisterForm> {
               const SizedBox(height: 20.0),
               TextFormField(
                 controller: _confirmPasswordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Confirm Password',
                   icon: Icon(Icons.lock),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust border radius as needed
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 111, 66, 192), // Adjust border color
+                      width: 10.0, // Adjust border width
+                    ),
+                  ),
                 ),
                 obscureText: true,
                 validator: (value) {
@@ -162,11 +198,13 @@ class _RegisterFormState extends State<RegisterForm> {
                     Text('Login');
                     try {
                       var result = await EmergenceService.Regis(
-                          _ID_numberController.text ,_emailController.text, _passwordController.text);
+                          _ID_numberController.text,
+                          _emailController.text,
+                          _passwordController.text);
                       if (result) {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return MainScreen();
+                          return LoginPage();
                         }));
                       } else {
                         print("wrong password");
@@ -175,7 +213,25 @@ class _RegisterFormState extends State<RegisterForm> {
                     } catch (err) {}
                   }
                 },
-                child: const Text('Register'),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      const Color.fromARGB(255, 253, 253, 253)),
+                  elevation:
+                      MaterialStateProperty.all<double>(10), // Adjust elevation
+                  textStyle: MaterialStateProperty.all<TextStyle>(
+                    const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    const EdgeInsets.symmetric(vertical: 60, horizontal: 60),
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(5), // Adjust border radius
+                    ),
+                  ),
+                ),
+                child: Text('Register'),
               ),
             ],
           ),
