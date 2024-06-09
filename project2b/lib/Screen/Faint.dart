@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 
 void main() {
-  runApp(BrokenArmScreen());
+  runApp(FaintScreen());
 }
 
-class BrokenArmScreen extends StatelessWidget {
+class FaintScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
