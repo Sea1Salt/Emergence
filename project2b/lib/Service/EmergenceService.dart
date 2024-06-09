@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:project2b/Models/Patient.dart';
 
 class EmergenceService {
   static Future<bool> Authen(String email, String password) async {
@@ -29,19 +30,11 @@ class EmergenceService {
       print(err);
     }
 
-    // if (response.statusCode == 200) {
-    //   print(json.decode(response.body));
-    //   //String token = json.decode(response.body)['access_token'];
-    //   //String code = json.decode(response.body)['code'];
-    //   //if (code == "200") {
-
-    //   return true;
-    //   // }
-    // }
     return false;
   }
 
-  static Future<bool> Regis(String ID_number,String email, String password) async {
+  static Future<bool> Regis(
+      String ID_number, String email, String password) async {
     final Map<String, dynamic> authData = {
       'ID_number': ID_number,
       'email': email,
@@ -67,17 +60,53 @@ class EmergenceService {
       print(err);
     }
 
-    // if (response.statusCode == 200) {
-    //   print(json.decode(response.body));
-    //   //String token = json.decode(response.body)['access_token'];
-    //   //String code = json.decode(response.body)['code'];
-    //   //if (code == "200") {
+    return false;
+  }
 
-    //   return true;
-    //   // }
-    // }
+  static Future<bool> PatientInfo(Patient model) async {
+    final Map<String, dynamic> authData = {
+      'User_ID': 12,
+      'First_name': model.First_name,
+      'Last_name': model.Last_name,
+      'Nickname': model.Nickname,
+      'Birthdate': model.Birthdate,
+      'Gender': model.Gender,
+      'Age': model.Age,
+      'Weight': model.Weight,
+      'Height': model.Height,
+      'card_ID': model.card_ID,
+      'Drug_allergy': model.Drug_allergy,
+      'Food_allergy': model.Food_allergy,
+      'Congennital_disease': model.Congennital_disease,
+      'Adress': model.Adress,
+      'Tel': model.Tel,
+      'Emergency_phone_number1': model.Emergency_phone_number1,
+      'relate_name1': model.relate_name1,
+      'relation1': model.relation1,
+      'Emergency_phone_number2': model.Emergency_phone_number2,
+      'relate_name2': model.relate_name2,
+      'relation2': model.relation2,
+    };
+    print('debug....');
+    print(authData);
+    try {
+      final http.Response response = await http.post(
+          Uri.parse('http://10.0.2.2:5224/api/UserManagement/Patient_Info'),
+          body: json.encode(authData),
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          });
+
+      print(response);
+      if (response.statusCode == 200) {
+        print(json.decode(response.body));
+        return bool.parse(response.body);
+      }
+    } catch (err) {
+      print(err);
+    }
+
     return false;
   }
 }
-
-

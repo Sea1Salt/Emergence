@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project2b/Models/Patient.dart';
 import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'package:project2b/Screen/home.dart';
 import 'package:project2b/Screen/popup.dart';
 import 'package:project2b/Screen/AppSideBar.dart';
+import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
   runApp(MyAppss());
@@ -256,7 +258,7 @@ class InformationScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
-               const SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: _f17Controller,
                 decoration: InputDecoration(
@@ -264,7 +266,7 @@ class InformationScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
-               const SizedBox(height: 30),
+              const SizedBox(height: 30),
               TextField(
                 controller: _f18Controller,
                 decoration: InputDecoration(
@@ -280,7 +282,7 @@ class InformationScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
-               const SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: _f20Controller,
                 decoration: InputDecoration(
@@ -291,27 +293,35 @@ class InformationScreen extends StatelessWidget {
               const SizedBox(height: 10),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return HomeScreen();
-                    }));
-                    print('F1: ${_f1Controller.text}');
-                    print('F1: ${_f2Controller.text}');
-                    print('F3: ${_f3Controller.text}');
-                    print('F4: ${_f3Controller.text}');
-                    print('F5: ${_f1Controller.text}');
-                    print('F6: ${_f2Controller.text}');
-                    print('F7: ${_f3Controller.text}');
-                    print('F8: ${_f3Controller.text}');
-                    print('F9: ${_f1Controller.text}');
-                    print('F10: ${_f2Controller.text}');
-                    print('F11: ${_f3Controller.text}');
-                    print('F12: ${_f3Controller.text}');
-                    print('F13: ${_f1Controller.text}');
-                    print('F14: ${_f2Controller.text}');
-                    print('F15: ${_f3Controller.text}');
-                    print('F16: ${_f3Controller.text}');
+                  onPressed: () async {
+                    
+                    try {
+                      final model = Patient(
+                        12,
+                      this._f1Controller.text,
+                      this._f2Controller.text,
+                      this._f3Controller.text,
+                      this._f4Controller.text,
+                      this._f5Controller.text,
+                      int.parse(this._f6Controller.text),
+                      int.parse(this._f7Controller.text),
+                       int.parse(this._f8Controller.text),
+                      this._f9Controller.text,
+                      this._f10Controller.text,
+                      this._f11Controller.text,
+                      this._f12Controller.text,
+                      this._f13Controller.text,
+                      this._f14Controller.text,
+                      this._f15Controller.text,
+                      this._f16Controller.text,
+                      this._f17Controller.text,
+                      this._f18Controller.text,
+                      this._f19Controller.text,
+                      this._f20Controller.text
+                      );
+                      var result = await EmergenceService.PatientInfo(model);
+                      print('SAVED');
+                    } catch (err) {}
                   },
                   child: const Text('Saved'),
                   style: ButtonStyle(

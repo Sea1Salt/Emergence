@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Emergence'),
+          title: const Text('EMERGENCE'),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                     height: 10,
                   ),
                   const Text(
-                    "Emergence",
+                    "EMERGENCE",
                     style: TextStyle(
                         fontSize: 40, color: Color.fromARGB(255, 111, 66, 192)),
                   ),
