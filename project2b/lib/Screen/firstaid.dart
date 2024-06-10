@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
-import 'package:project2b/Screen/Faint.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
@@ -59,7 +58,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return FaintScreen(); // Navigate to FourCardBoxes screen
+              return InformationScreen(); // Navigate to FourCardBoxes screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 240, 89, 65),

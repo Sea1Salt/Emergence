@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                   const Text(
                     "EMERGENCE",
                     style: TextStyle(
-                        fontSize: 40, color: Color.fromARGB(255, 111, 66, 192)),
+                        fontSize: 35, color: Color.fromARGB(255, 111, 66, 192)),
                   ),
                   const Text(
                     "Save time Save your life",
