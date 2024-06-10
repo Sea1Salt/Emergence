@@ -44,12 +44,12 @@ class BrokenArmScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       border: Border.all(
-                        color: Color.fromARGB(255, 135, 35, 65),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         width: 5.0,
                       ),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       child: Image.asset(
                         'assets/images/1.1.jpg',
                         width: 400,
@@ -76,17 +76,17 @@ class BrokenArmScreen extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       border: Border.all(
-                        color: Color.fromARGB(255, 135, 35, 65),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         width: 5.0,
                       ),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       child: Image.asset(
                         'assets/images/1.2.jpg',
                         width: 400,
@@ -113,17 +113,17 @@ class BrokenArmScreen extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       border: Border.all(
-                        color: Color.fromARGB(255, 135, 35, 65),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         width: 5.0,
                       ),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       child: Image.asset(
                         'assets/images/1.3.jpg',
                         width: 400,
@@ -151,13 +151,22 @@ class BrokenArmScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'assets/images/1.4.jpg', // Provide your image path here
-                      width: 400,
-                      height: 200,
-                      fit: BoxFit.cover,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        width: 5.0,
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Image.asset(
+                        'assets/images/1.4.jpg',
+                        width: 400,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -167,7 +176,7 @@ class BrokenArmScreen extends StatelessWidget {
                     '4.ห้ามนวดในบริเวณที่ได้รับบาดเจ็บเพราะอาจทำให้อาการกระดูกหักรุนแรงขึ้น',
                     style: TextStyle(
                         fontSize: 20.0,
-                        color: Colors.white), // Set text color to white
+                        color: const Color.fromARGB(255, 255, 255, 255)),
                   ),
                 ),
               ],
@@ -178,17 +187,17 @@ class BrokenArmScreen extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       border: Border.all(
-                        color: Color.fromARGB(255, 135, 35, 65),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         width: 5.0,
                       ),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       child: Image.asset(
                         'assets/images/1.5.jpg',
                         width: 400,

@@ -41,7 +41,7 @@ class FirstAidScreen extends StatelessWidget {
               return BrokenArmScreen(); // Navigate to MainMenu screen
             }));
           },
-          backgroundColor: Color.fromARGB(255, 125, 10, 10),
+          backgroundColor: Color.fromARGB(255, 135, 35, 65),
         ),
         CardBox(
           width: 200, // Set the desired width
