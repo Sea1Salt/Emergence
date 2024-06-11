@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:project2b/Models/Patient.dart';
+import 'package:project2b/Models/Profile.dart';
 
 class EmergenceService {
   static Future<bool> Authen(String email, String password) async {
@@ -108,5 +109,28 @@ class EmergenceService {
     }
 
     return false;
+  }
+
+  static Future<Profile> GetPatient() async {
+    final Map<String, dynamic> authData = {
+      'User_ID': 1,
+    };
+    print('debug....');
+    print(authData);
+    final http.Response response = await http.post(
+        Uri.parse('http://10.0.2.2:5224/api/UserManagement/GetPatient'),
+        body: json.encode(authData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        });
+
+    print(response);
+    if (response.statusCode == 200) {
+      print(json.decode(response.body));
+      return Profile.fromJson(json.decode(response.body));
+    }
+
+    return Profile();
   }
 }

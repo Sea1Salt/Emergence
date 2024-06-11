@@ -145,7 +145,7 @@ class InformationScreen extends StatelessWidget {
               TextField(
                 controller: _f3Controller,
                 decoration: InputDecoration(
-                  labelText: 'Birthdate',
+                  labelText: 'Nickname',
                   hintText: 'Enter a date (MM/DD/YYYY)',
                   border: OutlineInputBorder(),
                 ),
@@ -154,7 +154,7 @@ class InformationScreen extends StatelessWidget {
               TextField(
                 controller: _f4Controller,
                 decoration: InputDecoration(
-                  labelText: 'Gender',
+                  labelText: 'Birthdate',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -162,7 +162,7 @@ class InformationScreen extends StatelessWidget {
               TextField(
                 controller: _f5Controller,
                 decoration: InputDecoration(
-                  labelText: 'Age',
+                  labelText: 'Gender',
                   hintText: 'enter only number',
                   border: OutlineInputBorder(),
                 ),
@@ -171,7 +171,7 @@ class InformationScreen extends StatelessWidget {
               TextField(
                 controller: _f6Controller,
                 decoration: InputDecoration(
-                  labelText: 'Nickname',
+                  labelText: 'Age',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -180,7 +180,7 @@ class InformationScreen extends StatelessWidget {
                 controller: _f7Controller,
                 decoration: InputDecoration(
                   labelText: 'Weight',
-                  hintText: 'kg',
+                  hintText: 'KG',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -189,7 +189,7 @@ class InformationScreen extends StatelessWidget {
                 controller: _f8Controller,
                 decoration: InputDecoration(
                   labelText: 'Height',
-                  hintText: 'cm',
+                  hintText: 'CM',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -198,7 +198,7 @@ class InformationScreen extends StatelessWidget {
                 controller: _f9Controller,
                 decoration: InputDecoration(
                   labelText: 'ID Card number',
-                  hintText: 'Number 13 digit',
+                  hintText: 'Number 13 digits',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -239,14 +239,21 @@ class InformationScreen extends StatelessWidget {
                 controller: _f14Controller,
                 decoration: InputDecoration(
                   labelText: 'Your Phone Number',
+                  hintText: '10 digits',
                   border: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 30),
+              Text(
+                'Contact 1',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 5),
               TextField(
                 controller: _f15Controller,
                 decoration: InputDecoration(
                   labelText: 'Emergency phone number 1',
+                  hintText: '10 digits',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -267,10 +274,16 @@ class InformationScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
+              Text(
+                'Contact 2',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 5),
               TextField(
                 controller: _f18Controller,
                 decoration: InputDecoration(
                   labelText: 'Emergency phone number 2',
+                  hintText: '10 digits',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -294,31 +307,29 @@ class InformationScreen extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () async {
-                    
                     try {
                       final model = Patient(
-                        12,
-                      this._f1Controller.text,
-                      this._f2Controller.text,
-                      this._f3Controller.text,
-                      this._f4Controller.text,
-                      this._f5Controller.text,
-                      int.parse(this._f6Controller.text),
-                      int.parse(this._f7Controller.text),
-                       int.parse(this._f8Controller.text),
-                      this._f9Controller.text,
-                      this._f10Controller.text,
-                      this._f11Controller.text,
-                      this._f12Controller.text,
-                      this._f13Controller.text,
-                      this._f14Controller.text,
-                      this._f15Controller.text,
-                      this._f16Controller.text,
-                      this._f17Controller.text,
-                      this._f18Controller.text,
-                      this._f19Controller.text,
-                      this._f20Controller.text
-                      );
+                          12,
+                          this._f1Controller.text,
+                          this._f2Controller.text,
+                          this._f3Controller.text,
+                          this._f4Controller.text,
+                          this._f5Controller.text,
+                          int.parse(this._f6Controller.text),
+                          int.parse(this._f7Controller.text),
+                          int.parse(this._f8Controller.text),
+                          this._f9Controller.text,
+                          this._f10Controller.text,
+                          this._f11Controller.text,
+                          this._f12Controller.text,
+                          this._f13Controller.text,
+                          this._f14Controller.text,
+                          this._f15Controller.text,
+                          this._f16Controller.text,
+                          this._f17Controller.text,
+                          this._f18Controller.text,
+                          this._f19Controller.text,
+                          this._f20Controller.text);
                       var result = await EmergenceService.PatientInfo(model);
                       print('SAVED');
                     } catch (err) {}

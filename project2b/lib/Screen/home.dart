@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
 import 'package:project2b/Screen/Dev.dart';
+import 'package:project2b/Screen/Profile.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/login.dart';
 import 'package:project2b/Screen/main.dart';
@@ -113,18 +114,19 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
+                 
                   SizedBox(
                       child: ElevatedButton.icon(
                     icon: const Icon(Icons.settings),
                     label: const Text(
-                      "Admin",
+                      "Profile",
                       style: TextStyle(
                           fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
                     ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return MainScreen();
+                        return ProfileScreen();
                       }));
                     },
                     style: ButtonStyle(
