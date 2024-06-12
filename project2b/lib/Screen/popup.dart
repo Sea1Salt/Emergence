@@ -58,3 +58,33 @@ void InvalidPopup(BuildContext context) {
     },
   );
 }
+
+void EmergencyPopUp(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Warning'),
+        content: Text('Are you sure to call the ambulance'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+               Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return RegisterApp();
+                        }));
+            },
+            child: Text('Confirm'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('Back'),
+          ),
+        ],
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      );
+    },
+  );
+}

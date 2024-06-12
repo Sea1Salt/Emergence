@@ -222,12 +222,12 @@ class _RegisterFormState extends State<RegisterForm> {
                     const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                   ),
                   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    const EdgeInsets.symmetric(vertical: 60, horizontal: 60),
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
                   ),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(5), // Adjust border radius
+                          BorderRadius.circular(10), // Adjust border radius
                     ),
                   ),
                 ),

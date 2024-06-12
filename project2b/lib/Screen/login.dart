@@ -51,10 +51,11 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: 10.0),
               const Text(
-                "Login",
+                "LOGIN",
                 style: TextStyle(
                     fontSize: 40, color: Color.fromARGB(255, 111, 66, 192)),
               ),
+              SizedBox(height:10),
               TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(

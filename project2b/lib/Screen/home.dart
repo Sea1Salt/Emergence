@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
 import 'package:project2b/Screen/Dev.dart';
+import 'package:project2b/Screen/EmergencyCall1.dart';
 import 'package:project2b/Screen/Profile.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/login.dart';
@@ -11,10 +12,9 @@ import 'package:project2b/Screen/popup.dart';
 import 'package:project2b/Screen/AppSideBar.dart';
 import 'package:project2b/Screen/test.dart';
 
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +48,8 @@ class HomeScreen extends StatelessWidget {
                     label: const Text(
                       "register",
                       style: TextStyle(
-                          fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 111, 66, 192)),
                     ),
                     onPressed: () {
                       Navigator.push(context,
@@ -62,10 +63,12 @@ class HomeScreen extends StatelessWidget {
                       elevation: MaterialStateProperty.all<double>(
                           10), // Adjust elevation
                       textStyle: MaterialStateProperty.all<TextStyle>(
-                        const TextStyle(color: Color.fromARGB(255, 111, 66, 192)),
+                        const TextStyle(
+                            color: Color.fromARGB(255, 111, 66, 192)),
                       ),
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 55),
+                        const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 55),
                       ),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
@@ -84,7 +87,8 @@ class HomeScreen extends StatelessWidget {
                     label: const Text(
                       "login",
                       style: TextStyle(
-                          fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 111, 66, 192)),
                     ),
                     onPressed: () {
                       Navigator.push(context,
@@ -101,7 +105,8 @@ class HomeScreen extends StatelessWidget {
                         const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 65),
+                        const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 65),
                       ),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
@@ -114,14 +119,52 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                 
                   SizedBox(
                       child: ElevatedButton.icon(
                     icon: const Icon(Icons.settings),
                     label: const Text(
-                      "Profile",
+                      "Admin",
                       style: TextStyle(
-                          fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 111, 66, 192)),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MainMenuScreen();
+                      }));
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 253, 253, 253)),
+                      elevation: MaterialStateProperty.all<double>(
+                          10), // Adjust elevation
+                      textStyle: MaterialStateProperty.all<TextStyle>(
+                        const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 60),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(20), // Adjust border radius
+                        ),
+                      ),
+                    ),
+                  )),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                      child: ElevatedButton.icon(
+                    icon: const Icon(Icons.account_balance),
+                    label: const Text(
+                      "profile",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 111, 66, 192)),
                     ),
                     onPressed: () {
                       Navigator.push(context,
@@ -135,10 +178,12 @@ class HomeScreen extends StatelessWidget {
                       elevation: MaterialStateProperty.all<double>(
                           10), // Adjust elevation
                       textStyle: MaterialStateProperty.all<TextStyle>(
-                        const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                        const TextStyle(
+                            color: Color.fromARGB(255, 111, 66, 192)),
                       ),
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
+                        const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 60),
                       ),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(

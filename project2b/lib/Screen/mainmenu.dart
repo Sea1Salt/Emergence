@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:project2b/Screen/Dev.dart';
+import 'package:project2b/Screen/EmergencyCall1.dart';
 import 'package:project2b/Screen/FA.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/popup.dart';
@@ -56,7 +56,7 @@ class MainMenuScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainMenuScreen(); // Navigate to MainMenu screen
+              return EmergencyCallScreen(); // Navigate to MainMenu screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 125, 10, 10),
