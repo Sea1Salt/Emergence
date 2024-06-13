@@ -227,7 +227,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(10), // Adjust border radius
+                          BorderRadius.circular(20), // Adjust border radius
                     ),
                   ),
                 ),

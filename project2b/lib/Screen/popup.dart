@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/register.dart';
 
 void exitPopup(BuildContext context) {
@@ -12,7 +13,7 @@ void exitPopup(BuildContext context) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              SystemNavigator.pop();// Close the dialog
+              SystemNavigator.pop(); // Close the dialog
             },
             child: Text('Yes'),
           ),
@@ -39,10 +40,9 @@ void InvalidPopup(BuildContext context) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-               Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return RegisterApp();
-                        }));
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return RegisterApp();
+              }));
             },
             child: Text('Sign Up'),
           ),
@@ -69,10 +69,9 @@ void EmergencyPopUp(BuildContext context) {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-               Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return RegisterApp();
-                        }));
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return EmergencyCall2Screen();
+              }));
             },
             child: Text('Confirm'),
           ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:project2b/Screen/popup.dart';
 
 void main() {
   runApp(EmergencyCallScreen());
 }
-
 
 class EmergencyCallScreen extends StatefulWidget {
   @override
@@ -27,7 +27,7 @@ class _EmergencyButtonScreenState extends State<EmergencyCallScreen> {
             style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255))),
         backgroundColor: Color.fromARGB(255, 125, 10, 10),
       ),
-      body: Center(
+      body: Align(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -40,11 +40,11 @@ class _EmergencyButtonScreenState extends State<EmergencyCallScreen> {
               style: ElevatedButton.styleFrom(
                 shape: CircleBorder(),
                 backgroundColor: Color.fromARGB(255, 125, 10, 10),
-                padding: EdgeInsets.all(50), // Background color
+                padding: EdgeInsets.all(60), // Background color
               ),
               child: Icon(
                 Icons.call,
-                size: 50,
+                size: 70,
                 color: Colors.white,
               ),
             ),

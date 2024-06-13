@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
 import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/EmergencyCall1.dart';
+import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/Profile.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/login.dart';
@@ -131,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return MainMenuScreen();
+                        return EmergencyCallScreen();
                       }));
                     },
                     style: ButtonStyle(
