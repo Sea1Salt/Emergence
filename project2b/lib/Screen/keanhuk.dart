@@ -50,7 +50,7 @@ class BrokenHeadScreen extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5.0),
                       child: Image.asset(
-                        'assets/images/1.1.jpg',
+                        'assets/images/2.1.jpg',
                         width: 400,
                         height: 200,
                         fit: BoxFit.cover,

@@ -16,7 +16,7 @@ class BrokenArmScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          SizedBox(height: 10.0),
+          SizedBox(height: 5.0),
           Card(
             color: Color.fromARGB(255, 135, 35, 65),
             child: Padding(
@@ -24,11 +24,12 @@ class BrokenArmScreen extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Broken Arm and Leg \n แขนขาหัก',
-                  textAlign: TextAlign.center, // Set text alignment to center
+                  textAlign: TextAlign.left, // Set text alignment to left
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                     color: const Color.fromARGB(255, 255, 255, 255),
+                    fontFamily: 'ChakraPetch-Regular',
                   ),
                 ),
               ),
@@ -64,8 +65,11 @@ class BrokenArmScreen extends StatelessWidget {
                   child: Text(
                     '1.หากมีบาดแผลควรห้ามเลือดและปิดบาดแผลด้วยอุปกรณ์ที่สะอาด',
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: const Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      fontFamily: 'ChakraPetch-Regular',
+                    ),
                   ),
                 ),
               ],
@@ -101,8 +105,11 @@ class BrokenArmScreen extends StatelessWidget {
                   child: Text(
                     '2.ประคบน้ำแข็งเพื่อลดอาการปวดและบวม',
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: const Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      fontFamily: 'ChakraPetch-Regular',
+                    ),
                   ),
                 ),
               ],
@@ -138,8 +145,11 @@ class BrokenArmScreen extends StatelessWidget {
                   child: Text(
                     '3.ใช้ผ้าคล้องแขนพยุงกระดูกแขนหรือไหปลาร้า หรือใช้แผ่นไม้กระดาษหนังสือพิมพ์หรือนิตยสารม้วนจนแข็งมาใช้ดาม กระดูกชั่วคราวแทนเฝือกได้เช่นกัน',
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: const Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      fontFamily: 'ChakraPetch-Regular',
+                    ),
                   ),
                 ),
               ],
@@ -175,8 +185,11 @@ class BrokenArmScreen extends StatelessWidget {
                   child: Text(
                     '4.ห้ามนวดในบริเวณที่ได้รับบาดเจ็บเพราะอาจทำให้อาการกระดูกหักรุนแรงขึ้น',
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: const Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      fontFamily: 'ChakraPetch-Regular',
+                    ),
                   ),
                 ),
               ],
@@ -212,8 +225,11 @@ class BrokenArmScreen extends StatelessWidget {
                   child: Text(
                     '5.หลีกเลี่ยงการกินอาหารหรือดื่มเครื่องดื่ม',
                     style: TextStyle(
-                        fontSize: 20.0,
-                        color: const Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      fontFamily: 'ChakraPetch-Regular',
+                    ),
                   ),
                 ),
               ],
