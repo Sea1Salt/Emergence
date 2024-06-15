@@ -1,4 +1,7 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:project2b/Screen/PI.dart';
+import 'package:project2b/Screen/TakePictureScreen.dart';
 
 void main() {
   runApp(EmergencyCall2Screen());
@@ -43,10 +46,12 @@ class EmergencyCall2Screen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {
-                // Add your action here
-                print('Button 1 pressed!');
-              },
+              onPressed: ()  {
+            
+
+            
+           
+          },
                style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                       const Color.fromARGB(255, 253, 253, 253)),
@@ -69,10 +74,16 @@ class EmergencyCall2Screen extends StatelessWidget {
             ),
             SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () {
-                // Add your action here
-                print('Button 2 pressed!');
-              },
+              onPressed: () async {
+            final cameras = await availableCameras();
+            // Get a specific camera from the list of available cameras.
+            final firstCamera = cameras.first;
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return TakePictureScreen(
+                camera: firstCamera,
+              ); // Navigate to InformationScreen screen
+            }));
+          },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                       const Color.fromARGB(255, 253, 253, 253)),
@@ -93,12 +104,11 @@ class EmergencyCall2Screen extends StatelessWidget {
                 ),
                 child: const Text('Identify'),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {
-                // Add your action here
-                Navigator.pop(context);
-              },
+               onPressed: (){
+           //navigate
+          },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                       const Color.fromARGB(255, 253, 253, 253)),

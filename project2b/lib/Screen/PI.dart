@@ -9,10 +9,10 @@ import 'package:project2b/Screen/AppSideBar.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
-  runApp(MyAppss());
+  runApp(InfoScreen());
 }
 
-class MyAppss extends StatelessWidget {
+class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,51 +44,61 @@ class MyAppss extends StatelessWidget {
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
           color: Color.fromARGB(255, 191, 49, 49),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                icon: Icon(Icons.settings, color: Colors.white, size: 35),
-                onPressed: () {
-                  // Navigate to home screen or perform home-related action
-                },
-              ),
-              Text(
-                '_______________',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white,
-                ),
-              ),
-              IconButton(
-                icon: Icon(Icons.menu, color: Colors.white, size: 35),
-                onPressed: () {
-                  sidebar(context);
-                },
-              ),
-            ],
+          child: SizedBox(
+            height: 80, // Set a specific height for the BottomAppBar
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                  // Navigate to settings screen or perform settings-related action
+                }),
+                buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                  // Perform search action
+                }),
+                buildBottomAppBarItem(context, Icons.home, '', () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MainScreen(); // Navigate to main screen
+                  }));
+                }, isHome: true),
+                buildBottomAppBarItem(
+                    context, Icons.notifications, 'Notifications', () {
+                  // Perform notifications-related action
+                }),
+                buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                    () {
+                  // Navigate to profile screen or perform profile-related action
+                }),
+              ],
+            ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainScreen();
-            }));
-          },
-          child: Icon(Icons.home, size: 30),
-          backgroundColor: const Color.fromARGB(
-              255, 255, 255, 255), // Change background color if needed
-          foregroundColor:
-              Color.fromARGB(255, 191, 49, 49), // Change icon color if needed
-          elevation: 5, // Adjust elevation
-          heroTag: null, // Remove hero tag to avoid conflicts
-          mini: false, // Set to false to increase size
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-            // Adjust border radius
+      ),
+    );
+  }
+
+  Widget buildBottomAppBarItem(
+      BuildContext context, IconData icon, String text, VoidCallback onPressed,
+      {bool isHome = false}) {
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: isHome
+                ? BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                  )
+                : null,
+            child: IconButton(
+              icon: Icon(icon, color: Colors.white, size: isHome ? 35 : 30),
+              onPressed: onPressed,
+            ),
           ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        ],
       ),
     );
   }

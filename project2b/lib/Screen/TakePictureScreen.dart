@@ -1,14 +1,12 @@
-
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/DisplayPictureScreen.dart';
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
-    super.key,
+    Key? key,
     required this.camera,
-  });
+  }) : super(key: key);
 
   final CameraDescription camera;
 
@@ -19,75 +17,81 @@ class TakePictureScreen extends StatefulWidget {
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  int selectedCameraIndex = 0; // Index to track the current camera
 
   @override
   void initState() {
     super.initState();
-    // To display the current output from the Camera,
-    // create a CameraController.
     _controller = CameraController(
-      // Get a specific camera from the list of available cameras.
       widget.camera,
-      // Define the resolution to use.
       ResolutionPreset.medium,
     );
-
-    // Next, initialize the controller. This returns a Future.
     _initializeControllerFuture = _controller.initialize();
   }
 
   @override
   void dispose() {
-    // Dispose of the controller when the widget is disposed.
     _controller.dispose();
     super.dispose();
   }
+
+  void switchCamera() async {
+    // Get a list of available cameras on the device
+    final cameras = await availableCameras();
+    // Calculate the index of the next camera
+    int newIndex = (selectedCameraIndex + 1) % cameras.length;
+    // Dispose of the current controller
+    await _controller.dispose();
+    // Initialize a new controller with the selected camera
+    _controller = CameraController(
+      cameras[newIndex],
+      ResolutionPreset.medium,
+    );
+    // Update the state with the new camera and index
+    setState(() {
+      selectedCameraIndex = newIndex;
+      _initializeControllerFuture = _controller.initialize();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a picture')),
-      // You must wait until the controller is initialized before displaying the
-      // camera preview. Use a FutureBuilder to display a loading spinner until the
-      // controller has finished initializing.
+      appBar: AppBar(
+        title: const Text('Take a picture'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.switch_camera),
+            onPressed: () {
+              switchCamera(); // Call the switchCamera function when pressed
+            },
+          ),
+        ],
+      ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            // If the Future is complete, display the preview.
             return CameraPreview(_controller);
           } else {
-            // Otherwise, display a loading indicator.
             return const Center(child: CircularProgressIndicator());
           }
         },
       ),
       floatingActionButton: FloatingActionButton(
-        // Provide an onPressed callback.
         onPressed: () async {
-          // Take the Picture in a try / catch block. If anything goes wrong,
-          // catch the error.
           try {
-            // Ensure that the camera is initialized.
             await _initializeControllerFuture;
-
-            // Attempt to take a picture and get the file `image`
-            // where it was saved.
             final image = await _controller.takePicture();
-
             if (!context.mounted) return;
-
-            // If the picture was taken, display it on a new screen.
             await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DisplayPictureScreen(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
                   imagePath: image.path,
                 ),
               ),
             );
           } catch (e) {
-            // If an error occurs, log the error to the console.
             print(e);
           }
         },
@@ -96,4 +100,3 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     );
   }
 }
-

@@ -5,6 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:project2b/Models/Patient.dart';
 import 'package:project2b/Models/Profile.dart';
 
+//String URL = "http://10.0.2.2:5224";
+String URL = "http://183.88.240.114";
+
 class EmergenceService {
   static Future<bool> Authen(String email, String password) async {
     final Map<String, dynamic> authData = {
@@ -15,7 +18,7 @@ class EmergenceService {
     print(authData);
     try {
       final http.Response response = await http.post(
-          Uri.parse('http://10.0.2.2:5224/api/logins/authen'),
+          Uri.parse(URL+'/api/logins/authen'),
           body: json.encode(authData),
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +48,7 @@ class EmergenceService {
     print(authData);
     try {
       final http.Response response = await http.post(
-          Uri.parse('http://10.0.2.2:5224/api/UserManagement/Regis'),
+          Uri.parse(URL+'/api/UserManagement/Regis'),
           body: json.encode(authData),
           headers: {
             'Content-Type': 'application/json',
@@ -92,7 +95,7 @@ class EmergenceService {
     print(authData);
     try {
       final http.Response response = await http.post(
-          Uri.parse('http://10.0.2.2:5224/api/UserManagement/Patient_Info'),
+          Uri.parse(URL+'/api/UserManagement/Patient_Info'),
           body: json.encode(authData),
           headers: {
             'Content-Type': 'application/json',
@@ -118,7 +121,7 @@ class EmergenceService {
     print('debug....');
     print(authData);
     final http.Response response = await http.post(
-        Uri.parse('http://10.0.2.2:5224/api/UserManagement/GetPatient'),
+        Uri.parse(URL+'/api/UserManagement/GetPatient'),
         body: json.encode(authData),
         headers: {
           'Content-Type': 'application/json',
@@ -132,5 +135,25 @@ class EmergenceService {
     }
 
     return Profile();
+  }
+
+  static Future<bool> UploadPicture(String image) async {
+    final Map<String, dynamic> authData = {'User_ID': 1, 'image': image};
+    print('debug....');
+    print(authData);
+    final http.Response response = await http.post(
+        Uri.parse(URL+'/api/UserManagement/UploadPicture'),
+        body: json.encode(authData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        });
+
+    print(response);
+    if (response.statusCode == 200) {
+      print(json.decode(response.body));
+      return bool.parse(response.body);
+    }
+    return false;
   }
 }

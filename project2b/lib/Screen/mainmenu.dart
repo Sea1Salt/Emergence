@@ -1,11 +1,18 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/EmergencyCall1.dart';
 import 'package:project2b/Screen/FA.dart';
+import 'package:project2b/Screen/NearbyHos1.dart';
 import 'package:project2b/Screen/PI.dart';
+import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Screen/popup.dart';
 
-void main() {
+Future<void> main() async {
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
   runApp(MainScreen());
 }
 
@@ -15,7 +22,7 @@ class MainScreen extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Emergence',
+          title: Text('EMERGENCE',
               style:
                   TextStyle(color: const Color.fromARGB(255, 255, 255, 255))),
           backgroundColor: Color.fromARGB(255, 125, 10, 10),
@@ -67,9 +74,9 @@ class MainMenuScreen extends StatelessWidget {
           image: AssetImage('assets/images/Information.jpg'),
           text: 'Patient Information',
           textColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () {
+          onPressed: () {  
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MyAppss(); // Navigate to InformationScreen screen
+              return InfoScreen(); // Navigate to InformationScreen screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 191, 49, 49),
@@ -82,7 +89,7 @@ class MainMenuScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainMenuScreen(); // Navigate to FourCardBoxes screen
+              return LocationScreen(); // Navigate to FourCardBoxes screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 234, 209, 150),
