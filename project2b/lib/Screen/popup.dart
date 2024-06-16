@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
+import 'package:project2b/Screen/Profile.dart';
 import 'package:project2b/Screen/register.dart';
 
 void exitPopup(BuildContext context) {
@@ -80,6 +81,29 @@ void EmergencyPopUp(BuildContext context) {
               Navigator.of(context).pop(); // Close the dialog
             },
             child: Text('Back'),
+          ),
+        ],
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      );
+    },
+  );
+}
+
+void TakePic(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Take Successful'),
+        content: Text('Picture profile was changed'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ProfileScreen();
+              }));
+            },
+            child: Text('Go to profile'),
           ),
         ],
         backgroundColor: Color.fromARGB(255, 255, 255, 255),

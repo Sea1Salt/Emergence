@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:image/image.dart' as img;
 
 import 'package:flutter/material.dart';
+import 'package:project2b/Screen/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 class DisplayPictureScreen extends StatelessWidget {
@@ -23,28 +24,26 @@ class DisplayPictureScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.save),
             onPressed: () async {
-              // final Uint8List bytes = io.File(imagePath).readAsBytesSync();
-              // final String base64Image = base64Encode(bytes);
-
               final Uint8List bytes = io.File(imagePath).readAsBytesSync();
 
               img.Image? image = img.decodeImage(bytes);
 
               // Resize the image to a smaller size (e.g., 300x300)
               img.Image resizedImage =
-                  img.copyResize(image!, width: 300, height: 300);
+                  img.copyResize(image!, width: 900, height: 1200);
 
               // Convert resized image to bytes
               Uint8List resizedBytes =
                   Uint8List.fromList(img.encodeJpg(resizedImage));
-        List<int> jpg = img.encodeJpg(resizedImage, quality: 80);
+              List<int> jpg = img.encodeJpg(resizedImage, quality: 100);
               // Convert to Base64
               String base64String = base64Encode(jpg);
               // Encode to jpg with quality (0-100)
-      
+
               print('Sea.......');
               bool a = await EmergenceService.UploadPicture(base64String);
               print(base64String);
+              TakePic(context);
             },
           ),
         ],

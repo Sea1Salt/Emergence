@@ -36,18 +36,13 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   }
 
   void switchCamera() async {
-    // Get a list of available cameras on the device
     final cameras = await availableCameras();
-    // Calculate the index of the next camera
     int newIndex = (selectedCameraIndex + 1) % cameras.length;
-    // Dispose of the current controller
     await _controller.dispose();
-    // Initialize a new controller with the selected camera
     _controller = CameraController(
       cameras[newIndex],
       ResolutionPreset.medium,
     );
-    // Update the state with the new camera and index
     setState(() {
       selectedCameraIndex = newIndex;
       _initializeControllerFuture = _controller.initialize();
@@ -60,12 +55,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       appBar: AppBar(
         title: const Text('Take a picture'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.switch_camera),
-            onPressed: () {
-              switchCamera(); // Call the switchCamera function when pressed
-            },
-          ),
+          
         ],
       ),
       body: FutureBuilder<void>(
@@ -78,24 +68,37 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          try {
-            await _initializeControllerFuture;
-            final image = await _controller.takePicture();
-            if (!context.mounted) return;
-            await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(
-                  imagePath: image.path,
-                ),
-              ),
-            );
-          } catch (e) {
-            print(e);
-          }
-        },
-        child: const Icon(Icons.camera_alt),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+            onPressed: switchCamera,
+            heroTag: "switchCamera",
+            child: const Icon(Icons.switch_camera),
+          ),
+          SizedBox(width: 16), // Add space between the buttons
+          FloatingActionButton(
+            onPressed: () async {
+              try {
+                await _initializeControllerFuture;
+                final image = await _controller.takePicture();
+                if (!context.mounted) return;
+                await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => DisplayPictureScreen(
+                      imagePath: image.path,
+                    ),
+                  ),
+                );
+              } catch (e) {
+                print(e);
+              }
+            },
+            heroTag: "takePicture",
+            child: const Icon(Icons.camera_alt),
+          ),
+        ],
       ),
     );
   }

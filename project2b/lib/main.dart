@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project2b/Screen/home.dart';
+import 'package:project2b/Screen/HomeNew.dart';
+
 
 Future<void> main() async {
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: HomeNewScreen(),
       //home: TakePictureScreen(camera: firstCamera,),
     );
   }

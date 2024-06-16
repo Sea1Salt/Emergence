@@ -208,7 +208,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         }));
                       } else {
                         print("wrong password");
-                        InvalidPopup(context);
+                        
                       }
                     } catch (err) {}
                   }

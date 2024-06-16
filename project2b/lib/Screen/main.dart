@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project2b/Screen/home.dart';
+import 'package:project2b/Screen/HomeNew.dart';
 
 void main() async {
-  runApp(HomeScreen());
+  runApp(HomeNewScreen());
 }
 
 class Firebase {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: HomeNewScreen(),
     );
   }
 }
