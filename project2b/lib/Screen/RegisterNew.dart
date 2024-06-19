@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Screen/LoginNew.dart';
 import 'package:project2b/Screen/login.dart';
-import 'package:project2b/Screen/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
@@ -44,10 +44,15 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Icon at the top
-                    Image.asset(
-                      'assets/images/regis.png', // Ensure you have the image in assets
-                      height: 150,
-                    ),
+                    Icon(
+                  Icons.account_circle,
+                  size: 100,
+                  color: Color.fromARGB(255, 125, 10, 10),
+                ),
+                    // Image.asset(
+                    //   'assets/images/regis.png', // Ensure you have the image in assets
+                    //   height: 150,
+                    // ),
                     SizedBox(height: 10),
                     // Title
                     Text(
@@ -69,7 +74,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 17.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
                       validator: (value) {
@@ -90,7 +95,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 17.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
                       validator: (value) {
@@ -115,7 +120,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 17.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
                       validator: (value) {
@@ -142,7 +147,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 17.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
                       validator: (value) {
@@ -161,7 +166,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                         });
                       },
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 15),
                     // Register Button
                     ElevatedButton(
                       onPressed: () async {
@@ -177,7 +182,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                             if (result) {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return LoginPage();
+                                return LoginScreenApp();
                               }));
                             } else {
                               print("wrong password");
@@ -190,9 +195,9 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                         foregroundColor:
                             Colors.white, // Change text color to white
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: Size(double.infinity, 57),
                       ),
                       child: Text('Register'),
                     ),

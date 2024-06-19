@@ -36,6 +36,8 @@ dependencies:
   form_field_validator: ^1.1.0
   flutter_launcher_icons: ^0.13.1
   google_maps_flutter: ^2.6.1
+  location: ^6.0.2
+
 
   http: ^1.2.1
   camera: ^0.11.0+1

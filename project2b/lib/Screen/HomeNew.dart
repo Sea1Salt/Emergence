@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Screen/LoginNew.dart';
+import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/Profile.dart';
 import 'package:project2b/Screen/login.dart';
@@ -55,7 +57,7 @@ class HomeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return LoginPage();
+                    return LoginScreenApp();
                   }));
                 },
                 style: ElevatedButton.styleFrom(
@@ -127,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                ElevatedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ProfileScreen();
+                    return ProfileNewScreen();
                   }));
                 },
                 style: ElevatedButton.styleFrom(
