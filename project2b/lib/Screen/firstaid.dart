@@ -7,6 +7,7 @@ import 'package:project2b/Screen/Scald.dart';
 import 'package:project2b/Screen/Seizures.dart';
 import 'package:project2b/Screen/cpr.dart';
 import 'package:project2b/Screen/keanhuk.dart';
+import 'package:project2b/Screen/kuy.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return BrokenArmScreen(); // Navigate to MainMenu screen
+              return Kuyscreen(); // Navigate to MainMenu screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 135, 35, 65),
