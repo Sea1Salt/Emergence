@@ -55,7 +55,7 @@ class Profile {
     age = json['age'].toString();
     weight = json['weight'].toString();
     height = json['height'].toString();
-    cardID = json['cardID'].toString();
+    cardID = json['cardId'].toString();
     drugallergy = json['drugallergy'].toString();
     foodallergy = json['foodallergy'].toString();
     congennitaldisease = json['congennitaldisease'].toString();

@@ -22,7 +22,7 @@ class FirstAidScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
+      padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
       children: [
         CardBox(
           width: 200, // Set the desired width
@@ -32,7 +32,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return BrokenArmScreen(); // Navigate to MainMenu screen
+              return BrokenArmScreen(); // Navigate to BrokenArmScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 125, 10, 10),
@@ -45,7 +45,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return InformationScreen(); // Navigate to InformationScreen screen
+              return InformationScreen(); // Navigate to InformationScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 190, 49, 68),
@@ -58,7 +58,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return InformationScreen(); // Navigate to FourCardBoxes screen
+              return InformationScreen(); // Navigate to InformationScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 240, 89, 65),
@@ -71,7 +71,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainMenuScreen(); // Navigate to FourCardBoxes screen
+              return MainMenuScreen(); // Navigate to MainMenuScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 230, 194, 110),
@@ -80,11 +80,11 @@ class FirstAidScreen extends StatelessWidget {
           width: 200, // Set the desired width
           height: 180, // Set the desired height
           image: AssetImage('assets/images/5.jpg'),
-          text: 'Cardiopulmonary  Resuscitation (CPR)',
+          text: 'Cardiopulmonary Resuscitation (CPR)',
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainMenuScreen(); // Navigate to FourCardBoxes screen
+              return MainMenuScreen(); // Navigate to MainMenuScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 213, 230, 110),
@@ -97,7 +97,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainMenuScreen(); // Navigate to FourCardBoxes screen
+              return MainMenuScreen(); // Navigate to MainMenuScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 134, 230, 110),
@@ -110,7 +110,7 @@ class FirstAidScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainMenuScreen(); // Navigate to FourCardBoxes screen
+              return MainMenuScreen(); // Navigate to MainMenuScreen
             }));
           },
           backgroundColor: Color.fromARGB(255, 110, 230, 208),
@@ -143,30 +143,36 @@ class CardBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0), // Set rounded corner radius here
+      ),
       color: backgroundColor,
       child: InkWell(
-        onTap: onPressed, // Assign the onPressed callback to InkWell
-        child: SizedBox(
-          width: width,
-          height: height,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: Image(
-                  image: image,
-                  fit: BoxFit.cover,
+        onTap: onPressed,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15.0), // Same as Card's border radius
+          child: SizedBox(
+            width: width,
+            height: height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: Image(
+                    image: image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  text,
-                  style: TextStyle(fontSize: 20, color: textColor),
-                  textAlign: TextAlign.center,
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    text,
+                    style: TextStyle(fontSize: 20, color: textColor),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

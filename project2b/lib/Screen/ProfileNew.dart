@@ -83,21 +83,21 @@ class UserProfile extends StatelessWidget {
                         color: Color.fromARGB(255, 255, 255, 255),
                         shape: BoxShape.circle,
                       ),
-                      child: IconButton(
-                        icon: Icon(Icons.camera_alt,
-                            color: Color.fromARGB(255, 125, 10, 10)),
-                        onPressed: () async {
-                          final cameras = await availableCameras();
-                          // Get a specific camera from the list of available cameras.
-                          final firstCamera = cameras.first;
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return TakePictureScreen(
-                              camera: firstCamera,
-                            ); // Navigate to InformationScreen screen
-                          }));
-                        },
-                      ),
+                      // child: IconButton(
+                      //   icon: Icon(Icons.camera_alt,
+                      //       color: Color.fromARGB(255, 125, 10, 10)),
+                      //   onPressed: () async {
+                      //     final cameras = await availableCameras();
+                      //     // Get a specific camera from the list of available cameras.
+                      //     final firstCamera = cameras.first;
+                      //     Navigator.push(context,
+                      //         MaterialPageRoute(builder: (context) {
+                      //       return TakePictureScreen(
+                      //         camera: firstCamera,
+                      //       ); // Navigate to InformationScreen screen
+                      //     }));
+                      //   },
+                      // ),
                     ),
                   ),
                 ],

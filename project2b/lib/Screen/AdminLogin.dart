@@ -5,10 +5,10 @@ import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
-  runApp(LoginScreenApp());
+  runApp(AdminLog());
 }
 
-class LoginScreenApp extends StatelessWidget {
+class AdminLog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,13 +24,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _adminController = TextEditingController();
   final _passwordController = TextEditingController();
   String pwdcheck = '';
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _adminController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState?.validate() ?? false) {
       // Form is valid, proceed with login
       // You can add your login logic here
-      print('Email: ${_emailController.text}');
+      print('Email: ${_adminController.text}');
       print('Password: ${_passwordController.text}');
     }
   }
@@ -79,28 +79,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     // Icon at the top
                     Icon(
-                      Icons.account_circle,
+                      Icons.admin_panel_settings,
                       size: 100,
-                      color: Color.fromARGB(255, 125, 10, 10),
+                      color: Color.fromARGB(255, 70, 59, 59),
                     ),
                     SizedBox(height: 20),
                     // Title
                     Text(
-                      'Login',
+                      'Admin',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 125, 10, 10),
+                        color: Color.fromARGB(255, 70, 59, 59),
                       ),
                     ),
                     SizedBox(height: 20),
                     // Email Field
                     TextFormField(
-                      controller: _emailController,
+                      controller: _adminController,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email,
-                            color: Color.fromARGB(255, 125, 10, 10)),
-                        labelText: 'E-mail',
+                            color: Color.fromARGB(255, 70, 59, 59)),
+                        labelText: 'Admin ID',
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 17.0, horizontal: 10.0),
                         border: OutlineInputBorder(
@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock,
-                            color: Color.fromARGB(255, 125, 10, 10)),
+                            color: Color.fromARGB(255, 70, 59, 59)),
                         labelText: 'Password',
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 17.0, horizontal: 10.0),
@@ -131,33 +131,31 @@ class _LoginScreenState extends State<LoginScreen> {
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          print('Username: ${_emailController.text}');
+                          print('Username: ${_adminController.text}');
                           print('Password: ${_passwordController.text}');
                           Text('Login');
-                          // try {
-                          //   var ab = await EmergenceService.Authen();
-                          //   print("Result.......");
-                          //   print(ab);
-                          // } catch (err) {}
                           try {
-                            var result = await EmergenceService.Authen(
-                                _emailController.text,
-                                _passwordController.text);
-                            print(result);
-                            if (result) {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return MainScreen();
-                              }));
-                            } else {
-                              print("wrong password");
-                              InvalidPopup(context);
-                            }
+                            var ab = await EmergenceService.GetHos();
+                            print("Result.......");
+                            print(ab);
                           } catch (err) {}
+                          // try {
+                          //   var result = await EmergenceService.Authen(
+                          //       _emailController.text, _passwordController.text);
+                          //   if (result) {
+                          //     Navigator.push(context,
+                          //         MaterialPageRoute(builder: (context) {
+                          //       return MainScreen();
+                          //     }));
+                          //   } else {
+                          //     print("wrong password");
+                          //     InvalidPopup(context);
+                          //   }
+                          // } catch (err) {}
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 125, 10, 10),
+                        backgroundColor: Color.fromARGB(255, 70, 59, 59),
                         foregroundColor:
                             Colors.white, // Change text color to white
                         shape: RoundedRectangleBorder(
@@ -167,23 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       child: Text('Login'),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 70),
                     // Create New Account
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return RegisNewScreen();
-                        }));
-                      },
-                      child: Text(
-                        'CREATE NEW ACCOUNT',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 125, 10, 10),
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),

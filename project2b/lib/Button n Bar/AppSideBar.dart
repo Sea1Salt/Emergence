@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyAppaa());
+  runApp(AppG());
 }
 
-class MyAppaa extends StatelessWidget {
+class AppG extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

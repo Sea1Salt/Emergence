@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/NearbyHos.dart';
@@ -9,37 +8,54 @@ import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 
 Future<void> main() async {
-  final cameras = await availableCameras();
-
-  // Get a specific camera from the list of available cameras.
-  final firstCamera = cameras.first;
-  runApp(MainScreen());
+  runApp(TopAppbar());
 }
 
-class MainScreen extends StatelessWidget {
+class TopAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('EMERGENCE',
-              style:
-                  TextStyle(color: const Color.fromARGB(255, 255, 255, 255))),
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/images/ambu2.png', // Replace with your logo asset
+                height: 40,
+              ),
+              SizedBox(width: 10),
+              Text(
+                'EMERGENCE',
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Arial', // You can change the font family
+                ),
+              ),
+            ],
+          ),
           backgroundColor: Color.fromARGB(255, 125, 10, 10),
           actions: [
-            IconButton(
-              icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
-              onPressed: () {
-                exitPopup(context);
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 0.0),
+              child: IconButton(
+                icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
+                onPressed: () {
+                  exitPopup(context);
+                },   
+              ),
             ),
-            IconButton(
-              icon: Icon(Icons.people, color: Colors.white, size: 35),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevApp(); // Navigate to FourCardBoxes screen
-                }));
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 0.0),
+              child: IconButton(
+                icon: Icon(Icons.people, color: Colors.white, size: 35),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DevApp(); // Navigate to FourCardBoxes screen
+                  }));
+                },
+              ),
             ),
           ],
         ),
@@ -53,7 +69,7 @@ class MainMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+      padding: EdgeInsets.all(16.0),
       children: [
         CardBox(
           width: 200, // Set the desired width
@@ -68,7 +84,6 @@ class MainMenuScreen extends StatelessWidget {
           },
           backgroundColor: Color.fromARGB(255, 125, 10, 10),
         ),
-        SizedBox(height: 5),
         CardBox(
           width: 200, // Set the desired width
           height: 167, // Set the desired height
@@ -82,7 +97,6 @@ class MainMenuScreen extends StatelessWidget {
           },
           backgroundColor: Color.fromARGB(255, 191, 49, 49),
         ),
-        SizedBox(height: 5),
         CardBox(
           width: 200, // Set the desired width
           height: 167, // Set the desired height
@@ -96,7 +110,6 @@ class MainMenuScreen extends StatelessWidget {
           },
           backgroundColor: Color.fromARGB(255, 234, 209, 150),
         ),
-        SizedBox(height: 5),
         CardBox(
           width: 200, // Set the desired width
           height: 167, // Set the desired height
@@ -160,7 +173,7 @@ class CardBox extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   text,
                   style: TextStyle(fontSize: 20, color: textColor),

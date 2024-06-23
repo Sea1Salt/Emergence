@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/LoginNew.dart';
-import 'package:project2b/Screen/login.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
