@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
-class DisplayPictureScreen extends StatelessWidget {
+class IdentityScreen extends StatelessWidget {
   final String imagePath;
 
-  const DisplayPictureScreen({Key? key, required this.imagePath})
+  const IdentityScreen({Key? key, required this.imagePath})
       : super(key: key);
 
   @override
@@ -54,7 +54,7 @@ class DisplayPictureScreen extends StatelessWidget {
               print('Sea.......');
               bool a = await EmergenceService.UploadPicture(base64String);
               print(base64String);
-              TakePic(context);
+              FaceID(context);
             },
           ),
         ],

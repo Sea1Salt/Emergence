@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:project2b/Models/Admin.dart';
+import 'package:project2b/Models/Detail.dart';
 import 'package:project2b/Models/EMG.dart';
 import 'package:project2b/Models/Hospital.dart';
 import 'package:project2b/Models/Illness.dart';
@@ -149,7 +151,7 @@ class EmergenceService {
           'Access-Control-Allow-Origin': '*',
           'Authorization': 'Bearer $token'
         });
-
+    print('Profile....');
     print(response);
     if (response.statusCode == 200) {
       print(json.decode(response.body));
@@ -251,14 +253,43 @@ class EmergenceService {
     return false;
   }
 
-  static Future<List<Illness>> GetIll() async {
+  // static Future<List<Illness>> GetIll() async {
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? token = prefs.getString("token");
+  //   print('debug....GetPatient');
+  //   // print(authData);
+  //   final http.Response response = await http.post(
+  //       Uri.parse(URL + '/api/UserManagement/GetIll'),
+  //       body: json.encode({}),
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Access-Control-Allow-Origin': '*',
+  //         'Authorization': 'Bearer $token'
+  //       });
+
+  //   print(response);
+  //   if (response.statusCode == 200) {
+  //     print(json.decode(response.body));
+  //     List list = json.decode(response.body);
+  //     return list.map((m) => Illness.fromJson(m)).toList();
+  //     //return Hospital.fromJson(json.decode(response.body));
+  //   } else {
+  //     throw Exception('Failed to load');
+  //   }
+  // }
+
+  static Future<List<Admin>> GetAdmin() async {
+    final Map<String, dynamic> authData = {
+
+      'User_ID': 0,
+    };
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
-    print('debug....GetPatient');
-    // print(authData);
+    print('debug....');
+    print(authData);
     final http.Response response = await http.post(
-        Uri.parse(URL + '/api/UserManagement/GetIll'),
-        body: json.encode({}),
+        Uri.parse(URL + '/api/UserManagement/GetAdmin'),
+        body: json.encode(authData),
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -269,9 +300,35 @@ class EmergenceService {
     if (response.statusCode == 200) {
       print(json.decode(response.body));
       List list = json.decode(response.body);
-      return list.map((m) => Illness.fromJson(m)).toList();
-      //return Hospital.fromJson(json.decode(response.body));
+      return list.map((m) => Admin.fromJson(m)).toList();
+      //return Admin.fromJson(json.decode(response.body));
     } else {
+      throw Exception('Failed to load');
+    }
+  }
+
+  static Future<Detail> GetDetail(int? callId) async {
+    final Map<String, dynamic> authData = {
+      'callId': callId
+    };
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString("token");
+    print('debug....');
+    print(authData);
+    final http.Response response = await http.post(
+        Uri.parse(URL + '/api/UserManagement/GetDetail'),
+        body: json.encode(authData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': 'Bearer $token'
+        });
+    print('Profile....');
+    print(response);
+    if (response.statusCode == 200) {
+      print(json.decode(response.body));
+      return Detail.fromJson(json.decode(response.body));
+    }else {
       throw Exception('Failed to load');
     }
   }

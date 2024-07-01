@@ -5,29 +5,17 @@ import 'package:location/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Models/Detail.dart';
 import 'package:project2b/Models/Hospital.dart';
 import 'package:project2b/Screen/Dev.dart';
-import 'package:project2b/Screen/ProfileNew.dart';
-import 'package:project2b/Screen/mainmenu.dart';
-import 'dart:convert';
 import 'package:project2b/Service/EmergenceService.dart';
+import 'dart:convert';
 
-void main() {
-  runApp(CurrentLocation());
-}
-
-class CurrentLocation extends StatelessWidget {
+class ScreenDetail extends StatefulWidget {
+  int? callid;
+  ScreenDetail({Key? key, required this.callid}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MapScreen(),
-    );
-  }
-}
-
-class MapScreen extends StatefulWidget {
-  @override
-  _MapScreenState createState() => _MapScreenState();
+  _ScreenDetailState createState() => _ScreenDetailState();
 }
 
 class HospitalSearchDelegate extends SearchDelegate<String> {
@@ -93,7 +81,7 @@ class HospitalSearchDelegate extends SearchDelegate<String> {
   }
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _ScreenDetailState extends State<ScreenDetail> {
   GoogleMapController? _controller;
   final Location _location = Location();
   LatLng? _currentPosition;
@@ -102,22 +90,21 @@ class _MapScreenState extends State<MapScreen> {
   List<LatLng> _polylinePoints = [];
   Set<Polyline> _polylines = {};
   List<Hospital> _hospital = [];
+  late Detail Pic = Detail();
 
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
+    print('Detailpage.........');
     Future.delayed(Duration.zero, () async {
-      _hospital = await EmergenceService.GetHos();
-      _hospital.forEach((a) {
-        print(a.Hospitalname.toString() +
-            " lat : " +
-            a.latitude.toString() +
-            " Lon :" +
-            a.longtitude.toString());
-        _hospitalLocations.add(LatLng(a.latitude ?? 0.0, a.longtitude ?? 0.0));
+      print('Detailpage........................');
+      var _pic = await EmergenceService.GetDetail(widget.callid!);
+      print('Card ID :');
+      print(_pic.address);
+      setState(() {
+        Pic = _pic;
       });
-      setState(() {});
     });
   }
 
@@ -184,19 +171,6 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  void _navigateToRayongHospital() async {
-    if (_currentPosition != null) {
-      await _getRoute(_currentPosition!, rayongHospital);
-      setState(() {});
-      _controller?.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: rayongHospital,
-          zoom: 17.0,
-        ),
-      ));
-    }
-  }
-
   Future<void> _getRoute(LatLng start, LatLng end) async {
     String url =
         'https://maps.googleapis.com/maps/api/directions/json?origin=${start.latitude},${start.longitude}&destination=${end.latitude},${end.longitude}&key=YOUR_GOOGLE_API_KEY';
@@ -223,32 +197,34 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   @override
-  Widget buildList(BuildContext context) {
-    return ListView.builder(
-      itemCount: _hospital.length,
-      itemBuilder: (context, index) {
-        return Column(
-          children: <Widget>[
-            ListTile(
-              title: Text(_hospital[index].Hospitalname.toString()),
-            ),
-            Divider(), // <-- Divider
-          ],
-        );
-      },
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // late List<Admin?> model = [];
+    // String? base64String;
+    // late Profile Pic = Profile();
+
+    // Future<void> _fetch1Profile() async {
+    //   print('sssss');
+    //   Pic = await EmergenceService.GetPatient();
+    //   model = await EmergenceService.GetAdmin();
+
+    //   print("Result:");
+    //   print(Pic);
+    //   model.forEach((i) {
+    //     print(i!.CardNumber.toString());
+    //   });
+    //   setState(() {
+    //     //base64String = Pic.image;
+    //   });
+    // }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('EMERGENCE', style: TextStyle(color: Colors.white)),
+        title: Text('Patient Detail', style: TextStyle(color: Colors.white)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 191, 125, 49),
+                Color.fromARGB(255, 44, 16, 157),
                 Color.fromARGB(255, 0, 0, 0),
               ],
               begin: Alignment.topLeft,
@@ -274,6 +250,7 @@ class _MapScreenState extends State<MapScreen> {
         ],
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10), // Screen padding
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -282,12 +259,12 @@ class _MapScreenState extends State<MapScreen> {
                   ? CircularProgressIndicator()
                   : Container(
                       margin: EdgeInsets.all(10),
-                      width: 370,
-                      height: 625,
+                      width: 400,
+                      height: 210,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                          color: Color.fromARGB(255, 191, 125, 49),
+                          color: Color.fromARGB(255, 44, 16, 157),
                           width: 3,
                         ),
                       ),
@@ -320,91 +297,88 @@ class _MapScreenState extends State<MapScreen> {
                     ),
             ),
             SizedBox(height: 5),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 191, 125, 49),
-              Color.fromARGB(255, 0, 0, 0),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: SizedBox(
-          height: 80, // Set a specific height for the BottomAppBar
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                // Navigate to settings screen or perform settings-related action
-              }),
-              buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                // Perform search action
-              }),
-              buildBottomAppBarItem(context, Icons.home, '', () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
-                );
-              }, isHome: true),
-              buildBottomAppBarItem(
-                context,
-                Icons.notifications,
-                'Notifications',
-                () {
-                  // Perform notifications-related action
-                },
+            // Text(
+            //       'INFORMATION',
+            //       style: TextStyle(color: Color.fromARGB(255, 125, 10, 10),fontSize: 22),
+            //     ),
+            //     SizedBox(height: 5),
+            Card(
+              color: Color.fromARGB(255, 255, 255, 255),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+                side: BorderSide(
+                  color: Color.fromARGB(255, 44, 16, 157), // Card border color
+                  width: 3, // Card border width
+                ),
               ),
-              buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
-                  () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileNewScreen()),
-                );
-              }),
-            ],
-          ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(15, 15, 87, 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildUserInfoRow(
+                        'Name', '${Pic.firstname} ${Pic.lastname}', true),
+                    _buildUserInfoRow('Nickname', '${Pic.nickname}', true),
+                    _buildUserInfoRow('Birthdate', '${Pic.birthdate}', true),
+                    _buildUserInfoRow('Gender', '${Pic.gender}', true),
+                    _buildUserInfoRow('Age', '${Pic.age}', true),
+                    _buildUserInfoRow('Weight', '${Pic.weight}', true),
+                    _buildUserInfoRow('Height', '${Pic.height}', true),
+                    _buildUserInfoRow('Card ID', '${Pic.cardID}', true),
+                    _buildUserInfoRow(
+                        'Drug_allergy', '${Pic.drugallergy}', true),
+                    _buildUserInfoRow(
+                        'Food_allergy', '${Pic.foodallergy}', true),
+                    _buildUserInfoRow('Congenital_disease',
+                        '${Pic.congennitaldisease}', true),
+                    _buildUserInfoRow('Address', '${Pic.address}', true),
+                    _buildUserInfoRow('Tel', '${Pic.tel}', true),
+                    _buildUserInfoRow('Emergency_phone_number1',
+                        '${Pic.emergencynum1}', true),
+                    _buildUserInfoRow(
+                        'Relate_name1', '${Pic.relatename1}', true),
+                    _buildUserInfoRow('Relation1', '${Pic.relation1}', true),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToClosestHospital,
-        backgroundColor: Color.fromARGB(255, 191, 125, 49),
+        backgroundColor: Color.fromARGB(255, 44, 16, 157),
         child: Icon(Icons.route, color: Colors.white),
       ),
     );
   }
 
-  Widget buildBottomAppBarItem(
-    BuildContext context,
-    IconData icon,
-    String text,
-    VoidCallback onPressed, {
-    bool isHome = false,
-  }) {
-    return Expanded(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: isHome
-                ? BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
-                  )
-                : null,
-            child: IconButton(
-              icon: Icon(icon, color: Colors.white, size: isHome ? 35 : 30),
-              onPressed: onPressed,
+  Widget _buildUserInfoRow(String label, String value, bool isHighlighted) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: '$label : ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ],
+            TextSpan(
+              text: value,
+              style: TextStyle(
+                color: isHighlighted
+                    ? Color.fromARGB(255, 44, 16, 157)
+                    : Colors.black,
+                fontSize: 16,
+                fontWeight: isHighlighted ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

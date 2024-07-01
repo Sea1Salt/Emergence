@@ -40,31 +40,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        color: Color.fromARGB(255, 191, 49, 49),
-        child: SizedBox(
-          height: 80, // Set a specific height for the BottomAppBar
+        color: Colors.transparent,
+        elevation: 0,
+        child: Container(
+          height: 80,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 125, 10, 10),
+                Color.fromARGB(255, 0, 0, 0),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                // Navigate to settings screen or perform settings-related action
-              }),
-              buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                // Perform search action
-              }),
-              buildBottomAppBarItem(context, Icons.home, '', () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MainScreen(); // Navigate to main screen
-                }));
-              }, isHome: true),
-              buildBottomAppBarItem(context, Icons.notifications, 'Notifications', () {
-                // Perform notifications-related action
-              }),
-              buildBottomAppBarItem(context, Icons.account_circle, 'Profile', () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ProfileNewScreen(); // Navigate to main screen
-                }));
-              }),
+              buildBottomAppBarItem(context, Icons.settings, 'Settings', 0),
+              buildBottomAppBarItem(context, Icons.search, 'Search', 1),
+              buildBottomAppBarItem(context, Icons.home, '', 2, isHome: true),
+              buildBottomAppBarItem(context, Icons.notifications, 'Notifications', 3),
+              buildBottomAppBarItem(context, Icons.account_circle, 'Profile', 4),
             ],
           ),
         ),
@@ -80,40 +77,53 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget buildBottomAppBarItem(BuildContext context, IconData icon, String label, Function() onPressed, {bool isHome = false}) {
+  Widget buildBottomAppBarItem(BuildContext context, IconData icon, String label, int index, {bool isHome = false}) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+        if (index == 2) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return MainScreen(); // Navigate to main screen
+          }));
+        } else if (index == 4) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ProfileNewScreen(); // Navigate to profile screen
+          }));
+        }
+      },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          if (!isHome) ClipOval(
-            child: Container(
-              color: _selectedIndex == _bottomNavIcons.indexOf(icon) ? Colors.blue.withOpacity(0.2) : Colors.transparent,
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
-                icon,
-                color: _selectedIndex == _bottomNavIcons.indexOf(icon) ? Colors.blue : Colors.white,
+          Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  _selectedIndex == index ? Colors.blue.withOpacity(0.5) : Colors.transparent,
+                  _selectedIndex == index ? Colors.blue.withOpacity(0.2) : Colors.transparent,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
+            ),
+            child: Icon(
+              icon,
+              color: _selectedIndex == index ? Colors.blue : Colors.white,
             ),
           ),
           if (label.isNotEmpty)
             Text(
               label,
               style: TextStyle(
-                color: _selectedIndex == _bottomNavIcons.indexOf(icon) ? Colors.blue : Colors.white,
+                color: _selectedIndex == index ? Colors.blue : Colors.white,
               ),
             ),
         ],
       ),
     );
   }
-
-  final List<IconData> _bottomNavIcons = [
-    Icons.settings,
-    Icons.search,
-    Icons.home,
-    Icons.notifications,
-    Icons.account_circle,
-  ];
 }

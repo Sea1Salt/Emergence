@@ -1,9 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/DisplayPictureScreen.dart';
+import 'package:project2b/Screen/ShowIdentity.dart';
 
-class TakePictureScreen extends StatefulWidget {
-  const TakePictureScreen({
+class TakeIdenScreen extends StatefulWidget {
+  const TakeIdenScreen({
     Key? key,
     required this.camera,
   }) : super(key: key);
@@ -14,7 +15,7 @@ class TakePictureScreen extends StatefulWidget {
   TakePictureScreenState createState() => TakePictureScreenState();
 }
 
-class TakePictureScreenState extends State<TakePictureScreen> {
+class TakePictureScreenState extends State<TakeIdenScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
   int selectedCameraIndex = 0; // Index to track the current camera
@@ -124,7 +125,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                 if (!context.mounted) return;
                 await Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => DisplayPictureScreen(
+                    builder: (context) => IdentityScreen(
                       imagePath: image.path,
                     ),
                   ),

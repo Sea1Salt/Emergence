@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:project2b/Models/Profile.dart';
-import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
@@ -88,7 +86,7 @@ class UserProfile extends StatelessWidget {
                       //       color: Color.fromARGB(255, 125, 10, 10)),
                       //   onPressed: () async {
                       //     final cameras = await availableCameras();
-                      //     // Get a specific camera from the list of available cameras.
+                           // Get a specific camera from the list of available cameras.
                       //     final firstCamera = cameras.first;
                       //     Navigator.push(context,
                       //         MaterialPageRoute(builder: (context) {

@@ -1,60 +1,70 @@
-import 'dart:convert'; 
+import 'dart:convert'; // Add this import for base64 decoding
+import 'dart:typed_data';
+
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Admin.dart';
+import 'package:project2b/Models/EMG.dart';
+import 'package:project2b/Models/Illness.dart';
+import 'package:project2b/Models/Patient.dart';
 import 'package:project2b/Models/Profile.dart';
 import 'package:project2b/Screen/AdminDetail.dart';
 import 'package:project2b/Screen/Dev.dart';
+import 'package:project2b/Screen/HomeNew.dart';
+import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/RegisterNew.dart';
+import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
-void main() {
-  runApp(AdminMenu());
+// void main() {
+//   runApp(DetailScreen());
+// }
+
+class DetailScreen extends StatefulWidget {
+  @override
+  _DetailScreenState createState() => _DetailScreenState();
 }
 
-class AdminMenu extends StatefulWidget {
-  @override
-  _AdminMenuScreenState createState() => _AdminMenuScreenState();
-}
+// class ProfileBody extends StatefulWidget {
+//   @override
+//   _ProfileBodyState createState() => _ProfileBodyState();
+// }
 
-class ProfileBody extends StatefulWidget {
-  @override
-  _ProfileBodyState createState() => _ProfileBodyState();
-}
+// class _ProfileBodyState extends State<ProfileBody> {
+//   late List<Admin> model;
+//   late Profile Pic = Profile();
+//   String base64String = "";
 
-class _ProfileBodyState extends State<ProfileBody> {
-  late List<Admin> model;
-  late Profile Pic = Profile();
-  String base64String = "";
+//   @override
+//   void initState() {
+//     super.initState();
+//     _fetch1Profile();
+//   }
 
-  @override
-  void initState() {
-    super.initState();
-    _fetch1Profile();
-  }
+//   Future<void> _fetch1Profile() async {
+//     print('sssss');
+//     model = await EmergenceService.GetAdmin();
+//     Pic = await EmergenceService.GetPatient();
 
-  Future<void> _fetch1Profile() async {
-    print('sssss');
-    model = await EmergenceService.GetAdmin();
-    Pic = await EmergenceService.GetPatient();
+//     setState(() {
+//       base64String = Pic.image;
+//     });
+//   }
 
-    setState(() {
-      base64String = Pic.image;
-    });
-  }
+//   @override
+//   Widget build(BuildContext context) {
+//     return UserProfile(
+//       model: Pic,
+//       base64String: base64String,
+//     );
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return UserProfile(
-      model: Pic,
-      base64String: base64String,
-    );
-  }
-}
-
-class _AdminMenuScreenState extends State<AdminMenu> {
+class _DetailScreenState extends State<DetailScreen> {
   late List<Admin?> model = [];
   String? base64String;
 
@@ -103,7 +113,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
             side: BorderSide(
-              color: Color.fromARGB(255, 44, 16, 157), // Card border color
+              color: Color.fromARGB(255, 125, 10, 10), // Card border color
               width: 2,
             ),
           ),
@@ -181,13 +191,12 @@ class _AdminMenuScreenState extends State<AdminMenu> {
               ],
             ),
             onTap: () {
-              print('Click............');
-              //exitPopup(context);
-              print(Pic.cardID);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ScreenDetail(callid: i.callid)));
+              onPressed:
+              () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return DetailScreen(); // Navigate to Dev screen
+                }));
+              };
             },
           ),
         );
@@ -205,7 +214,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 44, 16, 157),
+                  Color.fromARGB(255, 125, 10, 10),
                   Color.fromARGB(255, 0, 0, 0),
                 ],
                 begin: Alignment.topLeft,
@@ -243,7 +252,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
                     color: Colors.white, // Background color
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Color.fromARGB(255, 44, 16, 157), // Border color
+                      color: Color.fromARGB(255, 125, 10, 10), // Border color
                       width: 3, // Border width
                     ),
                   ),
@@ -264,7 +273,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
                 SizedBox(height: 10),
                 Text('Case',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 44, 16, 157),
+                        color: Color.fromARGB(255, 125, 10, 10),
                         fontSize: 25.0)),
                 SizedBox(height: 10),
                 _getListWidgets(),

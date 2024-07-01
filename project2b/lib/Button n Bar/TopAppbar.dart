@@ -43,7 +43,7 @@ class TopAppbar extends StatelessWidget {
                 icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
                 onPressed: () {
                   exitPopup(context);
-                },   
+                },
               ),
             ),
             Padding(
@@ -79,10 +79,11 @@ class MainMenuScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return EmergencyCall2Screen(); // Navigate to MainMenu screen
+              //return EmergencyCall2Screen();
+              return InfoScreen(); // Navigate to MainMenu screen
             }));
           },
-          backgroundColor: Color.fromARGB(255, 125, 10, 10),
+          backgroundColor: Color.fromARGB(255, 125, 10, 10), gradientColors: [],
         ),
         CardBox(
           width: 200, // Set the desired width
@@ -95,7 +96,7 @@ class MainMenuScreen extends StatelessWidget {
               return InfoScreen(); // Navigate to InformationScreen screen
             }));
           },
-          backgroundColor: Color.fromARGB(255, 191, 49, 49),
+          backgroundColor: Color.fromARGB(255, 191, 49, 49), gradientColors: [],
         ),
         CardBox(
           width: 200, // Set the desired width
@@ -109,6 +110,7 @@ class MainMenuScreen extends StatelessWidget {
             }));
           },
           backgroundColor: Color.fromARGB(255, 234, 209, 150),
+          gradientColors: [],
         ),
         CardBox(
           width: 200, // Set the desired width
@@ -121,7 +123,7 @@ class MainMenuScreen extends StatelessWidget {
               return FirstApp(); // Navigate to FourCardBoxes screen
             }));
           },
-          backgroundColor: Color.fromARGB(255, 34, 9, 44),
+          backgroundColor: Color.fromARGB(255, 34, 9, 44), gradientColors: [],
         ),
       ],
     );
@@ -145,6 +147,7 @@ class CardBox extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.textColor = Colors.black,
     required this.onPressed,
+    required List<Color> gradientColors,
   });
 
   @override

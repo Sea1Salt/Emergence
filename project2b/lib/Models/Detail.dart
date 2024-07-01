@@ -1,4 +1,4 @@
-class Profile {
+class Detail {
   String firstname = "";
   String lastname = "";
   String nickname = "";
@@ -20,8 +20,10 @@ class Profile {
   String relatename2 = "";
   String relation2 = "";
   String image = "";
+  String latitude = "";
+  String longitude = "";
 
-  Profile({
+  Detail({
     this.firstname = "",
     this.lastname = "",
     this.image = "",
@@ -43,9 +45,12 @@ class Profile {
     this.emergencynum2 = "",
     this.relatename2 = "",
     this.relation2 = "",
+
+    this.latitude="",
+    this.longitude=""
   });
 
-  Profile.fromJson(Map<String, dynamic> json) {
+  Detail.fromJson(Map<String, dynamic> json) {
     firstname = json['firstName'].toString();
     lastname = json['lastName'].toString();
     image = json['image'].toString();
@@ -60,13 +65,13 @@ class Profile {
     foodallergy = json['foodallergy'].toString();
     congennitaldisease = json['congennitaldisease'].toString();
     address = json['address'].toString();
-    tel = json['tel'].toString();
     emergencynum1 = json['emergencynum1'].toString();
     relatename1 = json['relatename1'].toString();
     relation1 = json['relation1'].toString();
     emergencynum2 = json['emergencynum2'].toString();
     relatename2 = json['relatename2'].toString();
     relation2 = json['relation2'].toString();
-
+    latitude = json['latitude'].toString();
+    longitude = json['longtitude'].toString();
   }
 }

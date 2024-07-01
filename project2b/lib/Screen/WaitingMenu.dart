@@ -13,21 +13,21 @@ import 'dart:convert';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
-  runApp(CurrentLocation());
+  runApp(WaitingScreen());
 }
 
-class CurrentLocation extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MapScreen(),
-    );
-  }
-}
+// class CurrentLocation extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MapScreen(),
+//     );
+//   }
+// }
 
-class MapScreen extends StatefulWidget {
+class WaitingScreen extends StatefulWidget {
   @override
-  _MapScreenState createState() => _MapScreenState();
+  _WaitingState createState() => _WaitingState();
 }
 
 class HospitalSearchDelegate extends SearchDelegate<String> {
@@ -93,7 +93,7 @@ class HospitalSearchDelegate extends SearchDelegate<String> {
   }
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _WaitingState extends State<WaitingScreen> {
   GoogleMapController? _controller;
   final Location _location = Location();
   LatLng? _currentPosition;
@@ -248,8 +248,8 @@ class _MapScreenState extends State<MapScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 191, 125, 49),
-                Color.fromARGB(255, 0, 0, 0),
+                Color.fromARGB(255, 255, 22, 22),
+                Color.fromARGB(255, 50, 18, 163),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -287,7 +287,7 @@ class _MapScreenState extends State<MapScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                          color: Color.fromARGB(255, 191, 125, 49),
+                          color: Color.fromARGB(255, 255, 22, 22),
                           width: 3,
                         ),
                       ),
@@ -327,8 +327,8 @@ class _MapScreenState extends State<MapScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 191, 125, 49),
-              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 255, 22, 22),
+                  Color.fromARGB(255, 50, 18, 163),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -372,7 +372,7 @@ class _MapScreenState extends State<MapScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToClosestHospital,
-        backgroundColor: Color.fromARGB(255, 191, 125, 49),
+        backgroundColor: Color.fromARGB(255, 255, 22, 22),
         child: Icon(Icons.route, color: Colors.white),
       ),
     );
