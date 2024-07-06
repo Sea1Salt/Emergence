@@ -7,10 +7,12 @@ import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/EMG.dart';
 import 'package:project2b/Models/Profile.dart';
 import 'package:project2b/Screen/Identify.dart';
+import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/firstaid.dart';
@@ -28,6 +30,7 @@ class EmergencyCall2Screen extends StatefulWidget {
 
 class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
     with SingleTickerProviderStateMixin {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _ID_numberController = TextEditingController();
   final TextEditingController _ComNumcontroller = TextEditingController();
   late GoogleMapController _mapController;
@@ -88,7 +91,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('EMERGENCY CALL',
+          title: Text('Emergency Call',
               style:
                   TextStyle(color: const Color.fromARGB(255, 255, 255, 255))),
           flexibleSpace: Container(
@@ -114,7 +117,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
               icon: Icon(Icons.people, color: Colors.white, size: 35),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevScreen(); // Navigate to DevApp screen
+                  return DevScreen();
                 }));
               },
             ),
@@ -131,8 +134,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
               ),
             ),
             Container(
-              color: Color.fromARGB(255, 83, 82, 82)
-                  .withOpacity(0.1), // Adjust opacity here
+              color: Color.fromARGB(255, 83, 82, 82).withOpacity(0.1),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
@@ -209,101 +211,108 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                         ),
                       ),
                       SizedBox(height: 10),
-                      AnimatedContainer(
-                        duration: Duration(seconds: 2),
-                        width: double.infinity,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 255, 255, 255),
-                              Color.fromARGB(255, 255, 255, 255)
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                            color: Colors.red, // example border color
-                            width: 2,
-                          ),
-                        ),
-                        child: TextFormField(
-                          controller: _ID_numberController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.credit_card,
-                                color: Color.fromARGB(255, 255, 22, 22)),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 13.0, horizontal: 10.0),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
+                      Form(
+                        key: _formKey, // Wrap the TextFormFields with Form
+                        child: Column(
+                          children: [
+                            AnimatedContainer(
+                              duration: Duration(seconds: 2),
+                              width: double.infinity,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 0),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 255, 255, 255),
+                                    Color.fromARGB(255, 255, 255, 255)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                                borderRadius: BorderRadius.circular(30),
+                                border: Border.all(
+                                  color: Colors.red, // example border color
+                                  width: 2,
+                                ),
+                              ),
+                              child: TextFormField(
+                                controller: _ID_numberController,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.credit_card,
+                                      color: Color.fromARGB(255, 255, 22, 22)),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 13.0, horizontal: 10.0),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your ID card';
+                                  }
+                                  return null;
+                                },
+                              ),
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
+                            SizedBox(height: 10),
+                            AnimatedContainer(
+                              duration: Duration(seconds: 2),
+                              width: double.infinity,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 0),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 255, 255, 255),
+                                    Color.fromARGB(255, 255, 255, 255)
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                                borderRadius: BorderRadius.circular(30),
+                                border: Border.all(
+                                  color: Colors.red, // example border color
+                                  width: 2,
+                                ),
+                              ),
+                              child: TextFormField(
+                                controller: _ComNumcontroller,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.phone,
+                                      color: Color.fromARGB(255, 255, 22, 22)),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 13.0, horizontal: 10.0),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your phone number';
+                                  }
+                                  return null;
+                                },
+                              ),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your ID card';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      AnimatedContainer(
-                        duration: Duration(seconds: 2),
-                        width: double.infinity,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 255, 255, 255),
-                              Color.fromARGB(255, 255, 255, 255)
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                            color: Colors.red, // example border color
-                            width: 2,
-                          ),
-                        ),
-                        child: TextFormField(
-                          controller: _ComNumcontroller,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.phone,
-                                color: Color.fromARGB(255, 255, 22, 22)),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 13.0, horizontal: 10.0),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your phone number';
-                            }
-                            return null;
-                          },
+                          ],
                         ),
                       ),
                       SizedBox(height: 10),
@@ -314,6 +323,13 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                             opacity: _animation.value,
                             child: GradientButton(
                               onPressed: () async {
+                                if (_ComNumcontroller.text == null ||
+                                    _ComNumcontroller.text == "") {
+                                  Error(context);
+
+                                  return;
+                                }
+                                //if (_formKey.currentState?.validate() ?? false) {
                                 try {
                                   final model = EMG(
                                     12,
@@ -323,12 +339,14 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                                     currentLocation!.latitude.toString(),
                                     currentLocation!.longitude.toString(),
                                   );
-                                  var result = await EmergenceService.EMG_CallREQ(model);
+                                  var result =
+                                      await EmergenceService.EMG_CallREQ(model);
 
                                   print('SAVED');
                                   print(_selectedValue);
                                   Emergency2PopUp(context);
                                 } catch (err) {}
+                                //}
                               },
                               width: double.infinity,
                               height: 50,
@@ -406,14 +424,16 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                  // Navigate to settings screen or perform settings-related action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
                 }),
                 buildBottomAppBarItem(context, Icons.search, 'Search', () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => SearchScreen()),
                   );
-                  
                 }),
                 buildBottomAppBarItem(context, Icons.home, '', () {
                   Navigator.push(
@@ -426,7 +446,11 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                   Icons.notifications,
                   'Notifications',
                   () {
-                    // Perform notifications-related action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()),
+                    );
                   },
                 ),
                 buildBottomAppBarItem(context, Icons.account_circle, 'Profile',

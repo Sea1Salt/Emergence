@@ -367,11 +367,11 @@ class EmergenceService {
     return false;
   }
 
-  static Future<bool> AdminComplete(Recieve model) async {
+  static Future<bool> AdminComplete(int? callid) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
     final Map<String, dynamic> authData = {
-      'callid': model.callid,
+      'callid': callid,
     };
     print('debug....');
     print(authData);

@@ -56,16 +56,16 @@ class Profile {
     weight = json['weight'].toString();
     height = json['height'].toString();
     cardID = json['cardId'].toString();
-    drugallergy = json['drugallergy'].toString();
-    foodallergy = json['foodallergy'].toString();
-    congennitaldisease = json['congennitaldisease'].toString();
+    drugallergy = json['drugAllergy'].toString();
+    foodallergy = json['foodAllergy'].toString();
+    congennitaldisease = json['congenitalDisease'].toString();
     address = json['address'].toString();
     tel = json['tel'].toString();
-    emergencynum1 = json['emergencynum1'].toString();
-    relatename1 = json['relatename1'].toString();
+    emergencynum1 = json['emergencyPhoneNumber1'].toString();
+    relatename1 = json['relateName1'].toString();
     relation1 = json['relation1'].toString();
-    emergencynum2 = json['emergencynum2'].toString();
-    relatename2 = json['relatename2'].toString();
+    emergencynum2 = json['emergencyPhoneNumber2'].toString();
+    relatename2 = json['relateName2'].toString();
     relation2 = json['relation2'].toString();
 
   }

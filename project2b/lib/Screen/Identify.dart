@@ -1,7 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Screen/DisplayPictureScreen.dart';
 import 'package:project2b/Screen/ShowIdentity.dart';
+import 'package:project2b/Screen/developer.dart';
 
 class TakeIdenScreen extends StatefulWidget {
   const TakeIdenScreen({
@@ -54,30 +56,36 @@ class TakePictureScreenState extends State<TakeIdenScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 125, 10, 10),
-                const Color.fromARGB(255, 0, 0, 0)
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+          title: Text('Identify Patient', style: TextStyle(color: Colors.white)),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 125, 10, 10),
+                  Color.fromARGB(255, 0, 0, 0),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
             ),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
+              onPressed: () {
+                exitPopup(context);
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.people, color: Colors.white, size: 35),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return DevScreen(); // Navigate to Dev screen
+                }));
+              },
+            ),
+          ],
         ),
-        title: Text('EMERGENCE', style: TextStyle(color: Colors.white)),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/images/ambu2.png', // Ensure you have the white logo in assets
-              color: Color.fromARGB(
-                  255, 255, 255, 255), // Set the image color to white
-            ),
-          ),
-        ],
-      ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {

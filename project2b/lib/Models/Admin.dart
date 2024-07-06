@@ -1,4 +1,6 @@
 class Admin {
+  String? firstname;
+  String? lastname;
   String? Illness;
   String? CardNumber;
   String? ContactNumber;
@@ -17,6 +19,8 @@ class Admin {
     this.image = "",
     this.status,
     this.callid,
+    this.firstname = "",
+    this.lastname = "",
   });
 
   factory Admin.fromJson(Map<String, dynamic> json) {
@@ -28,8 +32,13 @@ class Admin {
         longitude: json["longitude"].toString(),
         image: json["image"].toString(),
         callid: int.parse(json["callId"].toString()),
-        status: int.parse(json["status"].toString()));
+        status: int.parse(json["status"].toString()),
+        firstname: json["first_name"].toString(),
+        lastname: json["last_name"].toString(),
+        );
         
+        
+
 
     // Illness = json['Illness'].toString();
     // CardNumber = json['CardNumber'].toString();

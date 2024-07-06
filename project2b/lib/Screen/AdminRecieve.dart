@@ -51,7 +51,7 @@ class _ReceivePopupState extends State<ReceivePopup> {
             ),
             child: Center(
               child: Text(
-                'Receive Information',
+                'Ambulance Information',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,

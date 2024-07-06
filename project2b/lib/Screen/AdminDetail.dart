@@ -92,7 +92,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
   Set<Polyline> _polylines = {};
   List<Hospital> _hospital = [];
   late Detail Pic = Detail();
-
+  LatLng _currentPic = LatLng(0.0, 0.0);
   @override
   void initState() {
     super.initState();
@@ -107,8 +107,10 @@ class _ScreenDetailState extends State<ScreenDetail> {
       print(_pic.longitude);
       setState(() {
         Pic = _pic;
+        if (_pic.latitude != "" && _pic.longitude != "")
+          _currentPic =
+              LatLng(double.parse(Pic.latitude), double.parse(Pic.longitude));
       });
-      // if(_pic.longitude != "")
       _getCurrentLocation();
     });
   }
@@ -267,7 +269,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
               child: _currentPosition == null
                   ? CircularProgressIndicator()
                   : Container(
-                      margin: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(0),
                       width: 400,
                       height: 210,
                       decoration: BoxDecoration(
@@ -292,8 +294,9 @@ class _ScreenDetailState extends State<ScreenDetail> {
                           markers: {
                             Marker(
                               markerId: MarkerId("aaa"),
-                              position: LatLng(double.parse(Pic.latitude),
-                                  double.parse(Pic.longitude)),
+                              position: _currentPic,
+                              //position: LatLng(double.parse(Pic.latitude),
+                              //    double.parse(Pic.longitude)),
                               infoWindow: InfoWindow(
                                   title: Pic.firstname + Pic.lastname),
                               icon: BitmapDescriptor.defaultMarkerWithHue(
@@ -321,7 +324,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(15, 15, 87, 15),
+                padding: const EdgeInsets.fromLTRB(15, 15, 200, 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -360,22 +363,32 @@ class _ScreenDetailState extends State<ScreenDetail> {
         children: [
           FloatingActionButton(
             onPressed: () {
-              _navigateToClosestHospital;
+              _navigateToClosestHospital();
             },
             backgroundColor: Color.fromARGB(255, 44, 16, 157),
             child: Icon(Icons.route, color: Colors.white),
-            tooltip: '',
+            tooltip: 'Navigate to Closest Hospital',
           ),
           SizedBox(height: 16),
           FloatingActionButton(
             onPressed: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ReceivePopup(callid: widget.callid); // Navigate to Dev screen
-                }));
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ReceivePopup(callid: widget.callid);
+              }));
             },
-            backgroundColor: Colors.green, // Example color
-            child: Icon(Icons.add, color: Colors.white), // Example icon
-            tooltip: 'Your Second Action',
+            backgroundColor: Color.fromARGB(255, 44, 16, 157),
+            child: Icon(Icons.car_rental, color: Colors.white),
+            tooltip: 'Navigate to Receive Popup',
+          ),
+          SizedBox(height: 16),
+          FloatingActionButton(
+            onPressed: () async {
+              var HH = await EmergenceService.AdminComplete(widget.callid!);
+              print("Third button pressed");
+            },
+            backgroundColor: Color.fromARGB(255, 44, 16, 157),
+            child: Icon(Icons.check_box, color: Colors.white),
+            tooltip: 'New Action',
           ),
         ],
       ),

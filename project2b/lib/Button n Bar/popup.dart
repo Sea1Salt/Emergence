@@ -471,3 +471,60 @@ void Emergency2PopUp(BuildContext context) {
     },
   );
 }
+
+void Error(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+          padding: EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 125, 10, 10),
+                const Color.fromARGB(255, 0, 0, 0)
+              ], // Gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(a)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Error', style: TextStyle(color: Colors.white)),
+              Icon(Icons.warning, color: Colors.white)
+            ],
+          ),
+        ),
+        content: Text('fill the communicant number'),
+        actions: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 125, 10, 10),
+                  const Color.fromARGB(255, 0, 0, 0)
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Back', style: TextStyle(color: Colors.white)),
+            ),
+          ),
+        ],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(a),
+        ),
+      );
+    },
+  );
+}

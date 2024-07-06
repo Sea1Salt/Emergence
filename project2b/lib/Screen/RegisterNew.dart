@@ -57,7 +57,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/images/ambu2.png', // Ensure you have the white logo in assets
+              'assets/images/ambu_png.png', // Ensure you have the white logo in assets
               color: Color.fromARGB(
                   255, 255, 255, 255), // Set the image color to white
             ),

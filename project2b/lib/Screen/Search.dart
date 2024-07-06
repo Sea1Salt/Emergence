@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/developer.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -13,16 +15,46 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
+        title: Text('SEARCH', style: TextStyle(color: Colors.white)),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 125, 10, 10),
+                const Color.fromARGB(255, 0, 0, 0),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app,
+                color: Colors.white, size: 35), // Changed color to white
+            onPressed: () {
+              exitPopup(context);
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.people,
+                color: Colors.white, size: 35), // Changed color to white
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DevScreen(); // Navigate to Dev screen
+              }));
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20),
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: 'Enter search query',
+                hintText: 'Enter search',
                 suffixIcon: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {

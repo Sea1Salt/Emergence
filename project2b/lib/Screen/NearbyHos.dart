@@ -352,7 +352,7 @@ class _MapScreenState extends State<MapScreen>
                                   infoWindow:
                                       InfoWindow(title: location.Hospitalname),
                                   icon: BitmapDescriptor.defaultMarkerWithHue(
-                                      BitmapDescriptor.hueRed),
+                                      BitmapDescriptor.hueYellow),
                                 );
                               }).toSet(),
                               polylines: _polylines,

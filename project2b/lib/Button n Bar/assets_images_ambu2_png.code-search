@@ -1,0 +1,43 @@
+# Query: assets/images/ambu2.png
+# ContextLines: 1
+
+8 results - 7 files
+
+project2b\pubspec.yaml:
+  83        - assets/images/ambu_png.png
+  84:       - assets/images/ambu_png.png
+  85        - assets/images/user.png
+
+project2b\lib\Button n Bar\TopAppbar.dart:
+  22                Image.asset(
+  23:                 'assets/images/ambu2.png', // Replace with your logo asset
+  24                  height: 40,
+
+project2b\lib\Screen\HomeNew.dart:
+   82              child: Image.asset(
+   83:               'assets/images/ambu2.png',
+   84                color: Color.fromARGB(255, 255, 255, 255),
+
+  120                          Image.asset(
+  121:                           'assets/images/ambu2.png',
+  122                            height: 210,
+
+project2b\lib\Screen\Identify.dart:
+  73              child: Image.asset(
+  74:               'assets/images/ambu2.png', // Ensure you have the white logo in assets
+  75                color: Color.fromARGB(
+
+project2b\lib\Screen\LoginNew.dart:
+  93              child: Image.asset(
+  94:               'assets/images/ambu2.png', // Ensure you have the white logo in assets
+  95                color: Color.fromARGB(
+
+project2b\lib\Screen\RegisterNew.dart:
+  59              child: Image.asset(
+  60:               'assets/images/ambu2.png', // Ensure you have the white logo in assets
+  61                color: Color.fromARGB(
+
+project2b\lib\Screen\TakePictureScreen.dart:
+  72              child: Image.asset(
+  73:               'assets/images/ambu2.png', // Ensure you have the white logo in assets
+  74                color: Color.fromARGB(

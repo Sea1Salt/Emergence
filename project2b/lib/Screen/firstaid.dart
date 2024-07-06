@@ -16,7 +16,7 @@ class FirstScreen extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('HOW TO FIRST AID', style: TextStyle(color: Colors.white)),
+          title: Text('How to first Aid', style: TextStyle(color: Colors.white)),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(

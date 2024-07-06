@@ -13,7 +13,6 @@ void main() {
 }
 
 class InfoScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -136,7 +135,13 @@ class InfoScreen extends StatelessWidget {
   }
 }
 
-class InformationScreen extends StatelessWidget {
+class InformationScreen extends StatefulWidget {
+  @override
+  _InformationScreenState createState() => _InformationScreenState();
+}
+
+//class InformationScreen extends StatelessWidget {
+class _InformationScreenState extends State<InformationScreen> {
   final TextEditingController _f1Controller = TextEditingController();
   final TextEditingController _f2Controller = TextEditingController();
   final TextEditingController _f3Controller = TextEditingController();
@@ -157,6 +162,35 @@ class InformationScreen extends StatelessWidget {
   final TextEditingController _f18Controller = TextEditingController();
   final TextEditingController _f19Controller = TextEditingController();
   final TextEditingController _f20Controller = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () async {
+      print('Detailpage........................');
+      var result = await EmergenceService.GetPatient();
+      _f1Controller.text = result.firstname;
+      _f2Controller.text = result.lastname;
+      _f3Controller.text = result.nickname;
+      _f4Controller.text = result.birthdate;
+      _f5Controller.text = result.gender;
+      _f6Controller.text = result.age;
+      _f7Controller.text = result.weight;
+      _f8Controller.text = result.height;
+      _f9Controller.text = result.cardID;
+      _f10Controller.text = result.drugallergy;
+      _f11Controller.text = result.foodallergy;
+      _f12Controller.text = result.congennitaldisease;
+      _f13Controller.text = result.address;
+      _f14Controller.text = result.tel;
+      _f15Controller.text = result.emergencynum1;
+      _f16Controller.text = result.relatename1;
+      _f17Controller.text = result.relation1;
+      _f18Controller.text = result.emergencynum2;
+      _f19Controller.text = result.relatename2;
+      _f20Controller.text = result.relation2;
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +224,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f2Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.person, color: Color.fromARGB(255, 191, 49, 49)),
@@ -226,11 +260,12 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f4Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.calendar_today,
                     color: Color.fromARGB(255, 191, 49, 49)),
                 labelText: 'Birthdate',
+                hintText:"dd-mm-yyyy",
                 fillColor:
                     Color.fromARGB(255, 255, 255, 255), // Background color
                 filled: true,
@@ -244,7 +279,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f5Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.transgender,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -262,7 +297,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f6Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.timeline,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -280,7 +315,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f7Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.monitor_weight,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -298,7 +333,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f8Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.height, color: Color.fromARGB(255, 191, 49, 49)),
@@ -316,7 +351,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f9Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.credit_card,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -334,7 +369,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f10Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.local_pharmacy,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -352,7 +387,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f11Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.food_bank,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -370,7 +405,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f12Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.local_hospital,
                     color: Color.fromARGB(255, 191, 49, 49)),
@@ -388,7 +423,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f13Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.route, color: Color.fromARGB(255, 191, 49, 49)),
@@ -406,7 +441,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f14Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.phone, color: Color.fromARGB(255, 191, 49, 49)),
@@ -429,7 +464,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 5),
             TextFormField(
               controller: _f15Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.phone, color: Color.fromARGB(255, 191, 49, 49)),
@@ -447,7 +482,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f16Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.person, color: Color.fromARGB(255, 191, 49, 49)),
@@ -465,7 +500,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f17Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.group, color: Color.fromARGB(255, 191, 49, 49)),
@@ -488,7 +523,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 5),
             TextFormField(
               controller: _f18Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.phone, color: Color.fromARGB(255, 191, 49, 49)),
@@ -506,7 +541,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f19Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.person, color: Color.fromARGB(255, 191, 49, 49)),
@@ -524,7 +559,7 @@ class InformationScreen extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: _f20Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.group, color: Color.fromARGB(255, 191, 49, 49)),

@@ -142,7 +142,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
             title: Row(
               children: [
                 Text(
-                  "${Pic.firstname} ${Pic.lastname}",
+                  "${i.firstname} ${i.lastname}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -195,7 +195,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('EMERGENCY CASE', style: TextStyle(color: Colors.white)),
+          title: Text('Emergency Case', style: TextStyle(color: Colors.white)),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(

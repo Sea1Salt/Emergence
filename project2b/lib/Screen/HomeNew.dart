@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen>
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/images/ambu2.png',
+              'assets/images/ambu_png.png',
               color: Color.fromARGB(255, 255, 255, 255),
             ),
           ),
