@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
+import 'package:project2b/Screen/BrokenHead.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/developer.dart';
@@ -16,7 +17,8 @@ class FirstScreen extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('How to first Aid', style: TextStyle(color: Colors.white)),
+          title:
+              Text('How to first Aid', style: TextStyle(color: Colors.white)),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -105,7 +107,7 @@ class FirstAidScreen extends StatefulWidget {
 }
 
 class _FirstAidScreenState extends State<FirstAidScreen>
-  with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _opacityAnimation;
   late Animation<Offset> _slideAnimation;
@@ -174,7 +176,8 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => BrokenArmScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => BrokenArmScreen()),
                     );
                   },
                   gradientColors: [
@@ -191,7 +194,8 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => InformationScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => BrokenHeadScreen()),
                     );
                   },
                   gradientColors: [
@@ -208,7 +212,8 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => InformationScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => InformationScreen()),
                     );
                   },
                   gradientColors: [
