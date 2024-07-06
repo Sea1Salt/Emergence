@@ -1,179 +1,248 @@
 import 'package:flutter/material.dart';
-import 'package:project2b/Screen/Sea.dart';
+import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/ProfileNew.dart';
+
 import 'package:project2b/Screen/mainmenu.dart';
 
 class DevScreen extends StatelessWidget {
   const DevScreen({super.key});
 
-  //const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Developer information',
+            style: TextStyle(color: Colors.white)),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 125, 10, 10),
+                const Color.fromARGB(255, 0, 0, 0),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35), // Changed color to white
+            onPressed: () {
+              exitPopup(context);
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.people, color: Colors.white, size: 35), // Changed color to white
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DevScreen(); // Navigate to Dev screen
+              }));
+            },
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
-        child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
           child: Column(
             children: [
-              const Text(
-                "Developer Information",
-                style: TextStyle(
-                    fontSize: 31, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Image.asset("assets/images/ซี2.jpg"),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Mr.Achira Nitinai",
-                style: TextStyle(
-                    fontSize: 25, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const Text(
+              // const Text(
+              //   "Developer Information",
+              //   style: TextStyle(
+              //       fontSize: 31, color: Color.fromARGB(255, 0, 0, 0)),
+              // ),
+              const SizedBox(height: 20),
+              buildDeveloperCard(
+                context,
+                "assets/images/ซี2.jpg",
+                "Mr. Achira Nitinai",
                 "R a y o n g w i t t a y a k o m",
-                style: TextStyle(
-                    fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                  child: ElevatedButton.icon(
-                icon: const Icon(Icons.beach_access),
-                label: const Text(
-                  "Sea",
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
-                ),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SeaScreen();
-                  }));
+                Icons.beach_access,
+                "Sea",
+                () {
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return SeaScreen();
+                  // }));
                 },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromARGB(255, 253, 253, 253)),
-                  elevation:
-                      MaterialStateProperty.all<double>(10), // Adjust elevation
-                  textStyle: MaterialStateProperty.all<TextStyle>(
-                    const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(20), // Adjust border radius
-                    ),
-                  ),
-                ),
-              )),
-              const SizedBox(
-                height: 20,
               ),
-              Image.asset("assets/images/ไบเบิ้ล1.jpg"),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Mr.Woraphop Kaewthankum",
-                style: TextStyle(
-                    fontSize: 24, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const Text(
+              const SizedBox(height: 20),
+              buildDeveloperCard(
+                context,
+                "assets/images/ไบเบิ้ล1.jpg",
+                "Mr. Woraphop Kaewthankum",
                 "R a y o n g w i t t a y a k o m",
-                style: TextStyle(
-                    fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                  child: ElevatedButton.icon(
-                icon: const Icon(Icons.book),
-                label: const Text(
-                  "Bible",
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
-                ),
-                onPressed: () {
+                Icons.book,
+                "Bible",
+                () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return MainScreen();
                   }));
                 },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromARGB(255, 253, 253, 253)),
-                  elevation:
-                      MaterialStateProperty.all<double>(10), // Adjust elevation
-                  textStyle: MaterialStateProperty.all<TextStyle>(
-                    const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(20), // Adjust border radius
-                    ),
-                  ),
-                ),
-              )),
-              const SizedBox(
-                height: 20,
               ),
-              Image.asset("assets/images/นาย.jpeg"),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Mr.Kriddanai Primkajeepong",
-                style: TextStyle(
-                    fontSize: 25, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const Text(
+              const SizedBox(height: 20),
+              buildDeveloperCard(
+                context,
+                "assets/images/นาย.jpeg",
+                "Mr. Kriddanai Primkajeepong",
                 "R a y o n g w i t t a y a k o m",
-                style: TextStyle(
-                    fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                  child: ElevatedButton.icon(
-                icon: const Icon(Icons.nine_k),
-                label: const Text(
-                  "nine",
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromARGB(255, 111, 66, 192)),
-                ),
-                onPressed: () {
+                Icons.nine_k,
+                "Nine",
+                () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return MainScreen();
                   }));
                 },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromARGB(255, 253, 253, 253)),
-                  elevation:
-                      MaterialStateProperty.all<double>(10), // Adjust elevation
-                  textStyle: MaterialStateProperty.all<TextStyle>(
-                    const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(20), // Adjust border radius
-                    ),
-                  ),
-                ),
-              )),
+              ),
             ],
           ),
         ),
       ),
-    ));
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 125, 10, 10),
+              const Color.fromARGB(255, 0, 0, 0),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SizedBox(
+          height: 80, // Set a specific height for the BottomAppBar
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                // Navigate to settings screen or perform settings-related action
+              }),
+              buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                // Perform search action
+              }),
+              buildBottomAppBarItem(context, Icons.home, '', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen()),
+                );
+              }, isHome: true),
+              buildBottomAppBarItem(
+                context,
+                Icons.notifications,
+                'Notifications',
+                () {
+                  // Perform notifications-related action
+                },
+              ),
+              buildBottomAppBarItem(context, Icons.account_circle, 'Profile', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileNewScreen()),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildDeveloperCard(
+    BuildContext context,
+    String imagePath,
+    String name,
+    String school,
+    IconData icon,
+    String buttonText,
+    VoidCallback onPressed,
+  ) {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15), // Rounded border
+              child: Image.asset(
+                imagePath,
+                width: 325,
+                height: 185,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 15),
+            Text(
+              name,
+              style: const TextStyle(
+                  fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
+            ),
+            Text(
+              school,
+              style: const TextStyle(
+                  fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+            ),
+            const SizedBox(height: 15),
+            ElevatedButton.icon(
+              icon: Icon(icon, color: Color.fromARGB(255, 125, 10, 10)), // Set icon color to red
+              label: Text(
+                buttonText,
+                style: const TextStyle(
+                    fontSize: 19, color: Color.fromARGB(255, 125, 10, 10)),
+              ),
+              onPressed: onPressed,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    const Color.fromARGB(255, 253, 253, 253)),
+                elevation: MaterialStateProperty.all<double>(10),
+                textStyle: MaterialStateProperty.all<TextStyle>(
+                  const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                ),
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildBottomAppBarItem(
+    BuildContext context,
+    IconData icon,
+    String text,
+    VoidCallback onPressed, {
+    bool isHome = false,
+  }) {
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: isHome
+                ? BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                  )
+                : null,
+            child: IconButton(
+              icon: Icon(icon, color: Colors.white, size: isHome ? 35 : 30), // Set icon color to white
+              onPressed: onPressed,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

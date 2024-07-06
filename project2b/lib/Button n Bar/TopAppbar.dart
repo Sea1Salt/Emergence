@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/NearbyHos.dart';
-import 'package:project2b/Screen/Dev.dart';
-import 'package:project2b/Screen/FA.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/developer.dart';
+import 'package:project2b/Screen/firstaid.dart';
 
 Future<void> main() async {
   runApp(TopAppbar());
@@ -52,7 +52,7 @@ class TopAppbar extends StatelessWidget {
                 icon: Icon(Icons.people, color: Colors.white, size: 35),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return DevApp(); // Navigate to FourCardBoxes screen
+                    return DevScreen(); // Navigate to FourCardBoxes screen
                   }));
                 },
               ),
@@ -120,7 +120,7 @@ class MainMenuScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return FirstApp(); // Navigate to FourCardBoxes screen
+              return FirstScreen(); // Navigate to FourCardBoxes screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 34, 9, 44), gradientColors: [],

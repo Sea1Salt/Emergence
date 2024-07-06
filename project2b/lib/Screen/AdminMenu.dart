@@ -1,4 +1,4 @@
-import 'dart:convert'; 
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -6,8 +6,9 @@ import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Admin.dart';
 import 'package:project2b/Models/Profile.dart';
 import 'package:project2b/Screen/AdminDetail.dart';
-import 'package:project2b/Screen/Dev.dart';
+import 'package:project2b/Screen/AdminRecieve.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
@@ -95,6 +96,19 @@ class _AdminMenuScreenState extends State<AdminMenu> {
     });
   }
 
+  Color _getStatusColor(String status) {
+    switch (status.toLowerCase()) {
+      case 'red':
+        return Colors.red;
+      case 'yellow':
+        return Colors.yellow;
+      case 'green':
+        return Colors.green;
+      default:
+        return Colors.grey;
+    }
+  }
+
   @override
   Widget _getListWidgets() {
     return Column(
@@ -103,91 +117,72 @@ class _AdminMenuScreenState extends State<AdminMenu> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
             side: BorderSide(
-              color: Color.fromARGB(255, 44, 16, 157), // Card border color
+              color: Color.fromARGB(255, 44, 16, 157),
               width: 2,
             ),
           ),
           child: ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: i!.image.toString().isNotEmpty
                   ? Image.memory(
                       base64Decode(i.image.toString()),
-                      width: 50,
+                      width: 40,
                       height: 100,
                       fit: BoxFit.fill,
                     )
                   : Container(
-                      width: 200,
+                      width: 40,
                       height: 100,
                       color: Colors.grey,
                       child: Icon(Icons.person, size: 50, color: Colors.white),
                     ),
             ),
-            title: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Name: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+            title: Row(
+              children: [
+                Text(
+                  "${Pic.firstname} ${Pic.lastname}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
-                  TextSpan(
-                    text: "${Pic.firstname!} ${Pic.lastname!}",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(width: 10),
+                CircleAvatar(
+                  radius: 8,
+                  backgroundColor: 
+                  i.status==1? Colors.red
+                  :i.status==2?Colors.yellow
+                  :i.status==3?Colors.green
+                  :Colors.transparent,
+                ),
+              ],
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Communicant Number: ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      TextSpan(
-                        text: "${i.ContactNumber}",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
+                SizedBox(height: 4),
+                Text(
+                  "Communicant Number: ${i.ContactNumber}",
+                  style: TextStyle(color: Colors.black),
                 ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Illness: ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      TextSpan(
-                        text: "${i.Illness}",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
+                SizedBox(height: 4),
+                Text(
+                  "Illness: ${i.Illness}",
+                  style: TextStyle(color: Colors.black),
                 ),
               ],
             ),
             onTap: () {
               print('Click............');
-              //exitPopup(context);
               print(Pic.cardID);
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ScreenDetail(callid: i.callid)));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ScreenDetail(callid: i.callid),
+                ),
+              );
             },
           ),
         );
@@ -224,7 +219,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
               icon: Icon(Icons.people, color: Colors.white, size: 35),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevApp(); // Navigate to Dev screen
+                  return DevScreen(); // Navigate to Dev screen
                 }));
               },
             ),
@@ -261,12 +256,12 @@ class _AdminMenuScreenState extends State<AdminMenu> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
                 Text('Case',
                     style: TextStyle(
                         color: Color.fromARGB(255, 44, 16, 157),
                         fontSize: 25.0)),
-                SizedBox(height: 10),
+                SizedBox(height: 0),
                 _getListWidgets(),
               ],
             ),

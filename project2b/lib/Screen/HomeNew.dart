@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen>
             duration: Duration(milliseconds: 800),
             opacity: 0.7,
             child: Container(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 0, 0, 0),
             ),
           ),
           Center(
@@ -118,24 +118,24 @@ class _HomeScreenState extends State<HomeScreen>
                       children: [
                         // Image at the top
                         Image.asset(
-                          'assets/images/ambu2.png',
-                          height: 210,
+                          'assets/images/Ambu2_png.png',
+                          height: 200,
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 0),
                         // Title and subtitle
                         Text(
                           'EMERGENCE',
                           style: TextStyle(
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 125, 10, 10),
+                            color: Color.fromARGB(255, 192, 29, 29),
                           ),
                         ),
                         Text(
-                          'save time save your life',
+                          '"save time save your life"',
                           style: TextStyle(
-                            fontSize: 17,
-                            color: Color.fromARGB(255, 37, 34, 34),
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 255, 255, 255),
                           ),
                         ),
                         SizedBox(height: 160),

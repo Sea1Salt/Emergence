@@ -12,12 +12,12 @@ import 'package:project2b/Models/Illness.dart';
 import 'package:project2b/Models/Patient.dart';
 import 'package:project2b/Models/Profile.dart';
 import 'package:project2b/Screen/AdminDetail.dart';
-import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/HomeNew.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 // void main() {
@@ -233,7 +233,7 @@ class _DetailScreenState extends State<DetailScreen> {
               icon: Icon(Icons.people, color: Colors.white, size: 35),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevApp(); // Navigate to Dev screen
+                  return DevScreen(); // Navigate to Dev screen
                 }));
               },
             ),

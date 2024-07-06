@@ -6,8 +6,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Hospital.dart';
-import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'dart:convert';
 import 'package:project2b/Service/EmergenceService.dart';
@@ -267,7 +267,7 @@ class _WaitingState extends State<WaitingScreen> {
             icon: Icon(Icons.people, color: Colors.white, size: 35),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DevApp(); // Navigate to Dev screen
+                return DevScreen(); // Navigate to Dev screen
               }));
             },
           ),

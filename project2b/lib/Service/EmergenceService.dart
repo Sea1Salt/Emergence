@@ -6,9 +6,10 @@ import 'package:project2b/Models/Admin.dart';
 import 'package:project2b/Models/Detail.dart';
 import 'package:project2b/Models/EMG.dart';
 import 'package:project2b/Models/Hospital.dart';
-import 'package:project2b/Models/Illness.dart';
+import 'package:project2b/Models/Login.dart';
 import 'package:project2b/Models/Patient.dart';
 import 'package:project2b/Models/Profile.dart';
+import 'package:project2b/Models/Recieve.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // String URL = "http://10.0.2.2:5224";
@@ -16,7 +17,7 @@ String URL = "http://183.88.240.114";
 //String URL = "http://Localhost:5224";
 
 class EmergenceService {
-  static Future<bool> Authen(String email, String password) async {
+  static Future<Login> Authen(String email, String password) async {
     final Map<String, dynamic> authData = {
       'email': email,
       'password': password,
@@ -43,15 +44,15 @@ class EmergenceService {
           Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
           final SharedPreferences prefs = await _prefs;
           prefs.setString("token", token);
-          return true;
+          return Login.fromJson(json.decode(response.body));
         }
-        return bool.parse(response.body);
+        return new Login();
       }
     } catch (err) {
       print(err);
     }
 
-    return false;
+    return new Login();
   }
 
   static Future<bool> Regis(
@@ -223,7 +224,7 @@ class EmergenceService {
     final Map<String, dynamic> authData = {
       'UserID': 1,
       'CardNumber': model.CardNumber,
-      'Illness': model.Illness,
+      'Illnessname': model.Illnessname,
       'ContactNumber': model.ContactNumber,
       'latitude': model.latitude,
       'longitude': model.longitude,
@@ -280,7 +281,6 @@ class EmergenceService {
 
   static Future<List<Admin>> GetAdmin() async {
     final Map<String, dynamic> authData = {
-
       'User_ID': 0,
     };
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -303,14 +303,14 @@ class EmergenceService {
       return list.map((m) => Admin.fromJson(m)).toList();
       //return Admin.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load');
+      // throw Exception('Failed to load');
+      List<Admin> model = [];
+      return model;
     }
   }
 
   static Future<Detail> GetDetail(int? callId) async {
-    final Map<String, dynamic> authData = {
-      'callId': callId
-    };
+    final Map<String, dynamic> authData = {'callId': callId};
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
     print('debug....');
@@ -328,8 +328,72 @@ class EmergenceService {
     if (response.statusCode == 200) {
       print(json.decode(response.body));
       return Detail.fromJson(json.decode(response.body));
-    }else {
-      throw Exception('Failed to load');
+    } else {
+      //throw Exception('Failed to load');
+      return new Detail();
     }
+  }
+
+  static Future<bool> AdminReceive(Recieve model) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString("token");
+    final Map<String, dynamic> authData = {
+      'callid': model.callid,
+      'platenumber': model.platenumber,
+      'driverphone': model.driverphone,
+      'drivername': model.drivername,
+    };
+    print('debug....');
+    print(authData);
+    try {
+      final http.Response response = await http.post(
+          Uri.parse(URL + '/api/UserManagement/AdminReceive'),
+          body: json.encode(authData),
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Authorization': 'Bearer $token'
+          });
+
+      print(response);
+      if (response.statusCode == 200) {
+        print(json.decode(response.body));
+        return bool.parse(response.body);
+      }
+    } catch (err) {
+      print(err);
+    }
+
+    return false;
+  }
+
+  static Future<bool> AdminComplete(Recieve model) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString("token");
+    final Map<String, dynamic> authData = {
+      'callid': model.callid,
+    };
+    print('debug....');
+    print(authData);
+    try {
+      final http.Response response = await http.post(
+          Uri.parse(URL + '/api/UserManagement/AdminComplete'),
+          body: json.encode(authData),
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Authorization': 'Bearer $token'
+          });
+
+      print(response);
+      if (response.statusCode == 200) {
+        print(json.decode(response.body));
+        return bool.parse(response.body);
+      }
+    } catch (err) {
+      print(err);
+    }
+
+    return false;
   }
 }

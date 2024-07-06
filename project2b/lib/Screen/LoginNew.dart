@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
@@ -173,11 +174,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           var result = await EmergenceService.Authen(
                               _emailController.text, _passwordController.text);
                           print(result);
-                          if (result) {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return MainScreen();
-                            }));
+                          if (result.isAuthen!) {
+                            if (result.role!) {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return AdminMenu();
+                              }));
+                            } else {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return MainScreen();
+                              }));
+                            }
                           } else {
                             print("wrong password");
                             InvalidPopup(context);

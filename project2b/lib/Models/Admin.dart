@@ -6,6 +6,7 @@ class Admin {
   String? longitude;
   String? image;
   int? callid;
+  int? status;
 
   Admin({
     this.Illness = "",
@@ -14,6 +15,7 @@ class Admin {
     this.latitude = "",
     this.longitude = "",
     this.image = "",
+    this.status,
     this.callid,
   });
 
@@ -25,8 +27,10 @@ class Admin {
         latitude: json["latitude"].toString(),
         longitude: json["longitude"].toString(),
         image: json["image"].toString(),
-        callid: int.parse(json["callId"].toString())
-    );
+        callid: int.parse(json["callId"].toString()),
+        status: int.parse(json["status"].toString()));
+        
+
     // Illness = json['Illness'].toString();
     // CardNumber = json['CardNumber'].toString();
     // ContactNumber = json['ContactNumber'].toString();

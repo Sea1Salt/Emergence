@@ -6,12 +6,13 @@ import 'package:project2b/Button%20n%20Bar/TopAppbar.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/EMG.dart';
 import 'package:project2b/Models/Profile.dart';
-import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/Identify.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
+import 'package:project2b/Screen/Search.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/firstaid.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'package:project2b/Service/EmergenceService.dart';
@@ -113,7 +114,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
               icon: Icon(Icons.people, color: Colors.white, size: 35),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevApp(); // Navigate to DevApp screen
+                  return DevScreen(); // Navigate to DevApp screen
                 }));
               },
             ),
@@ -130,7 +131,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
               ),
             ),
             Container(
-              color: Color.fromARGB(255, 121, 116, 116)
+              color: Color.fromARGB(255, 83, 82, 82)
                   .withOpacity(0.1), // Adjust opacity here
             ),
             Padding(
@@ -322,8 +323,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                                     currentLocation!.latitude.toString(),
                                     currentLocation!.longitude.toString(),
                                   );
-                                  var result =
-                                      await EmergenceService.EMG_CallREQ(model);
+                                  var result = await EmergenceService.EMG_CallREQ(model);
 
                                   print('SAVED');
                                   print(_selectedValue);
@@ -358,10 +358,10 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                       AnimatedContainer(
                         duration: Duration(seconds: 2),
                         width: 500,
-                        height: 145,
+                        height: 155,
                         child: AnimatedCardBox(
                           width: 500,
-                          height: 145,
+                          height: 155,
                           image: AssetImage('assets/images/FaceReg.png'),
                           text: 'Identify',
                           textColor: Color.fromARGB(255, 255, 255, 255),
@@ -409,7 +409,11 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                   // Navigate to settings screen or perform settings-related action
                 }),
                 buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                  // Perform search action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
+                  
                 }),
                 buildBottomAppBarItem(context, Icons.home, '', () {
                   Navigator.push(

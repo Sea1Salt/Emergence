@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Models/Patient.dart';
-import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
@@ -13,13 +13,14 @@ void main() {
 }
 
 class InfoScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Patient Information',
+            'PATIENT INFORMATION',
             style: TextStyle(color: Colors.white),
           ),
           flexibleSpace: Container(
@@ -46,7 +47,7 @@ class InfoScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DevApp()),
+                  MaterialPageRoute(builder: (context) => DevScreen()),
                 );
               },
             ),
@@ -207,7 +208,7 @@ class InformationScreen extends StatelessWidget {
             SizedBox(height: 10), // Adding space between text fields
             TextFormField(
               controller: _f3Controller,
-              obscureText: true,
+              obscureText: false,
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.face, color: Color.fromARGB(255, 191, 49, 49)),

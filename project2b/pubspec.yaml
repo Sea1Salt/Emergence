@@ -40,6 +40,7 @@ dependencies:
   geolocator: ^9.0.1
   google_ml_kit: ^0.10.0
   shared_preferences: ^2.2.3
+  flutter_bloc: ^8.0.0
 
 
 
@@ -51,11 +52,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/ambu2.png"
+  image_path: "assets/images/Ambu_logo.jpg"
+  adaptive_icon_foreground: "assets/images/ambu_png.png" 
+  adaptive_icon_background: "#B00000" 
   #flutter_lints: ^3.0.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -76,7 +80,10 @@ flutter:
   uses-material-design: true
 
   assets:
-      - assets/images/ambu.png
+      - assets/images/Emergence (2) 1.png
+      - assets/images/Ambu2_png.png
+      - assets/images/Ambu_logo.jpg
+      - assets/images/ambu_png.png
       - assets/images/ambu2.png
       - assets/images/user.png
       - assets/images/user2.png
@@ -107,6 +114,7 @@ flutter:
       - assets/images/EMG_bg.png
       - assets/images/PI_bg.jpg
       - assets/images/FA_bg.jpg
+      
 
   # To add assets to your application, add an assets section, like this:
   # assets:

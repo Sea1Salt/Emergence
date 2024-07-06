@@ -72,6 +72,6 @@ class Detail {
     relatename2 = json['relatename2'].toString();
     relation2 = json['relation2'].toString();
     latitude = json['latitude'].toString();
-    longitude = json['longtitude'].toString();
+    longitude = json['longitude'].toString();
   }
 }

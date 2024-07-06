@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Detail.dart';
 import 'package:project2b/Models/Hospital.dart';
-import 'package:project2b/Screen/Dev.dart';
+import 'package:project2b/Screen/AdminRecieve.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 import 'dart:convert';
 
@@ -95,22 +96,28 @@ class _ScreenDetailState extends State<ScreenDetail> {
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    _currentPosition = LatLng(0.0, 0.0);
     print('Detailpage.........');
     Future.delayed(Duration.zero, () async {
       print('Detailpage........................');
       var _pic = await EmergenceService.GetDetail(widget.callid!);
       print('Card ID :');
-      print(_pic.address);
+      print(widget.callid);
+      print(_pic.latitude);
+      print(_pic.longitude);
       setState(() {
         Pic = _pic;
       });
+      // if(_pic.longitude != "")
+      _getCurrentLocation();
     });
   }
 
   void _getCurrentLocation() async {
     final LocationData locationData = await _location.getLocation();
     setState(() {
+      _currentPosition =
+          LatLng(double.parse(Pic.latitude), double.parse(Pic.longitude));
       _currentPosition =
           LatLng(locationData.latitude!, locationData.longitude!);
     });
@@ -120,6 +127,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
           target: _currentPosition!,
           zoom: 14.0,
         ),
+        //Marker(markerId: const MarkerId()),
       ));
     }
   }
@@ -159,12 +167,13 @@ class _ScreenDetailState extends State<ScreenDetail> {
 
   void _navigateToClosestHospital() async {
     if (_currentPosition != null) {
-      LatLng closestHospital = _getClosestHospital();
-      await _getRoute(_currentPosition!, closestHospital);
+      // LatLng closestHospital = _getClosestHospital();
+      //await _getRoute(_currentPosition!, closestHospital);
       setState(() {});
       _controller?.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-          target: closestHospital,
+          target:
+              LatLng(double.parse(Pic.latitude), double.parse(Pic.longitude)),
           zoom: 17.0,
         ),
       ));
@@ -243,7 +252,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
             icon: Icon(Icons.people, color: Colors.white, size: 35),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DevApp(); // Navigate to Dev screen
+                return DevScreen(); // Navigate to Dev screen
               }));
             },
           ),
@@ -280,17 +289,17 @@ class _ScreenDetailState extends State<ScreenDetail> {
                           onMapCreated: _onMapCreated,
                           myLocationEnabled: true,
                           myLocationButtonEnabled: true,
-                          markers: _hospital.map((location) {
-                            return Marker(
-                              markerId: MarkerId(location.toString()),
-                              position: LatLng(location.latitude ?? 0.0,
-                                  location.longtitude ?? 0.0),
-                              infoWindow:
-                                  InfoWindow(title: location.Hospitalname),
+                          markers: {
+                            Marker(
+                              markerId: MarkerId("aaa"),
+                              position: LatLng(double.parse(Pic.latitude),
+                                  double.parse(Pic.longitude)),
+                              infoWindow: InfoWindow(
+                                  title: Pic.firstname + Pic.lastname),
                               icon: BitmapDescriptor.defaultMarkerWithHue(
                                   BitmapDescriptor.hueRed),
-                            );
-                          }).toSet(),
+                            )
+                          },
                           polylines: _polylines,
                         ),
                       ),
@@ -345,10 +354,30 @@ class _ScreenDetailState extends State<ScreenDetail> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _navigateToClosestHospital,
-        backgroundColor: Color.fromARGB(255, 44, 16, 157),
-        child: Icon(Icons.route, color: Colors.white),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              _navigateToClosestHospital;
+            },
+            backgroundColor: Color.fromARGB(255, 44, 16, 157),
+            child: Icon(Icons.route, color: Colors.white),
+            tooltip: '',
+          ),
+          SizedBox(height: 16),
+          FloatingActionButton(
+            onPressed: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ReceivePopup(callid: widget.callid); // Navigate to Dev screen
+                }));
+            },
+            backgroundColor: Colors.green, // Example color
+            child: Icon(Icons.add, color: Colors.white), // Example icon
+            tooltip: 'Your Second Action',
+          ),
+        ],
       ),
     );
   }

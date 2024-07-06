@@ -4,12 +4,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Hospital.dart';
-import 'package:project2b/Screen/Dev.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
-import 'dart:convert';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
@@ -93,7 +93,8 @@ class HospitalSearchDelegate extends SearchDelegate<String> {
   }
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _MapScreenState extends State<MapScreen>
+    with SingleTickerProviderStateMixin {
   GoogleMapController? _controller;
   final Location _location = Location();
   LatLng? _currentPosition;
@@ -102,11 +103,40 @@ class _MapScreenState extends State<MapScreen> {
   List<LatLng> _polylinePoints = [];
   Set<Polyline> _polylines = {};
   List<Hospital> _hospital = [];
+  late AnimationController _animationController;
+  late Animation<double> _opacityAnimation;
+  late Animation<Offset> _slideAnimation;
 
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+
+    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeIn,
+      ),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: Offset(0, -1.0),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOutBack,
+      ),
+    );
+
+    // Start animation
+    _animationController.forward();
+
     Future.delayed(Duration.zero, () async {
       _hospital = await EmergenceService.GetHos();
       _hospital.forEach((a) {
@@ -119,6 +149,12 @@ class _MapScreenState extends State<MapScreen> {
       });
       setState(() {});
     });
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   void _getCurrentLocation() async {
@@ -243,7 +279,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('EMERGENCE', style: TextStyle(color: Colors.white)),
+        title: Text('Nearby Hospital', style: TextStyle(color: Colors.white)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -267,7 +303,7 @@ class _MapScreenState extends State<MapScreen> {
             icon: Icon(Icons.people, color: Colors.white, size: 35),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DevApp(); // Navigate to Dev screen
+                return DevScreen(); // Navigate to Dev screen
               }));
             },
           ),
@@ -280,41 +316,48 @@ class _MapScreenState extends State<MapScreen> {
             Center(
               child: _currentPosition == null
                   ? CircularProgressIndicator()
-                  : Container(
-                      margin: EdgeInsets.all(10),
-                      width: 370,
-                      height: 625,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(
-                          color: Color.fromARGB(255, 191, 125, 49),
-                          width: 3,
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: GoogleMap(
-                          initialCameraPosition: CameraPosition(
-                            target:
-                                LatLng(12.6812, 101.2769), // Rayong, Thailand
-                            zoom: 12,
+                  : AnimatedOpacity(
+                      opacity: _opacityAnimation.value,
+                      duration: Duration(milliseconds: 500),
+                      child: SlideTransition(
+                        position: _slideAnimation,
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          width: 370,
+                          height: 625,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: Color.fromARGB(255, 191, 125, 49),
+                              width: 3,
+                            ),
                           ),
-                          mapType: MapType.normal,
-                          onMapCreated: _onMapCreated,
-                          myLocationEnabled: true,
-                          myLocationButtonEnabled: true,
-                          markers: _hospital.map((location) {
-                            return Marker(
-                              markerId: MarkerId(location.toString()),
-                              position: LatLng(location.latitude ?? 0.0,
-                                  location.longtitude ?? 0.0),
-                              infoWindow:
-                                  InfoWindow(title: location.Hospitalname),
-                              icon: BitmapDescriptor.defaultMarkerWithHue(
-                                  BitmapDescriptor.hueRed),
-                            );
-                          }).toSet(),
-                          polylines: _polylines,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: GoogleMap(
+                              initialCameraPosition: CameraPosition(
+                                target:
+                                    LatLng(12.6812, 101.2769), // Rayong, Thailand
+                                zoom: 12,
+                              ),
+                              mapType: MapType.normal,
+                              onMapCreated: _onMapCreated,
+                              myLocationEnabled: true,
+                              myLocationButtonEnabled: true,
+                              markers: _hospital.map((location) {
+                                return Marker(
+                                  markerId: MarkerId(location.toString()),
+                                  position: LatLng(location.latitude ?? 0.0,
+                                      location.longtitude ?? 0.0),
+                                  infoWindow:
+                                      InfoWindow(title: location.Hospitalname),
+                                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                                      BitmapDescriptor.hueRed),
+                                );
+                              }).toSet(),
+                              polylines: _polylines,
+                            ),
+                          ),
                         ),
                       ),
                     ),

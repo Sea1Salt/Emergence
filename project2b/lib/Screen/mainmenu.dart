@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/NearbyHos.dart';
-import 'package:project2b/Screen/Dev.dart';
-import 'package:project2b/Screen/FA.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/developer.dart';
+import 'package:project2b/Screen/firstaid.dart';
 
 void main() {
   runApp(MainScreen());
@@ -41,7 +41,7 @@ class MainScreen extends StatelessWidget {
               icon: Icon(Icons.people, color: Colors.white, size: 35),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevApp(); // Navigate to Dev screen
+                  return DevScreen(); // Navigate to Dev screen
                 }));
               },
             ),
@@ -110,7 +110,7 @@ class _MainMenuScreenState extends State<MainMenuScreen>
           duration: Duration(milliseconds: 800),
           opacity: 0.5,
           child: Container(
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: Color.fromARGB(255, 24, 22, 22),
           ),
         ),
         FadeTransition(
@@ -183,7 +183,7 @@ class _MainMenuScreenState extends State<MainMenuScreen>
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return FirstApp();
+                      return FirstScreen();
                     }));
                   },
                   gradientColors: [

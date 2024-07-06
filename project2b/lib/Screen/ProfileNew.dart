@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Profile.dart';
+import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 void main() {
@@ -56,7 +58,38 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 145, 42, 42),
+      appBar: AppBar(
+        title: Text('EMERGENCE', style: TextStyle(color: Colors.white)),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 125, 10, 10),
+                Color.fromARGB(255, 0, 0, 0),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
+            onPressed: () {
+              exitPopup(context);
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.people, color: Colors.white, size: 35),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DevScreen(); // Navigate to Dev screen
+              }));
+            },
+          ),
+        ],
+      ),
+      // backgroundColor: Color.fromARGB(255, 145, 42, 42),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(5.0),
@@ -107,7 +140,7 @@ class UserProfile extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Color.fromARGB(255, 125, 10, 10),
                 ),
               ),
               SizedBox(height: 20),
@@ -131,6 +164,12 @@ class UserProfile extends StatelessWidget {
                       _buildUserInfoRow('Age', '${model.age}', true),
                       _buildUserInfoRow('Weight', '${model.weight}', true),
                       _buildUserInfoRow('Height', '${model.height}', true),
+                      _buildUserInfoRow('Card ID', '${model.cardID}', true),
+                      _buildUserInfoRow('Card ID', '${model.cardID}', true),
+                      _buildUserInfoRow('Card ID', '${model.cardID}', true),
+                      _buildUserInfoRow('Card ID', '${model.cardID}', true),
+                      _buildUserInfoRow('Card ID', '${model.cardID}', true),
+                      _buildUserInfoRow('Card ID', '${model.cardID}', true),
                       _buildUserInfoRow('Card ID', '${model.cardID}', true),
                     ],
                   ),

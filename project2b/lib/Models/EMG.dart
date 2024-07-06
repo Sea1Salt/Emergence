@@ -1,6 +1,6 @@
 class EMG {
   int? UserID;
-  String? Illness;
+  String? Illnessname;
   String? CardNumber;
   String? ContactNumber;
   String? latitude;
@@ -10,7 +10,7 @@ class EMG {
 
   EMG(
     this.UserID,
-    this.Illness,
+    this.Illnessname,
     this.CardNumber,
     this.ContactNumber,
     this.latitude,
