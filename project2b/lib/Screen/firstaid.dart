@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Screen/BrokenArm.dart';
 import 'package:project2b/Screen/BrokenHead.dart';
+import 'package:project2b/Screen/Drowning.dart';
+import 'package:project2b/Screen/Faint.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/Scald.dart';
+import 'package:project2b/Screen/Seizures.dart';
+import 'package:project2b/Screen/cpr.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
@@ -212,8 +217,7 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => InformationScreen()),
+                      MaterialPageRoute(builder: (context) => FaintScreen()),
                     );
                   },
                   gradientColors: [
@@ -230,7 +234,7 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MainMenuScreen()),
+                      MaterialPageRoute(builder: (context) => ScaldScreen()),
                     );
                   },
                   gradientColors: [
@@ -247,7 +251,7 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MainMenuScreen()),
+                      MaterialPageRoute(builder: (context) => CPRScreen()),
                     );
                   },
                   gradientColors: [
@@ -264,7 +268,7 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MainMenuScreen()),
+                      MaterialPageRoute(builder: (context) => DrowningScreen()),
                     );
                   },
                   gradientColors: [
@@ -281,7 +285,7 @@ class _FirstAidScreenState extends State<FirstAidScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MainMenuScreen()),
+                      MaterialPageRoute(builder: (context) => SeizuresScreen()),
                     );
                   },
                   gradientColors: [

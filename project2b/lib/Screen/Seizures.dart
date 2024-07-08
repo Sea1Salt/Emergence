@@ -4,18 +4,18 @@ import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
-class BrokenHeadScreen extends StatelessWidget {
+class SeizuresScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Broken Head', style: TextStyle(color: Colors.white)),
+          title: Text('Seizures', style: TextStyle(color: Colors.white)),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 224, 146, 73),
+                  Color.fromARGB(255, 151, 73, 224),
                   Color.fromARGB(255, 0, 0, 0),
                 ],
                 begin: Alignment.topLeft,
@@ -47,7 +47,7 @@ class BrokenHeadScreen extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 224, 146, 73),
+                Color.fromARGB(255, 151, 73, 224),
                 Color.fromARGB(255, 0, 0, 0),
               ],
               begin: Alignment.topLeft,
@@ -127,7 +127,7 @@ class BrokenArm extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color.fromARGB(255, 224, 146, 73),
+                        Color.fromARGB(255, 151, 73, 224),
                         Color.fromARGB(255, 0, 0, 0),
                       ],
                       begin: Alignment.topLeft,
@@ -141,7 +141,7 @@ class BrokenArm extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 4),
                         child: Text(
-                          'Broken Head',
+                          'Seizures',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ class BrokenArm extends StatelessWidget {
                       ),
                       Container(
                         child: Text(
-                          'หัวแตก',
+                          'อาการชัก',
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -167,24 +167,24 @@ class BrokenArm extends StatelessWidget {
                   height: 5,
                 ),
                 buildStep(
-                  '1. กดแผลห้ามเลือดหากเป็นไปได้ให้ล้างมือหรือสวมถุงมือกันเชื้อโรคทุกครั้ง',
-                  'assets/images/2.jpg',
+                  '1. ประคองผู้ป่วยให้นอนหรือนั่งลงสอดหมอนไว้ใต้ศีรษะ',
+                  'assets/images/7.1.jpg',
                 ),
                 buildStep(
-                  '2. ให้ผู้ป่วยนอนลง หากมีสิ่งแปลกปลอมติดอยู่กับแผลให้เอาออกให้หมด',
-                  'assets/images/2.1.jpg',
+                  '2. ตะแคงศีรษะให้น้ำลาย ไหลออกทางมุมปาก',
+                  'assets/images/7.2.jpg',
                 ),
                 buildStep(
-                  '3. ใช้ผ้าพันแผลหรือผ้าสะอาดกด แผลไว้ให้แน่น 15 นาที อย่าหยุดกดจนกว่าจะครบเวลา หากเลือดซึมผ่านผ้าให้ใช้ผ้าสะอาดผืนใหม่แปะแล้วกดต่อ',
-                  'assets/images/2.2.jpg',
+                  '3. อย่าใส่สิ่งของเข้าไปในปากผู้ป่วย',
+                  'assets/images/7.3.jpg',
                 ),
                 buildStep(
-                  '4. บาดแผลที่มีอาการบวม บรรเทาลงได้ด้วยการประคบน้ำแข็ง',
-                  'assets/images/2.3.jpg',
+                  '4. กวาดโต๊ะเก้าอี้ตู้ที่อยู่รอบๆออกเพื่อไม่ให้ผู้ป่วยกระแทก',
+                  'assets/images/7.4.jpg',
                 ),
                 buildStep(
-                  '5. เฝ้าสังเกตอาการหมดสติ หรือช็อก',
-                  'assets/images/2.4.jpg',
+                  '5. ส่วนใหญ่อาการชักมักจะ ไม่เกิน 5 นาทีแต่ถ้านาน กว่านั้นให้รีบนำส่งโรงพยาบาล',
+                  'assets/images/7.5.jpg',
                 ),
               ],
             ),
@@ -199,10 +199,10 @@ class BrokenArm extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 236, 235, 222),
+          color: Color.fromARGB(255, 229, 222, 236),
           borderRadius: BorderRadius.circular(10),
           border:
-              Border.all(color: Color.fromARGB(255, 224, 146, 73), width: 3),
+              Border.all(color: Color.fromARGB(255, 151, 73, 224), width: 3),
         ),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -214,7 +214,7 @@ class BrokenArm extends StatelessWidget {
                 height: 100, // Adjust the height as needed
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: Color.fromARGB(255, 224, 146, 73), width: 3),
+                      color: Color.fromARGB(255, 151, 73, 224), width: 3),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ClipRRect(
