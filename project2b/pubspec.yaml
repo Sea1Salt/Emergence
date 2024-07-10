@@ -41,6 +41,7 @@ dependencies:
   google_ml_kit: ^0.10.0
   shared_preferences: ^2.2.3
   flutter_bloc: ^8.0.0
+  video_player: ^2.4.6
 
 
 
@@ -114,6 +115,7 @@ flutter:
       - assets/images/EMG_bg.png
       - assets/images/PI_bg.jpg
       - assets/images/FA_bg.jpg
+      - assets/images/BrokenArm.mp4
       
 
   # To add assets to your application, add an assets section, like this:

@@ -11,6 +11,7 @@ import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/Search.dart';
 import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Screen/developer.dart';
+import 'package:project2b/Screen/firstaid.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'dart:convert';
 import 'package:project2b/Service/EmergenceService.dart';
@@ -285,9 +286,9 @@ class _WaitingState extends State<WaitingScreen> {
               child: _currentPosition == null
                   ? CircularProgressIndicator()
                   : Container(
-                      margin: EdgeInsets.all(10),
+                      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       width: 370,
-                      height: 625,
+                      height: 460,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
@@ -323,7 +324,28 @@ class _WaitingState extends State<WaitingScreen> {
                       ),
                     ),
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 10),
+            AnimatedContainer(
+              duration: Duration(seconds: 2),
+              width: 370,
+              height: 155,
+              child: AnimatedCardBox(
+                width: 370,
+                height: 155,
+                image: AssetImage('assets/images/first.jpg'),
+                text: 'How to first aid',
+                textColor: Color.fromARGB(255, 255, 255, 255),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FirstScreen();
+                  }));
+                },
+                gradientColors: [
+                  Color.fromARGB(255, 255, 22, 22),
+                  Color.fromARGB(255, 50, 18, 163),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -332,7 +354,7 @@ class _WaitingState extends State<WaitingScreen> {
           gradient: LinearGradient(
             colors: [
               Color.fromARGB(255, 255, 22, 22),
-                  Color.fromARGB(255, 50, 18, 163),
+              Color.fromARGB(255, 50, 18, 163),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
