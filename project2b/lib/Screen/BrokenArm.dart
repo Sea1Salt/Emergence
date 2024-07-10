@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
@@ -8,6 +11,7 @@ class BrokenArmScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('Brokenn arm and leg',
@@ -61,10 +65,16 @@ class BrokenArmScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                  // Navigate to settings screen or perform settings-related action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
                 }),
                 buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                  // Perform search action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
                 }),
                 buildBottomAppBarItem(context, Icons.home, '', () {
                   Navigator.push(
@@ -77,7 +87,11 @@ class BrokenArmScreen extends StatelessWidget {
                   Icons.notifications,
                   'Notifications',
                   () {
-                    // Perform notifications-related action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()),
+                    );
                   },
                 ),
                 buildBottomAppBarItem(context, Icons.account_circle, 'Profile',

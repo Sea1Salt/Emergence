@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 
 import 'package:project2b/Screen/mainmenu.dart';
 
@@ -25,22 +28,22 @@ class DevScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35), // Changed color to white
-            onPressed: () {
-              exitPopup(context);
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.people, color: Colors.white, size: 35), // Changed color to white
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DevScreen(); // Navigate to Dev screen
-              }));
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35), // Changed color to white
+        //     onPressed: () {
+        //       exitPopup(context);
+        //     },
+        //   ),
+        //   IconButton(
+        //     icon: Icon(Icons.people, color: Colors.white, size: 35), // Changed color to white
+        //     onPressed: () {
+        //       Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //         return DevScreen(); // Navigate to Dev screen
+        //       }));
+        //     },
+        //   ),
+        // ],
       ),
       body: 
       SingleChildScrollView(
@@ -115,33 +118,44 @@ class DevScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                // Navigate to settings screen or perform settings-related action
-              }),
-              buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                // Perform search action
-              }),
-              buildBottomAppBarItem(context, Icons.home, '', () {
-                Navigator.push(
+                buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                }),
+                buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
+                }),
+                buildBottomAppBarItem(context, Icons.home, '', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainScreen()),
+                  );
+                }, isHome: true),
+                buildBottomAppBarItem(
                   context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
-                );
-              }, isHome: true),
-              buildBottomAppBarItem(
-                context,
-                Icons.notifications,
-                'Notifications',
-                () {
-                  // Perform notifications-related action
-                },
-              ),
-              buildBottomAppBarItem(context, Icons.account_circle, 'Profile', () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileNewScreen()),
-                );
-              }),
-            ],
+                  Icons.notifications,
+                  'Notifications',
+                  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()),
+                    );
+                  },
+                ),
+                buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                    () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileNewScreen()),
+                  );
+                }),
+              ],
           ),
         ),
       ),

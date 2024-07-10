@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
@@ -472,6 +473,124 @@ void Emergency2PopUp(BuildContext context) {
   );
 }
 
+void Complete(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+          padding: EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 44, 16, 157),
+                const Color.fromARGB(255, 0, 0, 0)
+              ], // Gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(a)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Complete the case', style: TextStyle(color: Colors.white)),
+              Icon(Icons.check, color: Colors.white)
+            ],
+          ),
+        ),
+        content: Text('Patient has been send to the hospital'),
+        actions: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 44, 16, 157),
+                  const Color.fromARGB(255, 0, 0, 0)
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return AdminMenu();
+                }));
+              },
+              child: Text('Confirm', style: TextStyle(color: Colors.white)),
+            ),
+          ),
+          
+        ],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(a),
+        ),
+      );
+    },
+  );
+}
+
+void Driver(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        titlePadding: EdgeInsets.zero,
+        title: Container(
+          padding: EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 44, 16, 157),
+                const Color.fromARGB(255, 0, 0, 0)
+              ], // Gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(a)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Saved', style: TextStyle(color: Colors.white)),
+              Icon(Icons.check, color: Colors.white)
+            ],
+          ),
+        ),
+        content: Text('Ambulance Information has been saved'),
+        actions: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 44, 16, 157),
+                  const Color.fromARGB(255, 0, 0, 0)
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: TextButton(
+              onPressed: () {
+              Navigator.of(context).pop();
+              },
+              child: Text('Confirm', style: TextStyle(color: Colors.white)),
+            ),
+          ),
+          
+        ],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(a),
+        ),
+      );
+    },
+  );
+}
+
 void Error(BuildContext context) {
   showDialog(
     context: context,
@@ -524,6 +643,105 @@ void Error(BuildContext context) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(a),
         ),
+      );
+    },
+  );
+}
+
+void ConsentPopUp(BuildContext context) {
+  bool isChecked = false;
+  
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return StatefulBuilder(
+        builder: (BuildContext context, StateSetter setState) {
+          return AlertDialog(
+            titlePadding: EdgeInsets.zero,
+            title: Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 125, 10, 10),
+                    const Color.fromARGB(255, 0, 0, 0)
+                  ], // Gradient colors
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(a)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Consent', style: TextStyle(color: Colors.white)),
+                  Icon(Icons.check_box, color: Colors.white)
+                ],
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text('I consent to the hospital collecting and using my personal information for the specific purpose of contacting me for medical treatment. I understand and agree that my information may be used by responsible parties in accordance with the privacy policies of the said organization. I also have the right to withdraw my consent in the future.'),
+                SizedBox(height: 20),
+                Row(
+                  children: <Widget>[
+                    Checkbox(
+                      value: isChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked = value ?? false;
+                        });
+                      },
+                    ),
+                    Text('I agree'),
+                  ],
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 125, 10, 10),
+                      const Color.fromARGB(255, 0, 0, 0)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: TextButton(
+                  onPressed: isChecked
+                      ? () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return MainScreen(); // Replace with your desired screen
+                          }));
+                        }
+                      : null,
+                  child: Text('Continue',
+                      style: TextStyle(
+                          color: isChecked ? Colors.white : Colors.grey)),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(
+                      fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                ),
+              ),
+            ],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(a),
+            ),
+          );
+        },
       );
     },
   );

@@ -13,6 +13,7 @@ class LoginScreenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: LoginScreen(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
@@ -218,7 +219,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 15),
                   // Create New Account
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                     Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return RegisNewScreen();
+                              }));
+                      
+                    },
                     child: Text(
                       'CREATE NEW ACCOUNT',
                       style: TextStyle(

@@ -7,14 +7,15 @@ import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/firstaid.dart';
 
-void main() {
-  runApp(MainScreen());
-}
+// void main() {
+//   runApp(MainScreen());
+// }
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('EMERGENCE', style: TextStyle(color: Colors.white)),
@@ -178,7 +179,7 @@ class _MainMenuScreenState extends State<MainMenuScreen>
                   width: 200,
                   height: 167,
                   image: AssetImage('assets/images/first.jpg'),
-                  text: 'HOW TO FIST AID',
+                  text: 'HOW TO FIRST AID',
                   textColor: Colors.white,
                   onPressed: () {
                     Navigator.push(context,

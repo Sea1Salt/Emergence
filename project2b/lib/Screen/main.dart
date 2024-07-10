@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Screen/HomeNew.dart';
 
 void main() async {
-  runApp(HomeNewScreen());
+  runApp(HomeScreen());
 }
 
 class Firebase {
@@ -16,12 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Emergence',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeNewScreen(),
+      home: HomeScreen(),
     );
   }
 }

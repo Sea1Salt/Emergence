@@ -8,14 +8,15 @@ import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 import 'package:camera/camera.dart';
 
-void main() {
-  runApp(InfoScreen());
-}
+// void main() {
+//   runApp(InfoScreen());
+// }
 
 class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text(

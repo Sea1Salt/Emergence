@@ -52,7 +52,7 @@ class IdentityScreen extends StatelessWidget {
               // Encode to jpg with quality (0-100)
 
               print('Sea.......');
-              bool a = await EmergenceService.UploadPicture(base64String);
+              //bool a = await EmergenceService.UploadPicture(base64String);
               print(base64String);
               FaceID(context);
             },

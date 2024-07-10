@@ -12,6 +12,8 @@ import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 import 'dart:convert';
 
+
+
 class ScreenDetail extends StatefulWidget {
   int? callid;
   ScreenDetail({Key? key, required this.callid}) : super(key: key);
@@ -250,14 +252,14 @@ class _ScreenDetailState extends State<ScreenDetail> {
               exitPopup(context);
             },
           ),
-          IconButton(
-            icon: Icon(Icons.people, color: Colors.white, size: 35),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DevScreen(); // Navigate to Dev screen
-              }));
-            },
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.people, color: Colors.white, size: 35),
+          //   onPressed: () {
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //       return DevScreen(); // Navigate to Dev screen
+          //     }));
+          //   },
+          // ),
         ],
       ),
       body: SingleChildScrollView(
@@ -384,7 +386,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
           FloatingActionButton(
             onPressed: () async {
               var HH = await EmergenceService.AdminComplete(widget.callid!);
-              print("Third button pressed");
+              Complete(context);
             },
             backgroundColor: Color.fromARGB(255, 44, 16, 157),
             child: Icon(Icons.check_box, color: Colors.white),
