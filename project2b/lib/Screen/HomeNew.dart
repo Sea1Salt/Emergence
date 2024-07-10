@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Screen/AdminDetail.dart';
 import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/LoginNew.dart';
-import 'package:project2b/Screen/NewMenu.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
-void main() {
-  runApp(HomeNewScreen());
-}
+// void main() {
+//   runApp(HomeNewScreen());
+// }
 
-class HomeNewScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
-    );
-  }
-}
+// class HomeNewScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: HomeScreen(),
+//     );
+//   }
+// }
 
 class HomeScreen extends StatefulWidget {
   @override

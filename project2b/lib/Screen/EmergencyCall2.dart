@@ -19,9 +19,7 @@ import 'package:project2b/Screen/firstaid.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
-void main() {
-  runApp(EmergencyCall2Screen());
-}
+
 
 class EmergencyCall2Screen extends StatefulWidget {
   @override
@@ -34,7 +32,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
   final TextEditingController _ID_numberController = TextEditingController();
   final TextEditingController _ComNumcontroller = TextEditingController();
   late GoogleMapController _mapController;
-  String _selectedValue = 'Broken arm or leg';
+  String _selectedValue = 'other';
   final List<String> _dropdownItems = [
     'Broken arm or leg',
     'Broken head',
@@ -89,6 +87,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('Emergency Call',

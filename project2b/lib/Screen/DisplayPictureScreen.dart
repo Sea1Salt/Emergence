@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
+
+
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
 

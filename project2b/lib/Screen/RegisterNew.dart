@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Screen/LoginNew.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
@@ -10,6 +11,7 @@ class RegisNewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: RegisterNewScreen(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
@@ -211,6 +213,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                                 builder: (context) => LoginScreenApp(),
                               ),
                             );
+                            ConsentPopUp(context);
                           } else {
                             print("Registration failed");
                           }

@@ -11,9 +11,10 @@ import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
-void main() {
-  runApp(AdminMenu());
-}
+// void main() {
+//   runApp(AdminMenu());
+// }
+
 
 class AdminMenu extends StatefulWidget {
   @override
@@ -49,6 +50,7 @@ class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
     return UserProfile(
+      
       model: Pic,
       base64String: base64String,
     );
@@ -193,6 +195,7 @@ class _AdminMenuScreenState extends State<AdminMenu> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('Emergency Case', style: TextStyle(color: Colors.white)),
@@ -215,14 +218,14 @@ class _AdminMenuScreenState extends State<AdminMenu> {
                 exitPopup(context);
               },
             ),
-            IconButton(
-              icon: Icon(Icons.people, color: Colors.white, size: 35),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DevScreen(); // Navigate to Dev screen
-                }));
-              },
-            ),
+            // IconButton(
+            //   icon: Icon(Icons.people, color: Colors.white, size: 35),
+            //   onPressed: () {
+            //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+            //       return DevScreen(); // Navigate to Dev screen
+            //     }));
+            //   },
+            // ),
           ],
         ),
         body: Padding(

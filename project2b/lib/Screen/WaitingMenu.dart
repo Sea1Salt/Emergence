@@ -6,7 +6,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Models/Hospital.dart';
+import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'dart:convert';
@@ -16,14 +19,15 @@ void main() {
   runApp(WaitingScreen());
 }
 
-// class CurrentLocation extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: MapScreen(),
-//     );
-//   }
-// }
+class CurrentLocation extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WaitingScreen(),
+    );
+  }
+}
 
 class WaitingScreen extends StatefulWidget {
   @override
@@ -339,34 +343,44 @@ class _WaitingState extends State<WaitingScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                // Navigate to settings screen or perform settings-related action
-              }),
-              buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                // Perform search action
-              }),
-              buildBottomAppBarItem(context, Icons.home, '', () {
-                Navigator.push(
+                buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                }),
+                buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
+                }),
+                buildBottomAppBarItem(context, Icons.home, '', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainScreen()),
+                  );
+                }, isHome: true),
+                buildBottomAppBarItem(
                   context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
-                );
-              }, isHome: true),
-              buildBottomAppBarItem(
-                context,
-                Icons.notifications,
-                'Notifications',
-                () {
-                  // Perform notifications-related action
-                },
-              ),
-              buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                  Icons.notifications,
+                  'Notifications',
                   () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileNewScreen()),
-                );
-              }),
-            ],
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()),
+                    );
+                  },
+                ),
+                buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                    () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileNewScreen()),
+                  );
+                }),
+              ],
           ),
         ),
       ),
