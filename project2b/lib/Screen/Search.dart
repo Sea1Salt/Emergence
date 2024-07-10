@@ -13,69 +13,82 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('SEARCH', style: TextStyle(color: Colors.white)),
-        flexibleSpace: Container(
+    return Stack(
+      children: [
+        // Background Image
+        Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 125, 10, 10),
-                const Color.fromARGB(255, 0, 0, 0),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+            image: DecorationImage(
+              image: AssetImage('assets/images/background.jpg'),
+              fit: BoxFit.cover,
             ),
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.exit_to_app,
-                color: Colors.white, size: 35), // Changed color to white
-            onPressed: () {
-              exitPopup(context);
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.people,
-                color: Colors.white, size: 35), // Changed color to white
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DevScreen(); // Navigate to Dev screen
-              }));
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                hintText: 'Enter search',
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    _search();
-                  },
+        Scaffold(
+          appBar: AppBar(
+            title: Text('SEARCH', style: TextStyle(color: Colors.white)),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 125, 10, 10),
+                    Color.fromARGB(255, 0, 0, 0),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
             ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.exit_to_app,
+                    color: Colors.white, size: 35), // Changed color to white
+                onPressed: () {
+                  exitPopup(context);
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.people,
+                    color: Colors.white, size: 35), // Changed color to white
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DevScreen(); // Navigate to Dev screen
+                  }));
+                },
+              ),
+            ],
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _searchResults.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(_searchResults[index]),
-                );
-              },
-            ),
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    hintText: 'Enter search',
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () {
+                        _search();
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _searchResults.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(_searchResults[index]),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/BrokenArmV.dart';
 import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/Search.dart';
@@ -104,6 +105,17 @@ class BrokenArmScreen extends StatelessWidget {
               ],
             ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              //return AdminMenu();
+                              return BrokenArmVideo();
+                            }));
+                          },
+          backgroundColor: Color.fromARGB(255, 224, 73, 73),
+          child: Icon(Icons.video_library, color: Colors.white),
         ),
       ),
     );

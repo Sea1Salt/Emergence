@@ -4,7 +4,7 @@ import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/LoginNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/mainmenu.dart';
-import 'package:project2b/Screen/test.dart';
+import 'package:project2b/Screen/BrokenArmV.dart';
 
 // void main() {
 //   runApp(HomeNewScreen());
@@ -179,8 +179,8 @@ class _HomeScreenState extends State<HomeScreen>
                           onPressed: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              //return AdminMenu();
-                              return VideoPlayerScreen();
+                              return AdminMenu();
+                              //return BrokenArmVideo();
                             }));
                           },
                         ),
