@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Button%20n%20Bar/popup.dart';
 import 'package:project2b/Screen/LoginNew.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
@@ -153,6 +154,9 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your password';
                       }
+                      if (value.length < 6) {
+                        return 'Password must be at least 6 characters long';
+                      }
                       return null;
                     },
                     onChanged: (value) {
@@ -183,7 +187,6 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                       if (value != _passwordController.text) {
                         return 'Passwords do not match';
                       }
-
                       return null;
                     },
                     onChanged: (value) {
@@ -211,6 +214,7 @@ class _RegisterNewScreenState extends State<RegisterNewScreen> {
                                 builder: (context) => LoginScreenApp(),
                               ),
                             );
+                            ConsentPopUp(context);
                           } else {
                             print("Registration failed");
                           }

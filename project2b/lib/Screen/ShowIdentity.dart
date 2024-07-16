@@ -6,13 +6,14 @@ import 'package:image/image.dart' as img;
 
 import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 class IdentityScreen extends StatelessWidget {
   final String imagePath;
+  //String? base64String;
 
-  const IdentityScreen({Key? key, required this.imagePath})
-      : super(key: key);
+  const IdentityScreen({Key? key, required this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class IdentityScreen extends StatelessWidget {
         title: Text('Display picture', style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
-            icon: Icon(Icons.save,color: Colors.white),
+            icon: Icon(Icons.save, color: Colors.white),
             onPressed: () async {
               final Uint8List bytes = io.File(imagePath).readAsBytesSync();
 
@@ -50,9 +51,11 @@ class IdentityScreen extends StatelessWidget {
               // Convert to Base64
               String base64String = base64Encode(jpg);
               // Encode to jpg with quality (0-100)
-
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return EmergencyCall2Screen(base64String: base64String);
+              }));
               print('Sea.......');
-              //bool a = await EmergenceService.UploadPicture(base64String);
+              //bool a = await EmergenceService.UploadIden(base64String);
               print(base64String);
               FaceID(context);
             },

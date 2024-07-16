@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
+import 'package:project2b/Screen/LoginNew.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
@@ -317,12 +318,13 @@ void FaceID(BuildContext context) {
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ProfileNewScreen();
-                }));
+                // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                //   return ProfileNewScreen();
+                // }));
+                Navigator.of(context).pop();
               },
               child: Text(
-                "Go to waiting menu",
+                "Confirm",
                 style: TextStyle(fontSize: 15, color: Colors.white),
               ),
             ),
@@ -523,7 +525,6 @@ void Complete(BuildContext context) {
               child: Text('Confirm', style: TextStyle(color: Colors.white)),
             ),
           ),
-          
         ],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(a),
@@ -576,12 +577,11 @@ void Driver(BuildContext context) {
             ),
             child: TextButton(
               onPressed: () {
-              Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
               child: Text('Confirm', style: TextStyle(color: Colors.white)),
             ),
           ),
-          
         ],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(a),
@@ -650,7 +650,7 @@ void Error(BuildContext context) {
 
 void ConsentPopUp(BuildContext context) {
   bool isChecked = false;
-  
+
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -682,7 +682,8 @@ void ConsentPopUp(BuildContext context) {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('I consent to the hospital collecting and using my personal information for the specific purpose of contacting me for medical treatment. I understand and agree that my information may be used by responsible parties in accordance with the privacy policies of the said organization. I also have the right to withdraw my consent in the future.'),
+                Text(
+                    'I consent to the hospital collecting and using my personal information for the specific purpose of contacting me for medical treatment. I understand and agree that my information may be used by responsible parties in accordance with the privacy policies of the said organization. I also have the right to withdraw my consent in the future.'),
                 SizedBox(height: 20),
                 Row(
                   children: <Widget>[
@@ -717,7 +718,7 @@ void ConsentPopUp(BuildContext context) {
                       ? () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return MainScreen(); // Replace with your desired screen
+                            return LoginScreenApp(); // Replace with your desired screen
                           }));
                         }
                       : null,

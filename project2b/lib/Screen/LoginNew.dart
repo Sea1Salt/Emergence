@@ -191,7 +191,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             print("wrong password");
                             InvalidPopup(context);
                           }
-                        } catch (err) {}
+                        } catch (err) {
+                          InvalidPopup(context);
+                        }
                       }
                     },
                     width: 400, // Custom width

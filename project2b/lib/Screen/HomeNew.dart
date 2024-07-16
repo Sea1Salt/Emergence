@@ -4,7 +4,7 @@ import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/LoginNew.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/mainmenu.dart';
-import 'package:project2b/Screen/BrokenArmV.dart';
+import 'package:project2b/FirstAidVdo/BrokenArmV.dart';
 
 // void main() {
 //   runApp(HomeNewScreen());
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen>
                             color: Color.fromARGB(255, 255, 255, 255),
                           ),
                         ),
-                        SizedBox(height: 160),
+                        SizedBox(height: 210),
                         // Buttons with rounded border shadow
                         ButtonWithShadow(
                           text: 'Login',
@@ -162,28 +162,28 @@ class _HomeScreenState extends State<HomeScreen>
                           },
                         ),
                         SizedBox(height: 10),
-                        ButtonWithShadow(
-                          text: 'Admin',
-                          icon: Icons.admin_panel_settings,
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return MainScreen();
-                            }));
-                          },
-                        ),
-                        SizedBox(height: 10),
-                        ButtonWithShadow(
-                          text: 'Test code',
-                          icon: Icons.baby_changing_station,
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return AdminMenu();
-                              //return BrokenArmVideo();
-                            }));
-                          },
-                        ),
+                        // ButtonWithShadow(
+                        //   text: 'Admin',
+                        //   icon: Icons.admin_panel_settings,
+                        //   onPressed: () {
+                        //     Navigator.push(context,
+                        //         MaterialPageRoute(builder: (context) {
+                        //       return MainScreen();
+                        //     }));
+                        //   },
+                        // ),
+                        // SizedBox(height: 10),
+                        // ButtonWithShadow(
+                        //   text: 'Test code',
+                        //   icon: Icons.baby_changing_station,
+                        //   onPressed: () {
+                        //     Navigator.push(context,
+                        //         MaterialPageRoute(builder: (context) {
+                        //       return AdminMenu();
+                        //       //return BrokenArmVideo();
+                        //     }));
+                        //   },
+                        // ),
                       ],
                     ),
                   ),

@@ -39,7 +39,7 @@ class InfoScreen extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.exit_to_app, color: Colors.white, size: 35),
               onPressed: () {
-                // Handle exit button action
+                exitPopup(context);
               },
             ),
             IconButton(
@@ -189,7 +189,6 @@ class _InformationScreenState extends State<InformationScreen> {
       _f18Controller.text = result.emergencynum2;
       _f19Controller.text = result.relatename2;
       _f20Controller.text = result.relation2;
-
     });
   }
 
@@ -266,7 +265,7 @@ class _InformationScreenState extends State<InformationScreen> {
                 prefixIcon: Icon(Icons.calendar_today,
                     color: Color.fromARGB(255, 191, 49, 49)),
                 labelText: 'Birthdate',
-                hintText:"dd-mm-yyyy",
+                hintText: "dd-mm-yyyy",
                 fillColor:
                     Color.fromARGB(255, 255, 255, 255), // Background color
                 filled: true,
@@ -591,7 +590,6 @@ class _InformationScreenState extends State<InformationScreen> {
               ),
               child: ElevatedButton.icon(
                 onPressed: () async {
-                  SaveInfoPopup(context);
                   try {
                     final model = Patient(
                       0,
@@ -600,9 +598,15 @@ class _InformationScreenState extends State<InformationScreen> {
                       this._f3Controller.text,
                       this._f4Controller.text,
                       this._f5Controller.text,
-                      int.parse(this._f6Controller.text),
-                      int.parse(this._f7Controller.text),
-                      int.parse(this._f8Controller.text),
+                      this._f6Controller.text.isNotEmpty
+                          ? int.parse(this._f6Controller.text)
+                          : 0,
+                      this._f7Controller.text.isNotEmpty
+                          ? int.parse(this._f7Controller.text)
+                          : 0,
+                      this._f8Controller.text.isNotEmpty
+                          ? int.parse(this._f8Controller.text)
+                          : 0,
                       this._f9Controller.text,
                       this._f10Controller.text,
                       this._f11Controller.text,
@@ -616,6 +620,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       this._f19Controller.text,
                       this._f20Controller.text,
                     );
+                    print(model);
                     var result = await EmergenceService.PatientInfo(model);
                     SaveInfoPopup(context);
                     print('SAVED');

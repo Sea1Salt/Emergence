@@ -11,11 +11,6 @@ import 'package:project2b/Screen/ProfileNew.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
-// void main() {
-//   runApp(AdminMenu());
-// }
-
-
 class AdminMenu extends StatefulWidget {
   @override
   _AdminMenuScreenState createState() => _AdminMenuScreenState();
@@ -38,7 +33,6 @@ class _ProfileBodyState extends State<ProfileBody> {
   }
 
   Future<void> _fetch1Profile() async {
-    print('sssss');
     model = await EmergenceService.GetAdmin();
     Pic = await EmergenceService.GetPatient();
 
@@ -50,7 +44,6 @@ class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
     return UserProfile(
-      
       model: Pic,
       base64String: base64String,
     );
@@ -84,17 +77,11 @@ class _AdminMenuScreenState extends State<AdminMenu> {
   }
 
   Future<void> _fetch1Profile() async {
-    print('sssss');
     Pic = await EmergenceService.GetPatient();
     model = await EmergenceService.GetAdmin();
 
-    print("Result:");
-    print(Pic);
-    model.forEach((i) {
-      print(i!.CardNumber.toString());
-    });
     setState(() {
-      //base64String = Pic.image;
+      base64String = Pic.image;
     });
   }
 
@@ -131,33 +118,45 @@ class _AdminMenuScreenState extends State<AdminMenu> {
                   ? Image.memory(
                       base64Decode(i.image.toString()),
                       width: 40,
-                      height: 100,
-                      fit: BoxFit.fill,
+                      height: 40,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: 40,
+                          height: 40,
+                          color: Colors.grey,
+                          child: Icon(Icons.person, size: 40, color: Colors.white),
+                        );
+                      },
                     )
                   : Container(
                       width: 40,
-                      height: 100,
+                      height: 40,
                       color: Colors.grey,
-                      child: Icon(Icons.person, size: 50, color: Colors.white),
+                      child: Icon(Icons.person, size: 40, color: Colors.white),
                     ),
             ),
             title: Row(
               children: [
-                Text(
-                  "${i.firstname} ${i.lastname}",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Expanded(
+                  child: Text(
+                    "${i.firstname} ${i.lastname}",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
                   radius: 8,
-                  backgroundColor: 
-                  i.status==1? Colors.red
-                  :i.status==2?Colors.yellow
-                  :i.status==3?Colors.green
-                  :Colors.transparent,
+                  backgroundColor: i.status == 1
+                      ? Colors.red
+                      : i.status == 2
+                          ? Colors.yellow
+                          : i.status == 3
+                              ? Colors.green
+                              : Colors.transparent,
                 ),
               ],
             ),
@@ -177,8 +176,6 @@ class _AdminMenuScreenState extends State<AdminMenu> {
               ],
             ),
             onTap: () {
-              print('Click............');
-              print(Pic.cardID);
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -218,14 +215,6 @@ class _AdminMenuScreenState extends State<AdminMenu> {
                 exitPopup(context);
               },
             ),
-            // IconButton(
-            //   icon: Icon(Icons.people, color: Colors.white, size: 35),
-            //   onPressed: () {
-            //     Navigator.push(context, MaterialPageRoute(builder: (context) {
-            //       return DevScreen(); // Navigate to Dev screen
-            //     }));
-            //   },
-            // ),
           ],
         ),
         body: Padding(
@@ -269,6 +258,18 @@ class _AdminMenuScreenState extends State<AdminMenu> {
               ],
             ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AdminMenu(),
+              ),
+            );
+          },
+          backgroundColor: Color.fromARGB(255, 44, 16, 157),
+          child: Icon(Icons.refresh, color: Colors.white),
         ),
       ),
     );

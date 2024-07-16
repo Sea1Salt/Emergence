@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:project2b/Button%20n%20Bar/TopAppbar.dart';
@@ -22,6 +23,8 @@ import 'package:project2b/Service/EmergenceService.dart';
 
 
 class EmergencyCall2Screen extends StatefulWidget {
+  String? base64String;
+  EmergencyCall2Screen({Key? key, this.base64String}) : super(key: key);
   @override
   _EmergencyCall2ScreenState createState() => _EmergencyCall2ScreenState();
 }
@@ -337,6 +340,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                                     this._ComNumcontroller.text,
                                     currentLocation!.latitude.toString(),
                                     currentLocation!.longitude.toString(),
+                                    widget.base64String,
                                   );
                                   var result =
                                       await EmergenceService.EMG_CallREQ(model);

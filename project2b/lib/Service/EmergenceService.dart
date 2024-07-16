@@ -185,6 +185,29 @@ class EmergenceService {
     return false;
   }
 
+  static Future<bool> UploadIden(String image,int CallID) async {
+    final Map<String, dynamic> authData = {'CallID': CallID, 'image': image};
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString("token");
+    print('debug....');
+    print(authData);
+    final http.Response response = await http.post(
+        Uri.parse(URL + '/api/UserManagement/UploadIden'),
+        body: json.encode(authData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': 'Bearer $token'
+        });
+
+    print(response);
+    if (response.statusCode == 200) {
+      print(json.decode(response.body));
+      return bool.parse(response.body);
+    }
+    return false;
+  }
+
   static Future<List<Hospital>> GetHos() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
@@ -228,7 +251,7 @@ class EmergenceService {
       'ContactNumber': model.ContactNumber,
       'latitude': model.latitude,
       'longitude': model.longitude,
-      //'Image': model.Image,
+      'image':model.base64String,
     };
     print('debug....');
     print(authData);

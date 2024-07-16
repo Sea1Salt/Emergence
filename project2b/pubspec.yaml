@@ -115,7 +115,43 @@ flutter:
       - assets/images/EMG_bg.png
       - assets/images/PI_bg.jpg
       - assets/images/FA_bg.jpg
+      - assets/images/2.1.jpg
+      - assets/images/2.2.jpg
+      - assets/images/2.3.jpg
+      - assets/images/2.4.jpg
+      - assets/images/2.5.jpg
+      - assets/images/3.1.jpg
+      - assets/images/3.2.jpg
+      - assets/images/3.3.jpg
+      - assets/images/3.5.jpg
+      - assets/images/4.1.jpg
+      - assets/images/4.2.jpg
+      - assets/images/4.3.jpg
+      - assets/images/4.4.jpg
+      - assets/images/4.5.jpg
+      - assets/images/5.1.jpg
+      - assets/images/5.2.jpg
+      - assets/images/5.3.jpg
+      - assets/images/5.4.jpg
+      - assets/images/5.5.jpg
+      - assets/images/6.1.png
+      - assets/images/6.2.png
+      - assets/images/6.3.jpg
+      - assets/images/6.4.jpg
+      - assets/images/6.5.jpg
+      - assets/images/7.1.jpg
+      - assets/images/7.2.jpg
+      - assets/images/7.3.jpg
+      - assets/images/7.4.jpg
+      - assets/images/7.5.jpg
       - assets/images/BrokenArm.mp4
+      - assets/images/Seizures.mp4
+      - assets/images/Scald.mp4
+      - assets/images/CPRV.mp4
+      - assets/images/BrokenArmNleg.mp4
+      - assets/images/Drowning.mp4
+      - assets/images/BrokenHead.mp4
+
       
 
   # To add assets to your application, add an assets section, like this:
