@@ -20,8 +20,6 @@ import 'package:project2b/Screen/firstaid.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
-
-
 class EmergencyCall2Screen extends StatefulWidget {
   String? base64String;
   EmergencyCall2Screen({Key? key, this.base64String}) : super(key: key);
@@ -53,6 +51,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
   @override
   void initState() {
     super.initState();
+    print(widget.base64String);
     _getUserLocation();
     Future.delayed(Duration.zero, () async {
       model = await EmergenceService.GetPatient();
@@ -64,7 +63,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
     });
 
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
       vsync: this,
     )..repeat(reverse: true);
 
@@ -242,6 +241,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.credit_card,
                                       color: Color.fromARGB(255, 255, 22, 22)),
+                                  labelText: 'Card Number (not require)',
                                   contentPadding: EdgeInsets.symmetric(
                                       vertical: 13.0, horizontal: 10.0),
                                   border: OutlineInputBorder(
@@ -291,6 +291,7 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen>
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.phone,
                                       color: Color.fromARGB(255, 255, 22, 22)),
+                                  labelText: 'Contact Number (require)',
                                   contentPadding: EdgeInsets.symmetric(
                                       vertical: 13.0, horizontal: 10.0),
                                   border: OutlineInputBorder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Emergence2.0/FirstAid2.0.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/NearbyHos.dart';
 import 'package:project2b/Screen/PI.dart';
@@ -166,7 +167,7 @@ class _MainMenuScreenState extends State<MainMenuScreen>
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return CurrentLocation();
+                      return CurrentLocationHos();
                     }));
                   },
                   gradientColors: [
@@ -184,7 +185,7 @@ class _MainMenuScreenState extends State<MainMenuScreen>
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return FirstScreen();
+                      return FirstAidScreen2();
                     }));
                   },
                   gradientColors: [

@@ -5,6 +5,7 @@ import 'package:location/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Emergence2.0/FirstAid2.0.dart';
 import 'package:project2b/Models/Hospital.dart';
 import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
@@ -337,7 +338,7 @@ class _WaitingState extends State<WaitingScreen> {
                 textColor: Color.fromARGB(255, 255, 255, 255),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FirstScreen();
+                    return FirstAidScreen2();
                   }));
                 },
                 gradientColors: [

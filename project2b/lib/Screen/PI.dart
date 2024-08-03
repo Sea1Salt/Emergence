@@ -246,7 +246,7 @@ class _InformationScreenState extends State<InformationScreen> {
               decoration: InputDecoration(
                 prefixIcon:
                     Icon(Icons.face, color: Color.fromARGB(255, 191, 49, 49)),
-                labelText: 'Nickename',
+                labelText: 'Nickname',
                 fillColor:
                     Color.fromARGB(255, 255, 255, 255), // Background color
                 filled: true,
@@ -625,7 +625,7 @@ class _InformationScreenState extends State<InformationScreen> {
                     SaveInfoPopup(context);
                     print('SAVED');
                   } catch (err) {
-                    // Handle error
+                    Error(context);
                   }
                 },
                 style: ElevatedButton.styleFrom(

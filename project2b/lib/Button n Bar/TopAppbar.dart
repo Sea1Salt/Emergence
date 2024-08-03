@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Emergence2.0/FirstAid2.0.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/NearbyHos.dart';
 import 'package:project2b/Screen/PI.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Screen/WaitingMenu.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/firstaid.dart';
 
@@ -106,7 +108,7 @@ class MainMenuScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return CurrentLocation(); // Navigate to FourCardBoxes screen
+              return CurrentLocationHos(); // Navigate to FourCardBoxes screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 234, 209, 150),
@@ -120,7 +122,7 @@ class MainMenuScreen extends StatelessWidget {
           textColor: const Color.fromARGB(255, 255, 255, 255),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return FirstScreen(); // Navigate to FourCardBoxes screen
+              return FirstAidScreen2(); // Navigate to FourCardBoxes screen
             }));
           },
           backgroundColor: Color.fromARGB(255, 34, 9, 44), gradientColors: [],

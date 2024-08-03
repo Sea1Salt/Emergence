@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Emergence2.0/Home2.0.dart';
 import 'package:project2b/Screen/HomeNew.dart';
 
 Future<void> main() async {
@@ -32,10 +33,11 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 167, 0, 0)),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: HomeScreen2(),
       //home: TakePictureScreen(camera: firstCamera,),
     );
   }

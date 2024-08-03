@@ -256,11 +256,11 @@ void TakePic(BuildContext context) {
             child: TextButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MainScreen();
+                  return InfoScreen();
                 }));
               },
               child: Text(
-                "Go to mainmenu",
+                "Confirm",
                 style: TextStyle(fontSize: 15, color: Colors.white),
               ),
             ),

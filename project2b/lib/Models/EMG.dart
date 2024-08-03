@@ -5,7 +5,7 @@ class EMG {
   String? ContactNumber;
   String? latitude;
   String? longitude;
-  String? base64String;
+  String? image;
   // String? Image;
 
   EMG(
@@ -15,7 +15,7 @@ class EMG {
     this.ContactNumber,
     this.latitude,
     this.longitude,
-    this.base64String,
+    this.image,
     // this.Image,
   );
 }

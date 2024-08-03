@@ -251,7 +251,7 @@ class EmergenceService {
       'ContactNumber': model.ContactNumber,
       'latitude': model.latitude,
       'longitude': model.longitude,
-      'image':model.base64String,
+      'image':model.image,
     };
     print('debug....');
     print(authData);

@@ -58,7 +58,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/Ambu_logo.jpg"
+  image_path: "assets/images/NewIcon.jpg"
   adaptive_icon_foreground: "assets/images/ambu_png.png" 
   adaptive_icon_background: "#B00000" 
   #flutter_lints: ^3.0.0
@@ -81,6 +81,11 @@ flutter:
   uses-material-design: true
 
   assets:
+      - assets/images/Real_icon.png
+      - assets/images/NewPI.jpg
+      - assets/images/Family.jpg
+      - assets/images/EMG2.0.jpg
+      - assets/images/NewIcon.jpg
       - assets/images/Emergence (2) 1.png
       - assets/images/Ambu2_png.png
       - assets/images/Ambu_logo.jpg
