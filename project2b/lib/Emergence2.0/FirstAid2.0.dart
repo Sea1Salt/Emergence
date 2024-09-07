@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Emergence2.0/BrokenArm.dart';
 import 'package:project2b/Emergence2.0/MainMenu2.0.dart';
 import 'package:project2b/Emergence2.0/Profile2.0.dart';
 import 'package:project2b/FirstAid/BrokenArm.dart';
@@ -176,8 +177,8 @@ class _FirstAidScreenState extends State<FirstAidScreen2>
       child: SlideTransition(
         position: _slideAnimation,
         child: CardBox(
-          width: double.infinity,
-          height: 100,
+          width: 170,
+          height: 80,
           image: image,
           text: text,
           textColor: const Color.fromARGB(255, 0, 0, 0),
@@ -212,7 +213,7 @@ class _FirstAidScreenState extends State<FirstAidScreen2>
   Widget getScreenForIndex(int index) {
     switch (index) {
       case 0:
-        return BrokenArmScreen();
+        return BrokenArmScreen2();
       case 1:
         return BrokenHeadScreen();
       case 2:
@@ -235,17 +236,17 @@ class _FirstAidScreenState extends State<FirstAidScreen2>
       case 0:
         return [
           Color.fromARGB(255, 255, 255, 255),
-          Color.fromARGB(255, 255, 255, 255),
+          Color.fromARGB(255, 224, 73, 73),
         ];
       case 1:
         return [
           Color.fromARGB(255, 255, 255, 255),
-          Color.fromARGB(255, 255, 255, 255),
+          Color.fromARGB(255, 224, 146, 73),
         ];
       case 2:
         return [
           Color.fromARGB(255, 255, 255, 255),
-          Color.fromARGB(255, 255, 255, 255),
+          Color.fromARGB(255, 221, 224, 73),
         ];
       case 3:
         return [
@@ -255,17 +256,17 @@ class _FirstAidScreenState extends State<FirstAidScreen2>
       case 4:
         return [
           Color.fromARGB(255, 255, 255, 255),
-          Color.fromARGB(255, 255, 255, 255),
+          Color.fromARGB(255, 73, 224, 211),
         ];
       case 5:
         return [
           Color.fromARGB(255, 255, 255, 255),
-          Color.fromARGB(255, 255, 255, 255),
+          Color.fromARGB(255, 73, 121, 224),
         ];
       case 6:
         return [
           Color.fromARGB(255, 255, 255, 255),
-          Color.fromARGB(255, 255, 255, 255),
+          Color.fromARGB(255, 151, 73, 224),
         ];
       default:
         return [];
@@ -317,13 +318,27 @@ class CardBox extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image(
-                image: image,
-                width: width * 0.9, // Adjusted width
-                height: height * 0.82, // Adjusted height
-                fit: BoxFit.cover, // Adjust this if necessary
+            Container(
+              width: width * 0.9, // Adjusted width
+              height: height * 0.82, // Adjusted height
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 3,
+                  color: Colors.transparent, // Initially set to transparent
+                ),
+                borderRadius: BorderRadius.circular(8),
+                gradient: LinearGradient(
+                  colors: gradientColors,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image(
+                  image: image,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(height: 8),
@@ -377,6 +392,7 @@ Widget buildBottomAppBarItem(
         Text(
           text,
           style: TextStyle(
+            fontFamily: 'Faustina', // Use the Faustina font family
             color: Color.fromARGB(255, 125, 10, 10),
             fontSize: 10, // Adjust font size as needed
           ),

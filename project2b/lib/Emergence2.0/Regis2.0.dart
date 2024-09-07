@@ -106,7 +106,7 @@ class _RegisterNewScreenState extends State<RegisNewScreen2> {
                             'Sign Up',
                             style: TextStyle(
                               fontSize: 30,
-                              fontWeight: FontWeight.bold,
+                              //fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 125, 10, 10),
                             ),
                           ),
@@ -365,12 +365,13 @@ class _RegisterNewScreenState extends State<RegisNewScreen2> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(Icons.person_add, color: Colors.white),
-                                SizedBox(width: 10),
+                                SizedBox(width: 5),
                                 Text(
                                   'Sign Up',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                    //fontWeight: FontWeight.bold,
+                                    fontFamily: 'faustina',
                                   ),
                                 ),
                               ],

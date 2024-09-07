@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project2b/Emergence2.0/Waiting2.0.dart';
 import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/EmergencyCall2.dart';
 import 'package:project2b/Screen/LoginNew.dart';
@@ -450,7 +451,7 @@ void Emergency2PopUp(BuildContext context) {
             child: TextButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return WaitingScreen();
+                  return WaitingScreen2();
                 }));
               },
               child: Text('Confirm', style: TextStyle(color: Colors.white)),

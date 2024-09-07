@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Emergence2.0/EmergencyCall2.0.dart';
 import 'package:project2b/Emergence2.0/FirstAid2.0.dart';
 import 'package:project2b/Emergence2.0/NearbyHos2.0.dart';
 import 'package:project2b/Emergence2.0/PI2.0.dart';
@@ -42,7 +43,7 @@ class MainScreen2 extends StatelessWidget {
           ),
           AnimatedOpacity(
             duration: Duration(milliseconds: 800),
-            opacity: 0.5,
+            opacity: 0.3,
             child: Container(
               color: Color.fromARGB(255, 0, 0, 0),
             ),
@@ -61,7 +62,7 @@ class MainScreen2 extends StatelessWidget {
                   Text(
                     'Emergence',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 32,
                       color: Color.fromARGB(255, 219, 16, 16),
                       fontWeight: FontWeight.bold,
                     ),
@@ -101,7 +102,7 @@ class MainScreen2 extends StatelessWidget {
                         () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return EmergencyCall2Screen();
+                            return EmergencyCall2Screen2();
                           }));
                           print('Emergency Call button pressed');
                         },

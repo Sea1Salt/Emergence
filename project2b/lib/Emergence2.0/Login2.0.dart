@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project2b/Emergence2.0/MainMenu2.0.dart';
+import 'package:project2b/Emergence2.0/Regis2.0.dart';
 import 'package:project2b/Screen/AdminMenu.dart';
 import 'package:project2b/Screen/RegisterNew.dart';
 import 'package:project2b/Screen/mainmenu.dart';
@@ -116,7 +118,7 @@ class _LoginScreenState extends State<LoginScreenApp2> {
                           'Sign In',
                           style: TextStyle(
                             fontSize: 30,
-                            fontWeight: FontWeight.bold,
+                            //fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 125, 10, 10),
                           ),
                         ),
@@ -139,12 +141,14 @@ class _LoginScreenState extends State<LoginScreenApp2> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16.0),
                                   borderSide: BorderSide(
-                                      color: Color.fromARGB(255, 125, 10, 10)), // Default border color
+                                      color: Color.fromARGB(255, 125, 10,
+                                          10)), // Default border color
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16.0),
                                   borderSide: BorderSide(
-                                      color: Color.fromARGB(255, 125, 10, 10)), // Border color when enabled
+                                      color: Color.fromARGB(255, 125, 10,
+                                          10)), // Border color when enabled
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16.0),
@@ -185,12 +189,14 @@ class _LoginScreenState extends State<LoginScreenApp2> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16.0),
                                   borderSide: BorderSide(
-                                      color: Color.fromARGB(255, 125, 10, 10)), // Default border color
+                                      color: Color.fromARGB(255, 125, 10,
+                                          10)), // Default border color
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16.0),
                                   borderSide: BorderSide(
-                                      color: Color.fromARGB(255, 125, 10, 10)), // Border color when enabled
+                                      color: Color.fromARGB(255, 125, 10,
+                                          10)), // Border color when enabled
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16.0),
@@ -233,7 +239,7 @@ class _LoginScreenState extends State<LoginScreenApp2> {
                                   } else {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
-                                      return MainScreen();
+                                      return MainScreen2();
                                     }));
                                   }
                                 } else {
@@ -263,7 +269,8 @@ class _LoginScreenState extends State<LoginScreenApp2> {
                                 'Sign In',
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
+                                  fontFamily: 'faustina',
                                 ),
                               ),
                             ],
@@ -274,13 +281,14 @@ class _LoginScreenState extends State<LoginScreenApp2> {
                           onPressed: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return RegisNewScreen();
+                              return RegisNewScreen2();
                             }));
                           },
                           child: Text(
                             'CREATE NEW ACCOUNT',
                             style: TextStyle(
                               color: Color.fromARGB(255, 125, 10, 10),
+                              fontFamily: 'faustina',
                             ),
                           ),
                         ),

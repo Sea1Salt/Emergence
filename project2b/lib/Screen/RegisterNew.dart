@@ -268,7 +268,7 @@ class GradientButton extends StatelessWidget {
     required this.colors,
     required this.child,
     this.width = double.infinity,
-    this.height = 57.0,
+    this.height = 40.0,
   }) : super(key: key);
 
   @override
@@ -282,12 +282,12 @@ class GradientButton extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: MaterialButton(
         onPressed: onPressed,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(16),
         ),
         child: child,
       ),

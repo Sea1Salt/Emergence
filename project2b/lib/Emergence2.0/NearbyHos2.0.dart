@@ -36,6 +36,7 @@ class MapScreen extends StatefulWidget {
   @override
   _MapScreenState createState() => _MapScreenState();
 }
+
 class HospitalSearchDelegate extends SearchDelegate<String> {
   final List<Hospital> hospitals;
 
@@ -271,179 +272,205 @@ class _MapScreenState extends State<MapScreen>
 
   @override
   @override
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Stack(
-      children: [
-        // Google Map
-        Positioned.fill(
-          child: GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: LatLng(12.6812, 101.2769), // Rayong, Thailand
-              zoom: 12,
-            ),
-            mapType: MapType.normal,
-            onMapCreated: _onMapCreated,
-            myLocationEnabled: true,
-            myLocationButtonEnabled: true,
-            markers: _hospital.map((location) {
-              return Marker(
-                markerId: MarkerId(location.toString()),
-                position: LatLng(location.latitude ?? 0.0, location.longtitude ?? 0.0),
-                infoWindow: InfoWindow(title: location.Hospitalname),
-                icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-              );
-            }).toSet(),
-            polylines: _polylines,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Google Map
+          Positioned.fill(
+            child: _currentPosition == null
+                ? CircularProgressIndicator()
+                : AnimatedOpacity(
+                    opacity: _opacityAnimation.value,
+                    duration: Duration(milliseconds: 500),
+                    child: SlideTransition(
+                      position: _slideAnimation,
+                      child: Container( 
+                        decoration: BoxDecoration(
+                            // borderRadius: BorderRadius.circular(15),
+                            // border: Border.all(
+                            //   color: Color.fromARGB(255, 191, 125, 49),
+                            //   width: 3,
+                            // ),
+                            ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0),
+                          child: GoogleMap(
+                            initialCameraPosition: CameraPosition(
+                              target:
+                                  LatLng(12.6812, 101.2769), // Rayong, Thailand
+                              zoom: 12,
+                            ),
+                            mapType: MapType.normal,
+                            onMapCreated: _onMapCreated,
+                            myLocationEnabled: true,
+                            myLocationButtonEnabled: true,
+                            markers: _hospital.map((location) {
+                              return Marker(
+                                markerId: MarkerId(location.toString()),
+                                position: LatLng(location.latitude ?? 0.0,
+                                    location.longtitude ?? 0.0),
+                                infoWindow:
+                                    InfoWindow(title: location.Hospitalname),
+                                icon: BitmapDescriptor.defaultMarkerWithHue(
+                                    BitmapDescriptor.hueRed),
+                              );
+                            }).toSet(),
+                            polylines: _polylines,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
           ),
-        ),
-        // Search Box
-        Positioned(
-          top: 40.0,
-          left: 10.0,
-          right: 10.0,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                hintText: 'Search hospitals...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                  borderSide: BorderSide.none,
+          // Search Box
+          Positioned(
+            top: 40.0,
+            left: 10.0,
+            right: 10.0,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  hintText: 'Search hospitals...',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
+                onChanged: (value) {
+                  // Implement search functionality here
+                },
               ),
-              onChanged: (value) {
-                // Implement search functionality here
-              },
             ),
           ),
-        ),
-        // Overlay for other UI elements
-        // Positioned(
-        //   top: 80.0,
-        //   left: 10.0,
-        //   right: 10.0,
-        //   bottom: 0,
-        //   child: AnimatedOpacity(
-        //     opacity: _opacityAnimation.value,
-        //     duration: Duration(milliseconds: 500),
-        //     child: SlideTransition(
-        //       position: _slideAnimation,
-        //       child: Container(
-        //         margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-        //         width: double.infinity,
-        //         height: double.infinity,
-        //         decoration: BoxDecoration(
-        //           borderRadius: BorderRadius.circular(15),
-        //           border: Border.all(
-        //             color: Color.fromARGB(255, 125, 10, 10),
-        //             width: 3,
-        //           ),
-        //         ),
-        //         child: ClipRRect(
-        //           borderRadius: BorderRadius.circular(15),
-        //           child: GoogleMap(
-        //             initialCameraPosition: CameraPosition(
-        //               target: LatLng(12.6812, 101.2769), // Rayong, Thailand
-        //               zoom: 12,
-        //             ),
-        //             mapType: MapType.normal,
-        //             onMapCreated: _onMapCreated,
-        //             myLocationEnabled: true,
-        //             myLocationButtonEnabled: true,
-        //             markers: _hospital.map((location) {
-        //               return Marker(
-        //                 markerId: MarkerId(location.toString()),
-        //                 position: LatLng(location.latitude ?? 0.0, location.longtitude ?? 0.0),
-        //                 infoWindow: InfoWindow(title: location.Hospitalname),
-        //                 icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-        //               );
-        //             }).toSet(),
-        //             polylines: _polylines,
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
-      ],
-    ),
-    bottomNavigationBar: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 255, 255, 255),
-            Color.fromARGB(255, 255, 255, 255),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+          // Overlay for other UI elements
+          // Positioned(
+          //   top: 80.0,
+          //   left: 10.0,
+          //   right: 10.0,
+          //   bottom: 0,
+          //   child: AnimatedOpacity(
+          //     opacity: _opacityAnimation.value,
+          //     duration: Duration(milliseconds: 500),
+          //     child: SlideTransition(
+          //       position: _slideAnimation,
+          //       child: Container(
+          //         margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+          //         width: double.infinity,
+          //         height: double.infinity,
+          //         decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(15),
+          //           border: Border.all(
+          //             color: Color.fromARGB(255, 125, 10, 10),
+          //             width: 3,
+          //           ),
+          //         ),
+          //         child: ClipRRect(
+          //           borderRadius: BorderRadius.circular(15),
+          //           child: GoogleMap(
+          //             initialCameraPosition: CameraPosition(
+          //               target: LatLng(12.6812, 101.2769), // Rayong, Thailand
+          //               zoom: 12,
+          //             ),
+          //             mapType: MapType.normal,
+          //             onMapCreated: _onMapCreated,
+          //             myLocationEnabled: true,
+          //             myLocationButtonEnabled: true,
+          //             markers: _hospital.map((location) {
+          //               return Marker(
+          //                 markerId: MarkerId(location.toString()),
+          //                 position: LatLng(location.latitude ?? 0.0, location.longtitude ?? 0.0),
+          //                 infoWindow: InfoWindow(title: location.Hospitalname),
+          //                 icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+          //               );
+          //             }).toSet(),
+          //             polylines: _polylines,
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+        ],
       ),
-      child: SizedBox(
-        height: 65, // Set a specific height for the BottomAppBar
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
-              );
-            }),
-            buildBottomAppBarItem(context, Icons.search, 'Search', () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SearchScreen()),
-              );
-            }),
-            buildBottomAppBarItem(context, Icons.home, 'Home', () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainScreen2()),
-              );
-            }, isHome: true),
-            buildBottomAppBarItem(
-              context,
-              Icons.notifications,
-              'Notifications',
-              () {
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 255, 255, 255),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SizedBox(
+          height: 65, // Set a specific height for the BottomAppBar
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => NotificationScreen()),
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
-              },
-            ),
-            buildBottomAppBarItem(context, Icons.account_circle, 'Profile', () {
-              Navigator.push(
+              }),
+              buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
+                );
+              }),
+              buildBottomAppBarItem(context, Icons.home, 'Home', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen2()),
+                );
+              }, isHome: true),
+              buildBottomAppBarItem(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileNewScreen2()),
-              );
-            }),
-          ],
-        ),
-      ),
-    ),
-    floatingActionButton: Align(
-      alignment: Alignment.bottomLeft,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 40.0, bottom: 16.0), // Set left padding to 10 pixels
-        child: FloatingActionButton(
-          onPressed: _navigateToClosestHospital,
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          child: Icon(
-            Icons.route,
-            color: Color.fromARGB(255, 125, 10, 10),
+                Icons.notifications,
+                'Notifications',
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationScreen()),
+                  );
+                },
+              ),
+              buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                  () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileNewScreen2()),
+                );
+              }),
+            ],
           ),
         ),
       ),
-    ),
-  );
-}
-
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(
+              left: 40.0, bottom: 16.0), // Set left padding to 10 pixels
+          child: FloatingActionButton(
+            onPressed: _navigateToClosestHospital,
+            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+            child: Icon(
+              Icons.route,
+              color: Color.fromARGB(255, 125, 10, 10),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -257,7 +257,7 @@ class UserProfile extends StatelessWidget {
     );
   }
 
-  Widget buildBottomAppBarItem(
+ Widget buildBottomAppBarItem(
   BuildContext context,
   IconData icon,
   String text,
@@ -270,14 +270,13 @@ class UserProfile extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width:
-              45, // Ensure width and height are the same for a perfect circle
+          width: 45, // Ensure width and height are the same for a perfect circle
           height: 45,
           decoration: BoxDecoration(
-              //  shape: BoxShape.circle,
-              //  color: isHome ? Colors.white : Colors.transparent,
-              //  border: isHome ? Border.all(color: Colors.white, width: 2) : null,
-              ),
+            //  shape: BoxShape.circle,
+            //  color: isHome ? Colors.white : Colors.transparent,
+            //  border: isHome ? Border.all(color: Colors.white, width: 2) : null,
+          ),
           child: IconButton(
             icon: Icon(icon,
                 color: isHome
@@ -291,6 +290,7 @@ class UserProfile extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
+            fontFamily: 'Faustina', // Use the Faustina font family
             color: Color.fromARGB(255, 125, 10, 10),
             fontSize: 10, // Adjust font size as needed
           ),
@@ -299,6 +299,7 @@ class UserProfile extends StatelessWidget {
     ),
   );
 }
+
 
 
   Widget _buildUserInfoRow(String label, String value, bool isHighlighted) {

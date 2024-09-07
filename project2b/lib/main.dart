@@ -18,6 +18,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        textTheme: TextTheme(
+          bodyText1: TextStyle(fontFamily: 'Faustina'),
+          bodyText2: TextStyle(fontFamily: 'Faustina'),
+          headline1: TextStyle(fontFamily: 'Faustina'),
+          // Add other text styles as needed
+        ),
+
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -34,7 +41,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 167, 0, 0)),
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 226, 205, 205)),
         useMaterial3: true,
       ),
       home: HomeScreen2(),

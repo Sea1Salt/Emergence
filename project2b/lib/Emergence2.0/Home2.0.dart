@@ -130,8 +130,9 @@ class _HomeScreenState2 extends State<HomeScreen2>
                       Text(
                         'Emergence',
                         style: TextStyle(
-                          fontSize: 35,
+                          fontSize: 40,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Faustina',
                           color: Color.fromARGB(255, 219, 16, 16),
                         ),
                       ),
@@ -142,7 +143,7 @@ class _HomeScreenState2 extends State<HomeScreen2>
                           color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
-                      SizedBox(height: 215),
+                      SizedBox(height: 205),
                       // Buttons with rounded border shadow
                       GradientButton(
                         onPressed: () {
@@ -164,7 +165,9 @@ class _HomeScreenState2 extends State<HomeScreen2>
                               '  Sign In ',
                               style: TextStyle(
                                 color: Color.fromARGB(255, 167, 0, 0),
-                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                //fontWeight: FontWeight.bold,
+                                fontFamily: 'Faustina',
                               ),
                             ),
                             Icon(Icons.login,
@@ -194,7 +197,9 @@ class _HomeScreenState2 extends State<HomeScreen2>
                               '  Sign Up ',
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 167, 0, 0),
-                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                //fontWeight: FontWeight.bold,
+                                fontFamily: 'Faustina',
                               ),
                             ),
                             Icon(Icons.app_registration,
@@ -224,7 +229,9 @@ class _HomeScreenState2 extends State<HomeScreen2>
                               '  MainMenu ',
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 167, 0, 0),
-                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                //fontWeight: FontWeight.bold,
+                                fontFamily: 'Faustina',
                               ),
                             ),
                             Icon(Icons.home,
