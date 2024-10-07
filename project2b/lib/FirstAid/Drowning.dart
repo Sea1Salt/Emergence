@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project2b/Button%20n%20Bar/popup.dart';
+import 'package:project2b/Emergence2.0/EmergencyCall2.0.dart';
+import 'package:project2b/Emergence2.0/MainMenu2.0.dart';
+import 'package:project2b/Emergence2.0/Profile2.0.dart';
 import 'package:project2b/FirstAidVdo/DrowningV.dart';
+import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
 
@@ -45,52 +51,62 @@ class DrowningScreen extends StatelessWidget {
           child: BrokenArm(),
         ),
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 73, 121, 224),
-                Color.fromARGB(255, 0, 0, 0),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: SizedBox(
-            height: 80, // Set a specific height for the BottomAppBar
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                  // Navigate to settings screen or perform settings-related action
-                }),
-                buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                  // Perform search action
-                }),
-                buildBottomAppBarItem(context, Icons.home, '', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),
-                  );
-                }, isHome: true),
-                buildBottomAppBarItem(
-                  context,
-                  Icons.notifications,
-                  'Notifications',
-                  () {
-                    // Perform notifications-related action
-                  },
-                ),
-                buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
-                    () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfileNewScreen()),
-                  );
-                }),
-              ],
-            ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 255, 255, 255),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
+        child: SizedBox(
+          height: 65, // Set a specific height for the BottomAppBar
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              }),
+              buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
+                );
+              }),
+              buildBottomAppBarItem(context, Icons.home, 'Home', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen2()),
+                );
+              }, isHome: true),
+              buildBottomAppBarItem(
+                context,
+                Icons.notifications,
+                'Notifications',
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationScreen()),
+                  );
+                },
+              ),
+              buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                  () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileNewScreen2()),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
                             Navigator.push(context,
@@ -253,33 +269,3 @@ class BrokenArm extends StatelessWidget {
   }
 }
 
-Widget buildBottomAppBarItem(
-  BuildContext context,
-  IconData icon,
-  String text,
-  VoidCallback onPressed, {
-  bool isHome = false,
-}) {
-  return Expanded(
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 56,
-          height: 56,
-          decoration: isHome
-              ? BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                )
-              : null,
-          child: IconButton(
-            icon: Icon(icon, color: Colors.white, size: isHome ? 35 : 30),
-            onPressed: onPressed,
-          ),
-        ),
-      ],
-    ),
-  );
-}

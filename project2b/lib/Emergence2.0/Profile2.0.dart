@@ -292,7 +292,7 @@ class UserProfile extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'Faustina', // Use the Faustina font family
             color: Color.fromARGB(255, 125, 10, 10),
-            fontSize: 10, // Adjust font size as needed
+            fontSize: 9, // Adjust font size as needed
           ),
         ),
       ],

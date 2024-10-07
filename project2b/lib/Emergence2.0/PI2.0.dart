@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:project2b/Emergence2.0/MainMenu2.0.dart';
 import 'package:project2b/Emergence2.0/Profile2.0.dart';
 import 'package:project2b/Models/Patient.dart';
+import 'package:project2b/Screen/Notification.dart';
 import 'package:project2b/Screen/ProfileNew.dart';
+import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Screen/TakePictureScreen.dart';
 import 'package:project2b/Screen/developer.dart';
 import 'package:project2b/Screen/mainmenu.dart';
@@ -76,53 +79,62 @@ class InfoScreen2 extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 255, 255, 255),
-                Color.fromARGB(255, 255, 255, 255),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 255, 255, 255),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          child: SizedBox(
-            height: 65, // Set a specific height for the BottomAppBar
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                  // Navigate to settings screen or perform settings-related action
-                }),
-                buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                  // Perform search action
-                }),
-                buildBottomAppBarItem(context, Icons.home, 'Home', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainScreen2()),
-                  );
-                }, isHome: true),
-                buildBottomAppBarItem(
+        ),
+        child: SizedBox(
+          height: 65, // Set a specific height for the BottomAppBar
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                Navigator.push(
                   context,
-                  Icons.notifications,
-                  'Notifications',
-                  () {
-                    // Perform notifications-related action
-                  },
-                ),
-                buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
-                    () {
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              }),
+              buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
+                );
+              }),
+              buildBottomAppBarItem(context, Icons.home, 'Home', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen2()),
+                );
+              }, isHome: true),
+              buildBottomAppBarItem(
+                context,
+                Icons.notifications,
+                'Notifications',
+                () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ProfileNewScreen2()),
+                        builder: (context) => NotificationScreen()),
                   );
-                }),
-              ],
-            ),
+                },
+              ),
+              buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                  () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileNewScreen2()),
+                );
+              }),
+            ],
           ),
         ),
+      ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             final cameras = await availableCameras();
@@ -492,7 +504,7 @@ Widget buildBottomAppBarItem(
           style: TextStyle(
             fontFamily: 'Faustina', // Use the Faustina font family
             color: Color.fromARGB(255, 125, 10, 10),
-            fontSize: 10, // Adjust font size as needed
+            fontSize: 9, // Adjust font size as needed
           ),
         ),
       ],

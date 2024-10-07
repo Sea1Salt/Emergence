@@ -53,7 +53,7 @@ class _BrokenArmScreen2State extends State<BrokenArmScreen2> {
           ),
           // Video Player Section with Rounded Borders
           Positioned(
-            top: 110,
+            top: 140,
             left: 10,
             right: 10,
             child: FutureBuilder(
@@ -86,7 +86,7 @@ class _BrokenArmScreen2State extends State<BrokenArmScreen2> {
           ),
           // Gradient and Text on top of video player
           Positioned(
-            top: 10,
+            top: 30,
             left: 10,
             right: 10,
             child: Container(
@@ -132,13 +132,13 @@ class _BrokenArmScreen2State extends State<BrokenArmScreen2> {
           ),
           // Rest of the content
           Positioned(
-            top: 295, // Adjust based on your layout
+            top: 320, // Adjust based on your layout
             left: 0,
             right: 0,
             bottom: 0,
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
@@ -187,10 +187,16 @@ class _BrokenArmScreen2State extends State<BrokenArmScreen2> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                // Navigate to settings screen or perform settings-related action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
               }),
               buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                // Perform search action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
+                );
               }),
               buildBottomAppBarItem(context, Icons.home, 'Home', () {
                 Navigator.push(
@@ -203,7 +209,11 @@ class _BrokenArmScreen2State extends State<BrokenArmScreen2> {
                 Icons.notifications,
                 'Notifications',
                 () {
-                  // Perform notifications-related action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationScreen()),
+                  );
                 },
               ),
               buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
@@ -317,7 +327,7 @@ class _BrokenArmScreen2State extends State<BrokenArmScreen2> {
             style: TextStyle(
               fontFamily: 'Faustina', // Use the Faustina font family
               color: Color.fromARGB(255, 125, 10, 10),
-              fontSize: 10, // Adjust font size as needed
+              fontSize: 9, // Adjust font size as needed
             ),
           ),
         ],

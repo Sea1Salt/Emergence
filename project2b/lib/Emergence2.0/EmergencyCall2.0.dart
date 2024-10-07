@@ -9,6 +9,9 @@ import 'package:project2b/Emergence2.0/Profile2.0.dart';
 import 'package:project2b/Models/EMG.dart';
 import 'package:project2b/Models/Profile.dart';
 import 'package:project2b/Screen/Identify.dart';
+import 'package:project2b/Screen/Notification.dart';
+import 'package:project2b/Screen/Search.dart';
+import 'package:project2b/Screen/Setting.dart';
 import 'package:project2b/Service/EmergenceService.dart';
 
 class EmergencyCall2Screen2 extends StatefulWidget {
@@ -471,10 +474,16 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen2>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                // Navigate to settings screen or perform settings-related action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
               }),
               buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                // Perform search action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
+                );
               }),
               buildBottomAppBarItem(context, Icons.home, 'Home', () {
                 Navigator.push(
@@ -487,7 +496,11 @@ class _EmergencyCall2ScreenState extends State<EmergencyCall2Screen2>
                 Icons.notifications,
                 'Notifications',
                 () {
-                  // Perform notifications-related action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationScreen()),
+                  );
                 },
               ),
               buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
@@ -566,7 +579,7 @@ Widget buildBottomAppBarItem(
           style: TextStyle(
             fontFamily: 'Faustina', // Use the Faustina font family
             color: Color.fromARGB(255, 125, 10, 10),
-            fontSize: 10, // Adjust font size as needed
+            fontSize: 9, // Adjust font size as needed
           ),
         ),
       ],

@@ -143,7 +143,7 @@ class _HomeScreenState2 extends State<HomeScreen2>
                           color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
-                      SizedBox(height: 205),
+                      SizedBox(height: 200),
                       // Buttons with rounded border shadow
                       GradientButton(
                         onPressed: () {

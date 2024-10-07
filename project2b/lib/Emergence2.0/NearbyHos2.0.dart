@@ -399,7 +399,7 @@ class _MapScreenState extends State<MapScreen>
           // ),
         ],
       ),
-      bottomNavigationBar: Container(
+     bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [

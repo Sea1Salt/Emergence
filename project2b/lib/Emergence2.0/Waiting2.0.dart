@@ -194,7 +194,7 @@ class _WaitingState extends State<WaitingScreen2> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             border: Border.all(
-                              color: Color.fromARGB(255, 255, 22, 22),
+                              color: Color.fromARGB(255, 255, 255, 255),
                               width: 3,
                             ),
                           ),
@@ -202,8 +202,8 @@ class _WaitingState extends State<WaitingScreen2> {
                             borderRadius: BorderRadius.circular(15),
                             child: GoogleMap(
                               initialCameraPosition: CameraPosition(
-                                target:
-                                    LatLng(12.6812, 101.2769), // Rayong, Thailand
+                                target: LatLng(
+                                    12.6812, 101.2769), // Rayong, Thailand
                                 zoom: 12,
                               ),
                               mapType: MapType.normal,
@@ -215,7 +215,8 @@ class _WaitingState extends State<WaitingScreen2> {
                                   markerId: MarkerId(location.toString()),
                                   position: LatLng(location.latitude ?? 0.0,
                                       location.longtitude ?? 0.0),
-                                  infoWindow: InfoWindow(title: location.Hospitalname),
+                                  infoWindow:
+                                      InfoWindow(title: location.Hospitalname),
                                   icon: BitmapDescriptor.defaultMarkerWithHue(
                                       BitmapDescriptor.hueRed),
                                 );
@@ -237,7 +238,8 @@ class _WaitingState extends State<WaitingScreen2> {
                     text: 'How to first aid',
                     textColor: Color.fromARGB(255, 255, 255, 255),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
                         return FirstAidScreen2();
                       }));
                     },
@@ -254,102 +256,101 @@ class _WaitingState extends State<WaitingScreen2> {
         ],
       ),
       bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 255, 255, 255),
-                Color.fromARGB(255, 255, 255, 255),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: SizedBox(
-            height: 65, // Set a specific height for the BottomAppBar
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
-                  // Navigate to settings screen or perform settings-related action
-                }),
-                buildBottomAppBarItem(context, Icons.search, 'Search', () {
-                  // Perform search action
-                }),
-                buildBottomAppBarItem(context, Icons.home, 'Home', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainScreen2()),
-                  );
-                }, isHome: true),
-                buildBottomAppBarItem(
-                  context,
-                  Icons.notifications,
-                  'Notifications',
-                  () {
-                    // Perform notifications-related action
-                  },
-                ),
-                buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
-                    () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ProfileNewScreen2()),
-                  );
-                }),
-              ],
-            ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 255, 255, 255),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
+        child: SizedBox(
+          height: 65, // Set a specific height for the BottomAppBar
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildBottomAppBarItem(context, Icons.settings, 'Settings', () {
+                // Navigate to settings screen or perform settings-related action
+              }),
+              buildBottomAppBarItem(context, Icons.search, 'Search', () {
+                // Perform search action
+              }),
+              buildBottomAppBarItem(context, Icons.home, 'Home', () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen2()),
+                );
+              }, isHome: true),
+              buildBottomAppBarItem(
+                context,
+                Icons.notifications,
+                'Notifications',
+                () {
+                  // Perform notifications-related action
+                },
+              ),
+              buildBottomAppBarItem(context, Icons.account_circle, 'Profile',
+                  () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileNewScreen2()),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToClosestHospital,
-        backgroundColor: Color.fromARGB(255, 255, 22, 22),
-        child: Icon(Icons.route, color: Colors.white),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        child: Icon(Icons.route, color: Color.fromARGB(255, 125, 10, 10)),
       ),
     );
   }
 
- Widget buildBottomAppBarItem(
-  BuildContext context,
-  IconData icon,
-  String text,
-  VoidCallback onPressed, {
-  bool isHome = false,
-}) {
-  return Expanded(
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 45, // Ensure width and height are the same for a perfect circle
-          height: 45,
-          decoration: BoxDecoration(
-            //  shape: BoxShape.circle,
-            //  color: isHome ? Colors.white : Colors.transparent,
-            //  border: isHome ? Border.all(color: Colors.white, width: 2) : null,
+  Widget buildBottomAppBarItem(
+    BuildContext context,
+    IconData icon,
+    String text,
+    VoidCallback onPressed, {
+    bool isHome = false,
+  }) {
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width:
+                45, // Ensure width and height are the same for a perfect circle
+            height: 45,
+            decoration: BoxDecoration(
+                //  shape: BoxShape.circle,
+                //  color: isHome ? Colors.white : Colors.transparent,
+                //  border: isHome ? Border.all(color: Colors.white, width: 2) : null,
+                ),
+            child: IconButton(
+              icon: Icon(icon,
+                  color: isHome
+                      ? Color.fromARGB(255, 125, 10, 10)
+                      : Color.fromARGB(255, 125, 10, 10),
+                  size: 30),
+              onPressed: onPressed,
+            ),
           ),
-          child: IconButton(
-            icon: Icon(icon,
-                color: isHome
-                    ? Color.fromARGB(255, 125, 10, 10)
-                    : Color.fromARGB(255, 125, 10, 10),
-                size: 30),
-            onPressed: onPressed,
+          SizedBox(height: 0), // Spacing between icon and text
+          Text(
+            text,
+            style: TextStyle(
+              fontFamily: 'Faustina', // Use the Faustina font family
+              color: Color.fromARGB(255, 125, 10, 10),
+              fontSize: 9, // Adjust font size as needed
+            ),
           ),
-        ),
-        SizedBox(height: 0), // Spacing between icon and text
-        Text(
-          text,
-          style: TextStyle(
-            fontFamily: 'Faustina', // Use the Faustina font family
-            color: Color.fromARGB(255, 125, 10, 10),
-            fontSize: 10, // Adjust font size as needed
-          ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }
-}
-

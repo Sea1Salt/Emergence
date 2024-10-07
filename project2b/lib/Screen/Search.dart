@@ -19,7 +19,7 @@ class _SearchScreenState extends State<SearchScreen> {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/background.jpg'),
+              image: AssetImage('assets/images/EMG2.0.jpg'),
               fit: BoxFit.cover,
             ),
           ),

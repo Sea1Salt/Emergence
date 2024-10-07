@@ -13,7 +13,7 @@ import 'package:project2b/Models/Recieve.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // String URL = "http://10.0.2.2:5224";
-String URL = "http://183.88.240.114";
+String URL = "http://emergence.codebeyong.com";
 //String URL = "http://Localhost:5224";
 
 class EmergenceService {
@@ -225,10 +225,11 @@ class EmergenceService {
         Uri.parse(URL + '/api/UserManagement/GetHos'),
         body: json.encode(authData),
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Authorization': 'Bearer $token'
-        });
+           'Content-Type': 'application/json',
+           'Access-Control-Allow-Origin': '*',
+           'Authorization': 'Bearer $token'
+        }
+        );
 
     print(response);
     if (response.statusCode == 200) {

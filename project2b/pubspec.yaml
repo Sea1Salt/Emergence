@@ -160,8 +160,8 @@ flutter:
   fonts:
     - family: Faustina
       fonts:
-        #- asset: assets/images/Faustina-VariableFont_wght.ttf
-        - asset: assets/images/f24q212-black-future-black-future-regular-400.ttf
+        - asset: assets/images/Faustina-VariableFont_wght.ttf
+        # - asset: assets/images/f24q212-black-future-black-future-regular-400.ttf
           weight: 700
 
           

@@ -65,6 +65,7 @@ class MainScreen2 extends StatelessWidget {
                       fontSize: 32,
                       color: Color.fromARGB(255, 219, 16, 16),
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Faustina'
                     ),
                   ),
                   Text(
@@ -72,6 +73,7 @@ class MainScreen2 extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
+                      fontFamily: 'Faustina'
                     ),
                   ),
                 ],
@@ -110,7 +112,8 @@ class MainScreen2 extends StatelessWidget {
                         height: 145, // Custom height
                         width: double.infinity, // Custom width
                         imageHeight: 113, // Custom image height
-                        imageWidth: double.infinity, // Custom image width
+                        imageWidth: double.infinity, 
+                        // Custom image width
                       ),
 
                       SizedBox(height: 0),
